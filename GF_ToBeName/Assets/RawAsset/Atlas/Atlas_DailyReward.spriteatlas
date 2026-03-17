@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_DailyReward
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 9f289e2ae97044abd9aae165165ea1aa, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7bac1041ddca9495c810e58a98318f25, type: 3}
+  - {fileID: 21300000, guid: cfcf9933c97344759bf625dd10480bef, type: 3}
+  - {fileID: 21300000, guid: 2289632512cbc4fa880774e49b32b54c, type: 3}
+  - {fileID: 21300000, guid: b36065f695f974c8c8aeac925f989d40, type: 3}
+  - {fileID: 21300000, guid: fa0c43e82cd024a1383374ae6109650e, type: 3}
+  - {fileID: 21300000, guid: 47b6fd29049644939804307d08a0c7bd, type: 3}
+  - {fileID: 21300000, guid: fb2f0dca62b0d4af896ec848056ac47a, type: 3}
+  - {fileID: 21300000, guid: 9a61048cda5a14b398d4c89ce0d08ce9, type: 3}
+  - {fileID: 21300000, guid: 7d4eebdd7e8914556a09a32be062f223, type: 3}
+  - {fileID: 21300000, guid: d2c1bd8ec0d3c455599ab2bc4e04d45d, type: 3}
+  - {fileID: 21300000, guid: fae80ebf0f0e74e74922defe46fdb1ef, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - dayBg_dark
+  - processBg
+  - process
+  - mask
+  - img_freecard
+  - icon_locked
+  - img_goldcard
+  - rewarded
+  - dayBg_light
+  - ic_complete
+  - star
+  m_RenderDataMap: {}
+  m_Tag: Atlas_DailyReward
+  m_IsVariant: 0

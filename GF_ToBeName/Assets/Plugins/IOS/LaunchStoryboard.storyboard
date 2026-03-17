@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j2i-ew-hT5">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="1Da-dJ-AXx">
+            <objects>
+                <viewController id="j2i-ew-hT5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mA4-E6-qTU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home.png" translatesAutoresizingMaskIntoConstraints="NO" id="gPT-oG-AsL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gPT-oG-AsL" secondAttribute="bottom" id="1v8-td-3rw"/>
+                            <constraint firstAttribute="trailing" secondItem="gPT-oG-AsL" secondAttribute="trailing" id="Ig1-28-cBy"/>
+                            <constraint firstItem="gPT-oG-AsL" firstAttribute="leading" secondItem="mA4-E6-qTU" secondAttribute="leading" id="aag-Yn-BAs"/>
+                            <constraint firstItem="gPT-oG-AsL" firstAttribute="top" secondItem="mA4-E6-qTU" secondAttribute="top" id="gQ4-L9-KjL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cAs-bd-DBK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1G-yd-LvV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home.png" width="1125" height="2436"/>
+    </resources>
+</document>

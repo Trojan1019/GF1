@@ -1,0 +1,27 @@
+
+Hand.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+guangquan2
+  rotate: false
+  xy: 2, 2
+  size: 228, 228
+  orig: 232, 232
+  offset: 2, 2
+  index: -1
+icon_hand
+  rotate: false
+  xy: 232, 119
+  size: 110, 111
+  orig: 148, 148
+  offset: 19, 31
+  index: -1
+icon_handshadow
+  rotate: false
+  xy: 232, 8
+  size: 109, 109
+  orig: 148, 148
+  offset: 9, 9
+  index: -1

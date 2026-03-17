@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Map
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: bba3b412d5044405fbe8f78aa4e33979, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 925fa840f2f014a38ba8c8970d0cc796, type: 3}
+  - {fileID: 21300000, guid: 2b71b1a177dc3470ab4c9955fc273fa3, type: 3}
+  - {fileID: 21300000, guid: 809967c38cb05470fa64be73686b0167, type: 3}
+  - {fileID: 21300000, guid: ee9002064649e4072a7034577acd5510, type: 3}
+  - {fileID: 21300000, guid: 4b4712683711949dc8d34fa32c6d02c2, type: 3}
+  - {fileID: 21300000, guid: c73fc5a87d7d044ecae6005086c9e29e, type: 3}
+  - {fileID: 21300000, guid: 115cbf3a2a4c24341aeb0e8db9785585, type: 3}
+  - {fileID: 21300000, guid: 1298dfea03de4495aad374c9650f734c, type: 3}
+  - {fileID: 21300000, guid: d2ac72dd6d3384f879aa6e78d134dfea, type: 3}
+  - {fileID: 21300000, guid: fb4d8dbe616554286922c82e58781100, type: 3}
+  - {fileID: 21300000, guid: 15da74de43033460b9507cfcffeb3265, type: 3}
+  - {fileID: 21300000, guid: df14dcfe6ea074e78bf2188310f34e43, type: 3}
+  - {fileID: 21300000, guid: 0cdccdfe8e789455b98f4cf0f407889c, type: 3}
+  - {fileID: 21300000, guid: 6549bdcf324bf4c8b8ae401248332cae, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Icon_Lock
+  - Bg_Pic
+  - Icon_VipLv
+  - Icon_SpecialLv
+  - Icon_Get
+  - Img_LvBg
+  - Img_Mask
+  - Img_Shadow
+  - Line_FIrst
+  - Bg_MapItem
+  - Img_SpecialLvBg
+  - diwei-dikuang
+  - Img_GGMask
+  - Img_Line
+  m_RenderDataMap: {}
+  m_Tag: Atlas_Map
+  m_IsVariant: 0

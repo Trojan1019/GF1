@@ -1,0 +1,8 @@
+#|Id|Style|Icon|Icon2|
+#|int|int|string|string|
+|1|1|Coin|Coin_2
+|2|1|Prop_Undo|Prop_Undo
+|3|1|Prop_Tube|Prop_Tube
+|4|1|Prop_Skip|Prop_Skip
+|5|1|Prop_Tip|Prop_Tip
+|100|1|-1.0|-1.0

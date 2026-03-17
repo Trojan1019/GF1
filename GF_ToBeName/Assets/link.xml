@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<linker>
+    <!--GENERATE_TAG-->
+    <assembly fullname="Unity.TextMeshPro" preserve="all" />
+    <assembly fullname="UnityEngine.Purchasing" preserve="all" />
+
+    <assembly fullname="Assembly-CSharp" >
+
+        <type fullname="NewSideGame.CsvConfigHelper"  preserve="all"/>
+        <type fullname="UnityGameFramework.Runtime.DefaultLogHelper"  preserve="all"/>
+        <type fullname="NewSideGame.CsvLocalizationHelper"  preserve="all"/>
+        <type fullname="NewSideGame.UGuiGroupHelper"  preserve="all"/>
+        <type fullname="NewSideGame.NewtonsoftJsonHelper"  preserve="all"/>
+
+        <!-- 所有的Procedure 都是动态创建的，需要保留 -->
+        <type fullname="NewSideGame.Procedure*" />
+        <type fullname="NewSideGame.DR*" />
+
+	</assembly>
+	
+</linker>

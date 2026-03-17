@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_General
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 406c834e3b0874216a733fd2e8e1a0cf, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 99608750539de48d18e43980996f08dc, type: 3}
+  - {fileID: 21300000, guid: fce33b80b30c746ffadeb5ab96e41d07, type: 3}
+  - {fileID: 21300000, guid: 9b07961159ba54e4f920a4775e38ac7a, type: 3}
+  - {fileID: 21300000, guid: 10de6b72f40fc4706911e0b75efc3077, type: 3}
+  - {fileID: 21300000, guid: aed5e9333a73d44adaa8553a61f68dce, type: 3}
+  - {fileID: 21300000, guid: 4258def3333ed4f7c9a144f4b76188f9, type: 3}
+  - {fileID: 21300000, guid: 83c286e4948c041989c3eb4e76613a19, type: 3}
+  - {fileID: 21300000, guid: 42a3af07f45f14ea0a6a031f646f4d2a, type: 3}
+  - {fileID: 21300000, guid: fe5e8d98331064715abe14f32915a494, type: 3}
+  - {fileID: 21300000, guid: 32f3a3b87cd3747b9bf641e568c1cf45, type: 3}
+  - {fileID: 21300000, guid: 243451493f798407f8839451045a704e, type: 3}
+  - {fileID: 21300000, guid: 3e82bd59259244b3eb21ab049a5d3f14, type: 3}
+  - {fileID: 21300000, guid: 85aa6f2a189674a1ab31f65ce5e08c43, type: 3}
+  - {fileID: 21300000, guid: de62a7aa0e8f24799b09126eeac5f890, type: 3}
+  - {fileID: 21300000, guid: 115f35eac212542fc85fa4ae95527eed, type: 3}
+  - {fileID: 21300000, guid: 6999f6ebad4bd4cb8ad1d36367b9e30a, type: 3}
+  - {fileID: 21300000, guid: 6e7e968d663bf4287bc0f1b4d8f64cf0, type: 3}
+  - {fileID: 21300000, guid: 089ebd3e7f7d647759849d45a02a2fe6, type: 3}
+  - {fileID: 21300000, guid: 31df283fd8b404df58cc55e23f0bfbf8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Icon_Sad
+  - greenline
+  - img_explain_arrow
+  - icon_back
+  - image_shadow
+  - red_line
+  - purchase_tag3
+  - reward_show_corner
+  - Bg_SinglePropReward
+  - icon_ad
+  - img_shrink
+  - icon
+  - icon_add
+  - HomeButtonBtn
+  - Bg_White
+  - reddot_bg
+  - Img_Fail
+  - reward_show_di
+  - bg_light
+  m_RenderDataMap: {}
+  m_Tag: Atlas_General
+  m_IsVariant: 0

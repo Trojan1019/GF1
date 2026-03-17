@@ -1,0 +1,11 @@
+#|Id|AssetId|SoundGroup|SpatialBlend|Time|Volume|Priority|MaxDistance|DopplerLevel|Pitch|Loop|
+#|int|int|string|float|float|float|int|float|float|float|bool|
+|1001|60000|Music|0|0|0.3|0|100|1|1|TRUE
+|2001|60001|Sound|0|0|0.4|0|100|1|1|FALSE
+|2002|60002|Sound|0|0|0.4|0|100|1|1|FALSE
+|2003|60003|Sound|0|0|0.4|0|100|1|1|FALSE
+|2004|60004|Sound|0|0|0.4|0|100|1|1|FALSE
+|2005|60005|Sound|0|0|1|0|100|1|1|FALSE
+|2006|60006|Sound|0|0|1|0|100|1|1|FALSE
+|2007|60007|Sound|0|0|1|0|100|1|1|FALSE
+|2008|60008|Sound|0|0|1|0|100|1|1|FALSE

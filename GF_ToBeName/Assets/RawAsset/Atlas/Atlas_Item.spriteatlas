@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Item
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 8d9aa28e015744f08ba2d70151f08284, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: f9de3a51dd7304c12927bdd7a9c48b4f, type: 3}
+  - {fileID: 21300000, guid: 21e37c61c6c6a4edb83aa22633fe5668, type: 3}
+  - {fileID: 21300000, guid: f983e7b2449db43d5b595ca25e9a19e8, type: 3}
+  - {fileID: 21300000, guid: e1a094d69012749b0ac6bac5f1a6213f, type: 3}
+  - {fileID: 21300000, guid: 75da4a074a5dd41cf9d1a43594a66ced, type: 3}
+  - {fileID: 21300000, guid: b67014371b5bb4b10b6d74f27899d93b, type: 3}
+  - {fileID: 21300000, guid: 273bd0977a6744763bfb590a882592c9, type: 3}
+  - {fileID: 21300000, guid: c5f9b3d8a85f1411082bdeb86fbfd0c3, type: 3}
+  - {fileID: 21300000, guid: 3a7259293308448e7a8757c933469f1e, type: 3}
+  - {fileID: 21300000, guid: 37b06ecc70ca346699dc896fcebcced9, type: 3}
+  - {fileID: 21300000, guid: ba404f5fd522044b0a473e39be4d1e5c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Coin_3
+  - Coin_2
+  - Prop_Undo
+  - icon_add
+  - Prop_Skip
+  - Coin
+  - Coin_6
+  - Coin_5
+  - DiamondBg
+  - Prop_Tip
+  - Coin_4
+  m_RenderDataMap: {}
+  m_Tag: Atlas_Item
+  m_IsVariant: 0

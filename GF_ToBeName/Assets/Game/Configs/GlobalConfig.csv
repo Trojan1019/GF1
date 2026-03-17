@@ -1,0 +1,10 @@
+#|Id|Key|Value|
+#|int|string|string|
+|1|Scene.Home|4
+|2|Scene.Puzzle|5
+|3|SpecialLvCost|400
+|4|VipLvCost|1000
+|5|DownloadCoinCost|100
+|6|PropCoinCost|100
+|7|BalloonCoin|80
+|8|Ad.FB.EnableTrack|1

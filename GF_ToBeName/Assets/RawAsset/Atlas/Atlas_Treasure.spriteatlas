@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Treasure
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 94db18993fc964040bfb618b757a651b, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0003c5f170ed3482991605aacee28697, type: 3}
+  - {fileID: 21300000, guid: 069b045230dc14f3fa51196b5bfd7e54, type: 3}
+  - {fileID: 21300000, guid: 0f6c5634cb1cd4a15b10321bcdb604dc, type: 3}
+  - {fileID: 21300000, guid: 7cd01aa4d823f42d7a0be311a951a0aa, type: 3}
+  - {fileID: 21300000, guid: ed02f215d3b174c22909732ce9d94f44, type: 3}
+  - {fileID: 21300000, guid: ae0df9089c8644ef499fdbbdabb74f28, type: 3}
+  - {fileID: 21300000, guid: 78ffc578f379a49908e42377712be386, type: 3}
+  - {fileID: 21300000, guid: bd431f7c717eb49e1909c6520e6133cb, type: 3}
+  - {fileID: 21300000, guid: 0d08fecd466a44b5ba0a35bc8133db3f, type: 3}
+  - {fileID: 21300000, guid: a520ecae23965497f901a8ba63127d37, type: 3}
+  - {fileID: 21300000, guid: b4cce0ce968d84e4c9999d9ccc3c845e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Bg_Time
+  - line3
+  - line1
+  - Bg_NoLight
+  - Bg_Light
+  - Icon_Arrow
+  - Panel_NoClaim
+  - Panel_Claim
+  - Image_Curtain
+  - Image_Title
+  - line2
+  m_RenderDataMap: {}
+  m_Tag: Atlas_Treasure
+  m_IsVariant: 0

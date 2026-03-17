@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Block
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 04842a151683646b58f890d713d6e56c, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5843ea20cde0e42c8930705695095870, type: 3}
+  - {fileID: 21300000, guid: ab3c61b0c1da94bdf818b22c6392f4ec, type: 3}
+  - {fileID: 21300000, guid: 4ed807a1fb6664feabe7bccc0bd7d0ef, type: 3}
+  - {fileID: 21300000, guid: 922c18e17e27c4677a4bf28063e1b3ac, type: 3}
+  - {fileID: 21300000, guid: 2e8fb1f15a1134a9bac28550a84f81a6, type: 3}
+  - {fileID: 21300000, guid: f972c69241d4d46e19e0a86d8d5cd0c8, type: 3}
+  - {fileID: 21300000, guid: 62d540e26cd464b0d93f2cfda0052536, type: 3}
+  - {fileID: 21300000, guid: 963d9ce21fb0c4f4e9c08a9e8b3c36ba, type: 3}
+  - {fileID: 21300000, guid: 5220a6a356e2945a58e748ad8ebbd272, type: 3}
+  - {fileID: 21300000, guid: 134973e37cbf3408fab25edb8283ad03, type: 3}
+  - {fileID: 21300000, guid: 374c2054fe2064f6b97cdaf4ce3163bc, type: 3}
+  - {fileID: 21300000, guid: 5ed8fa842d34d448b9f27fc2de525b6e, type: 3}
+  - {fileID: 21300000, guid: 1d0dd594a54734fa6bcaeee9cc945f47, type: 3}
+  - {fileID: 21300000, guid: e92a35b4ef5b44e7c810bbb1ca65b595, type: 3}
+  - {fileID: 21300000, guid: 58fe91e438a034f4095f7191c7344a10, type: 3}
+  - {fileID: 21300000, guid: 42d3dd75ebc234bcfb56fdba885ea1c8, type: 3}
+  - {fileID: 21300000, guid: 3589569531af346ecbb5268822b10a31, type: 3}
+  - {fileID: 21300000, guid: 28619bd669d3c4c6fa07a0047de4a92f, type: 3}
+  - {fileID: 21300000, guid: fcebc017dbf6f400a941b5b865f10bb3, type: 3}
+  - {fileID: 21300000, guid: 83a6a808033ae475b9815efa02058042, type: 3}
+  - {fileID: 21300000, guid: 5052816871f6f48f996b7ae4dc13a734, type: 3}
+  - {fileID: 21300000, guid: 2556256a781244268a7d5a3b59068ebf, type: 3}
+  - {fileID: 21300000, guid: 4a84a7cb89c764db5902137ef3e9bace, type: 3}
+  - {fileID: 21300000, guid: 2fddf22ce8e62467ebab386a642cc754, type: 3}
+  - {fileID: 21300000, guid: 76a8942d28aea496d99671446d6722e3, type: 3}
+  - {fileID: 21300000, guid: 25386e6d86eb94c8b96c49c8feb0379a, type: 3}
+  - {fileID: 21300000, guid: 42223c9e0491746e789800cfbf79cbd3, type: 3}
+  - {fileID: 21300000, guid: 9acbcbaea40c24b28aa6b162a4700d73, type: 3}
+  - {fileID: 21300000, guid: e534150f3b0a3412580723c4e70f1fdb, type: 3}
+  - {fileID: 21300000, guid: 3400d9cf6dcf845ba967a443fe37ef5b, type: 3}
+  - {fileID: 21300000, guid: c6fd17ef1390e49139a925d6ab08a3b8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - block_LightPurple
+  - NumberIcon
+  - Checkmark_gameplay
+  - PlusIcon
+  - BlockBase
+  - block_Pink
+  - block_PastelViolet
+  - block_Red
+  - block_DarkPurple
+  - PropLock
+  - ShadowRight
+  - Outline_2
+  - Outline
+  - block_Grey
+  - icon_exit
+  - block_Yellow
+  - block_Blue
+  - icon_setting
+  - block_Unknown
+  - block_DarkGreen
+  - block_Orange
+  - LightBack
+  - block_Green
+  - block_Brown
+  - bg_BlockBase
+  - block_BlueGreen
+  - Shadow
+  - bg_Prop
+  - Cross
+  - Mask
+  - DividingLine
+  m_RenderDataMap: {}
+  m_Tag: Atlas_Block
+  m_IsVariant: 0
