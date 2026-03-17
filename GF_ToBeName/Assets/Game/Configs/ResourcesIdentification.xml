@@ -4,26 +4,11 @@
   <Resource AssetID="10002" AssetName="UIGameForm" AssetPath="Assets/Game/Prefabs/UI/UIGameForm#10002.prefab" />
   <Resource AssetID="10003" AssetName="UITopCoverForm" AssetPath="Assets/Game/Prefabs/UI/UITopCoverForm#10003.prefab" />
   <Resource AssetID="10004" AssetName="DebugDialog" AssetPath="Assets/Game/Prefabs/UI/DebugDialog#10004.prefab" />
-  <Resource AssetID="10005" AssetName="PicDownloadDialog" AssetPath="Assets/Game/Prefabs/UI/PicDownloadDialog#10005.prefab" />
-  <Resource AssetID="10006" AssetName="UIAlbumForm" AssetPath="Assets/Game/Prefabs/UI/UIAlbumForm#10006.prefab" />
-  <Resource AssetID="10007" AssetName="WinDownloadDialog" AssetPath="Assets/Game/Prefabs/UI/WinDownloadDialog#10007.prefab" />
-  <Resource AssetID="10008" AssetName="UIMapForm" AssetPath="Assets/Game/Prefabs/UI/UIMapForm#10008.prefab" />
   <Resource AssetID="10009" AssetName="GlobalToast" AssetPath="Assets/Game/Prefabs/UI/GlobalToast#10009.prefab" />
   <Resource AssetID="10010" AssetName="UISuccessDialog" AssetPath="Assets/Game/Prefabs/UI/UISuccessDialog#10010.prefab" />
-  <Resource AssetID="10011" AssetName="SpecialLevelDialog" AssetPath="Assets/Game/Prefabs/UI/SpecialLevelDialog#10011.prefab" />
-  <Resource AssetID="10012" AssetName="SInglePropDialog" AssetPath="Assets/Game/Prefabs/UI/SInglePropDialog#10012.prefab" />
-  <Resource AssetID="10013" AssetName="VipDialog" AssetPath="Assets/Game/Prefabs/UI/VipDialog#10013.prefab" />
   <Resource AssetID="10014" AssetName="ShopDialog" AssetPath="Assets/Game/Prefabs/UI/ShopDialog#10014.prefab" />
-  <Resource AssetID="10015" AssetName="TileMatchGiveUpDialog" AssetPath="Assets/Game/Prefabs/UI/TileMatchGiveUpDialog#10015.prefab" />
-  <Resource AssetID="10016" AssetName="TileMatchTipsDialog" AssetPath="Assets/Game/Prefabs/UI/TileMatchTipsDialog#10016.prefab" />
-  <Resource AssetID="10017" AssetName="GiftDialog" AssetPath="Assets/Game/Prefabs/UI/GiftDialog#10017.prefab" />
-  <Resource AssetID="10018" AssetName="RecommendPackDialog" AssetPath="Assets/Game/Prefabs/UI/RecommendPackDialog#10018.prefab" />
   <Resource AssetID="10019" AssetName="NoAdDialog" AssetPath="Assets/Game/Prefabs/UI/NoAdDialog#10019.prefab" />
-  <Resource AssetID="10020" AssetName="DailyRewardDialog" AssetPath="Assets/Game/Prefabs/UI/DailyRewardDialog#10020.prefab" />
   <Resource AssetID="10021" AssetName="SettingDialog" AssetPath="Assets/Game/Prefabs/UI/SettingDialog#10021.prefab" />
-  <Resource AssetID="10022" AssetName="ScoreGuideDialog" AssetPath="Assets/Game/Prefabs/UI/ScoreGuideDialog#10022.prefab" />
-  <Resource AssetID="10023" AssetName="TreasureFestDialog" AssetPath="Assets/Game/Prefabs/UI/TreasureFestDialog#10023.prefab" />
-  <Resource AssetID="10024" AssetName="LuckySpinAdDialog" AssetPath="Assets/Game/Prefabs/UI/LuckySpinAdDialog#10024.prefab" />
   <Resource AssetID="10098" AssetName="TransitionForm" AssetPath="Assets/Game/Prefabs/UI/TransitionForm#10098.prefab" />
   <Resource AssetID="10099" AssetName="LoadingDialog" AssetPath="Assets/Game/Prefabs/UI/LoadingDialog#10099.prefab" />
   <Resource AssetID="12005" AssetName="CasualCurrency" AssetPath="Assets/Game/Prefabs/Pool/CasualCurrency#12005.prefab" />

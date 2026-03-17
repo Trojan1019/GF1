@@ -2,8 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using BlockBlast.Manager;
+using CubeCrush.Manager;
 using NewSideGame;
+using DG.Tweening;
 
 namespace NewSideGame
 {
@@ -12,6 +13,9 @@ namespace NewSideGame
         [Header("UI Components")]
         public TextMeshProUGUI scoreText;
         public Button restartButton;
+        public Button settingButton;
+
+        private int displayScore = 0;
 
         protected override void OnOpen(object userData)
         {
@@ -23,11 +27,26 @@ namespace NewSideGame
             if (restartButton != null)
             {
                 restartButton.onClick.RemoveAllListeners();
-                restartButton.onClick.AddListener(() => GameLoopManager.Instance.Restart());
+                restartButton.onClick.AddListener(() => {
+                    // 按钮点击弹性反馈
+                    restartButton.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+                    GameLoopManager.Instance.Restart();
+                });
+            }
+
+            if (settingButton != null)
+            {
+                settingButton.onClick.RemoveAllListeners();
+                settingButton.onClick.AddListener(() =>
+                {
+                    // 按钮点击弹性反馈
+                    settingButton.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+                    GameEntry.UI.OpenUIForm(UIFormType.SettingDialog);
+                });
             }
             
-            // Initial update
-            UpdateScore(GameLoopManager.Instance.score);
+            displayScore = GameLoopManager.Instance.score;
+            if (scoreText != null) scoreText.text = $"Score: {displayScore}";
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -42,9 +61,9 @@ namespace NewSideGame
 
         private void OnGameOver(params object[] args)
         {
-            // Open Game Over Dialog or Show Panel
-            // For now, let's open a dialog if available, or just log
-            // Assuming UISuccessForm is a placeholder for game over/win
+            // 在 GameMain 中等待填满动画后，会再次触发 GameOver（或者通过直接打开）
+            // 注意：GameLoopManager 中触发了 GameOverFillAnimation，然后 GameMain 处理完会再次触发 GameOver 事件
+            // 为了防止重复打开，需要做个状态判断或者只在真正结束时打开
             GameEntry.UI.OpenUIForm(UIFormType.UISuccessForm);
         }
 
@@ -53,11 +72,15 @@ namespace NewSideGame
             UpdateScore(GameLoopManager.Instance.score);
         }
 
-        private void UpdateScore(int score)
+        private void UpdateScore(int newScore)
         {
             if (scoreText != null)
             {
-                scoreText.text = $"Score: {score}";
+                // 分数滚动动画
+                DOTween.To(() => displayScore, x => {
+                    displayScore = x;
+                    scoreText.text = $"Score: {displayScore}";
+                }, newScore, 0.3f).SetEase(Ease.OutCubic).SetUpdate(true);
             }
         }
     }

@@ -1,10 +1,10 @@
 // using NUnit.Framework;
 // using UnityEngine;
-// using BlockBlast.Manager;
-// using BlockBlast.Data;
+// using CubeCrush.Manager;
+// using CubeCrush.Data;
 // using System.Collections.Generic;
 //
-// namespace BlockBlast.Tests
+// namespace CubeCrush.Tests
 // {
 //     public class GridManagerTests
 //     {

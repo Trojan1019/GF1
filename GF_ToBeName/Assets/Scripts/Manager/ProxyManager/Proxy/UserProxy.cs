@@ -43,6 +43,26 @@ namespace NewSideGame
             Save();
         }
 
+        #region 分数
+
+        /// <summary>
+        /// 更新玩家最高分
+        /// </summary>
+        /// <param name="score">当前分数</param>
+        /// <returns>是否创造了新纪录</returns>
+        public bool UpdateBestScore(int score)
+        {
+            if (score > userModel.bestScore)
+            {
+                userModel.bestScore = score;
+                Save();
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
+
         #region 物品
 
         public int ItemCount(int itemId)

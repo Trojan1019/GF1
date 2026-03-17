@@ -65,7 +65,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7bac1041ddca9495c810e58a98318f25, type: 3}
   - {fileID: 21300000, guid: cfcf9933c97344759bf625dd10480bef, type: 3}
   - {fileID: 21300000, guid: 2289632512cbc4fa880774e49b32b54c, type: 3}
-  - {fileID: 21300000, guid: b36065f695f974c8c8aeac925f989d40, type: 3}
   - {fileID: 21300000, guid: fa0c43e82cd024a1383374ae6109650e, type: 3}
   - {fileID: 21300000, guid: 47b6fd29049644939804307d08a0c7bd, type: 3}
   - {fileID: 21300000, guid: fb2f0dca62b0d4af896ec848056ac47a, type: 3}
@@ -77,7 +76,6 @@ SpriteAtlas:
   - dayBg_dark
   - processBg
   - process
-  - mask
   - img_freecard
   - icon_locked
   - img_goldcard

@@ -19,6 +19,8 @@ namespace NewSideGame
         public string countryCode;
         public long lastLoginTime;
         
+        public int bestScore; // 玩家历史最高分数
+        
         public List<string> transactionIDs = new List<string>();
 
         //弹窗flag

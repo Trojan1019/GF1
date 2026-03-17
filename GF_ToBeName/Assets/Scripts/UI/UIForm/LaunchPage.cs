@@ -93,13 +93,14 @@ namespace NewSideGame
                 launchPage.m_IsFullProcess = true;
             }
         }
-        
+
         public static bool IsLaunchAnimationFinish()
         {
             if (launchPage != null)
             {
                 return launchPage.IsAnimationFinish;
             }
+
             return false;
         }
 

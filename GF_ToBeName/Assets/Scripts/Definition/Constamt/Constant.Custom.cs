@@ -45,9 +45,11 @@ namespace NewSideGame
             public const int RefreshScore = 6; //
             public const int GameOver = 7; //
             
-            public const int BlockBlastGridUpdated = 101;
-            public const int BlockBlastSpawnUpdated = 102;
-            public const int BlockBlastGameStart = 103;
+            public const int CubeCrushGridUpdated = 101;
+            public const int CubeCrushSpawnUpdated = 102;
+            public const int CubeCrushGameStart = 103;
+            public const int CubeCrushLinesCleared = 104;
+            public const int GameOverFillAnimation = 105;
         }
 
         public static class Config

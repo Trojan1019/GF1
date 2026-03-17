@@ -506,52 +506,52 @@
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.43f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Assets/GameFramework/Libraries/ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Assets/GameFramework/Libraries/ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="DemiEditor">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.collab-proxy@2.4.4/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.2.1/Runtime/Newtonsoft.Json.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.2.1/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/PackageCache/com.unity.visualscripting@1.9.4/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenProEditor">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.43f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -935,10 +935,10 @@
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.43f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/Trojan/Unity项目/GF_Trojan/GF_ToBeName/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/Trojan/GF1/GF_ToBeName/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
