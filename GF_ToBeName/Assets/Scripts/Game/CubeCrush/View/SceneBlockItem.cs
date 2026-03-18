@@ -31,6 +31,8 @@ namespace CubeCrush.View
                 unit.transform.SetParent(transform);
                 unit.transform.localPosition = new Vector3(cell.x * GameMain.Instance.cellSize,
                     cell.y * GameMain.Instance.cellSize, 0);
+                unit.transform.localScale = Vector3.one;
+
                 unit.spriteRenderer.color = shape.blockColor;
             }
 
