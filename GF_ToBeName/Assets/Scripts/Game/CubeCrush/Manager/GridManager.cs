@@ -4,7 +4,7 @@ using CubeCrush.Data;
 
 namespace NewSideGame
 {
-    public class ClearedCellInfo 
+    public class ClearedCellInfo
     {
         public Vector2Int pos;
         public Color color;
@@ -12,10 +12,9 @@ namespace NewSideGame
 
     public class GridManager : MonoSingleton<GridManager>
     {
-        [Header("Grid Settings")]
-        public int rows = 8;
+        [Header("Grid Settings")] public int rows = 8;
         public int cols = 8;
-        
+
         // 0: Empty, 1: Filled
         public int[,] grid;
         public Color[,] gridColors;
@@ -37,6 +36,7 @@ namespace NewSideGame
                     gridColors[x, y] = Color.clear;
                 }
             }
+
             NotifyGridUpdate();
         }
 
@@ -54,10 +54,12 @@ namespace NewSideGame
                 if (grid[targetX, targetY] != 0)
                     return false;
             }
+
             return true;
         }
 
-        public void GetPredictedClearLines(BlockShape shape, Vector2Int pos, out List<int> fullRows, out List<int> fullCols)
+        public void GetPredictedClearLines(BlockShape shape, Vector2Int pos, out List<int> fullRows,
+            out List<int> fullCols)
         {
             fullRows = new List<int>();
             fullCols = new List<int>();
@@ -78,7 +80,8 @@ namespace NewSideGame
             }
         }
 
-        public bool PlaceBlock(BlockShape shape, Vector2Int pos, out List<int> clearedRows, out List<int> clearedCols, out List<ClearedCellInfo> clearedCells)
+        public bool PlaceBlock(BlockShape shape, Vector2Int pos, out List<int> clearedRows, out List<int> clearedCols,
+            out List<ClearedCellInfo> clearedCells)
         {
             clearedRows = new List<int>();
             clearedCols = new List<int>();
@@ -93,29 +96,33 @@ namespace NewSideGame
             }
 
             CheckLines(out clearedRows, out clearedCols);
-
+            
             // Collect cleared cells info before clearing
             foreach (int y in clearedRows)
             {
                 for (int x = 0; x < cols; x++)
                 {
+                    gridColors[x, y] = shape.blockColor;
                     clearedCells.Add(new ClearedCellInfo { pos = new Vector2Int(x, y), color = gridColors[x, y] });
                 }
             }
+
             foreach (int x in clearedCols)
             {
                 for (int y = 0; y < rows; y++)
                 {
+                    gridColors[x, y] = shape.blockColor;
                     // Avoid duplicate cells at intersection
                     if (!clearedRows.Contains(y))
                     {
-                        clearedCells.Add(new ClearedCellInfo { pos = new Vector2Int(x, y), color = gridColors[x, y] });
+                        clearedCells.Add(new ClearedCellInfo
+                            { pos = new Vector2Int(x, y), color = gridColors[x, y] });
                     }
                 }
             }
 
             ClearLines(clearedRows, clearedCols);
-            
+
             NotifyGridUpdate();
             return true;
         }
@@ -136,6 +143,7 @@ namespace NewSideGame
                         break;
                     }
                 }
+
                 if (isFull) fullRows.Add(y);
             }
 
@@ -150,6 +158,7 @@ namespace NewSideGame
                         break;
                     }
                 }
+
                 if (isFull) fullCols.Add(x);
             }
         }
@@ -160,6 +169,7 @@ namespace NewSideGame
             {
                 for (int x = 0; x < cols; x++) grid[x, y] = 0;
             }
+
             foreach (int x in colsToClear)
             {
                 for (int y = 0; y < rows; y++) grid[x, y] = 0;
@@ -179,23 +189,25 @@ namespace NewSideGame
                     break;
                 }
             }
+
             if (!anyShapeValid) return false; // If all shapes used, not game over
 
             foreach (var shape in availableShapes)
             {
                 if (shape == null) continue;
-                
+
                 for (int x = 0; x < cols; x++)
                 {
                     for (int y = 0; y < rows; y++)
                     {
                         if (CanPlace(shape, new Vector2Int(x, y)))
                         {
-                            return false; 
+                            return false;
                         }
                     }
                 }
             }
+
             return true;
         }
 

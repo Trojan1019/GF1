@@ -99,6 +99,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 85aa6f2a189674a1ab31f65ce5e08c43, type: 3}
   - {fileID: 21300000, guid: de62a7aa0e8f24799b09126eeac5f890, type: 3}
   - {fileID: 21300000, guid: 36c9a8aa03d904d5f8dbb471d4d496d2, type: 3}
+  - {fileID: 21300000, guid: 19a745caa897a41759d4b8b5d0b482f2, type: 3}
   - {fileID: 21300000, guid: 115f35eac212542fc85fa4ae95527eed, type: 3}
   - {fileID: 21300000, guid: 3542ac1bbafd840e6908643d098f025f, type: 3}
   - {fileID: 21300000, guid: 07369a4b71e3c47fe86372c16974f6d9, type: 3}
@@ -153,6 +154,7 @@ SpriteAtlas:
   - icon_add
   - HomeButtonBtn
   - UI_Bar
+  - btn_rectangle_01_n_darkgray
   - Bg_White
   - UI_Panel_Tab_Inactive
   - function_icon_volume_mute

@@ -41,6 +41,7 @@ namespace NewSideGame
             if (needCloseLaunch && openUISuccess)
             {
                 LaunchPage.CloseUI();
+                SplashPage.CloseUI();
             }
         }
 

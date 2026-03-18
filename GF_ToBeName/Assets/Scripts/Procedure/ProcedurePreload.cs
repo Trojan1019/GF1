@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
@@ -113,7 +113,7 @@ namespace NewSideGame
 
             if (LaunchPage.IsLaunchAnimationFinish())
             {
-                SplashPage.CloseUI();
+                // SplashPage.CloseUI();
                 procedureOwner.SetData<VarBoolean>(Constant.ProcedureData.ColdBoot, true);
                 ChangeState<ProcedureMainGame>(procedureOwner);
             }

@@ -52,7 +52,7 @@ namespace NewSideGame
             {
                 if (m_process >= maxProcess)
                 {
-                    Close();
+                    // Close();
                     return;
                 }
 

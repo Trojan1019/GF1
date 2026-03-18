@@ -150,11 +150,17 @@ public static class ProjectBuildTool
 
     private static UnityEditor.EditorBuildSettingsScene[] GetScenes()
     {
+        // 优先使用 Build Settings 中的配置，避免覆盖用户的设置
+        if (UnityEditor.EditorBuildSettings.scenes != null && UnityEditor.EditorBuildSettings.scenes.Length > 0)
+        {
+            return UnityEditor.EditorBuildSettings.scenes;
+        }
+
         UnityEditor.EditorBuildSettingsScene[] scenes = new UnityEditor.EditorBuildSettingsScene[1];
         scenes[0] = new UnityEditor.EditorBuildSettingsScene("Assets/Resources/Scenes/MainScene.unity", true);
-        UnityEditor.EditorBuildSettings.scenes = scenes;
+        // UnityEditor.EditorBuildSettings.scenes = scenes;
 
-        return UnityEditor.EditorBuildSettings.scenes;
+        return scenes;
     }
 
     public static void BuildApk()

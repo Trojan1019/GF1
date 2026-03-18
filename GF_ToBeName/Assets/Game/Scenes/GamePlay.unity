@@ -487,8 +487,8 @@ MonoBehaviour:
   gridOrigin: {fileID: 269306729}
   spawnOrigin: {fileID: 374942140}
   cellSize: 1.56
-  spawnSpacing: 3
-  spawnAreaWidth: 12
+  spawnSpacing: 10
+  spawnAreaWidth: 13
   hintDelay: 8
   hintDuration: 2
   hintAlpha: 0.5
