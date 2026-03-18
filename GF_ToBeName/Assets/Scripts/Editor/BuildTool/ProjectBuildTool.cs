@@ -42,6 +42,7 @@ public static class ProjectBuildTool
                     return arg.Split("-"[0])[1];
                 }
             }
+
             return "AIWaterSort";
         }
     }
@@ -51,10 +52,10 @@ public static class ProjectBuildTool
         return (T)Enum.Parse(typeof(T), text);
     }
 
-    public static bool ExportBatchMonoBehavior()
-    {
-        return BatchRenameAllMonoBehaviours.BuildPreConfoundProcessor();
-    }
+    // public static bool ExportBatchMonoBehavior()
+    // {
+    //     return BatchRenameAllMonoBehaviours.BuildPreConfoundProcessor();
+    // }
 
     // 导出安卓工程项目
     public static void ExportProjectForAndroid()
@@ -75,7 +76,8 @@ public static class ProjectBuildTool
 
         if (bool.TryParse(IsBuildBundle, out bool isBuildAssetBundle) && isBuildAssetBundle)
         {
-            AssetBundleBuildTool.BuildAssetBundle(Platform.Android, Version, int.Parse(InternalResourceVersion), bool.Parse(ForceRebuildAssetBundle));
+            AssetBundleBuildTool.BuildAssetBundle(Platform.Android, Version, int.Parse(InternalResourceVersion),
+                bool.Parse(ForceRebuildAssetBundle));
         }
 
         if (bool.TryParse(IsAAB, out bool isAAB) && isAAB)
@@ -123,7 +125,8 @@ public static class ProjectBuildTool
 
         if (bool.TryParse(IsBuildBundle, out bool isBuildAssetBundle) && isBuildAssetBundle)
         {
-            AssetBundleBuildTool.BuildAssetBundle(Platform.IOS, Version, int.Parse(InternalResourceVersion), bool.Parse(ForceRebuildAssetBundle));
+            AssetBundleBuildTool.BuildAssetBundle(Platform.IOS, Version, int.Parse(InternalResourceVersion),
+                bool.Parse(ForceRebuildAssetBundle));
         }
 
         // 导出iOS工程
@@ -133,11 +136,12 @@ public static class ProjectBuildTool
         UnityEditor.PlayerSettings.iOS.allowHTTPDownload = true;
         UnityEditor.PlayerSettings.iOS.requiresFullScreen = true;
         UnityEditor.PlayerSettings.statusBarHidden = true;
-        UnityEditor.PlayerSettings.iOS.showActivityIndicatorOnLoading = UnityEditor.iOSShowActivityIndicatorOnLoading.DontShow;
-        UnityEditor.PlayerSettings.SetArchitecture(UnityEditor.BuildTargetGroup.iOS, 1);//arm64
-        UnityEditor.PlayerSettings.iOS.appleDeveloperTeamID = "7ZYQ76X7HX";//变更开发者账号时，需要修改此处
-        UnityEditor.PlayerSettings.defaultInterfaceOrientation = UnityEditor.UIOrientation.Portrait;//如果需要支持横屏，修改此处
-        UnityEditor.PlayerSettings.iOS.targetDevice = UnityEditor.iOSTargetDevice.iPhoneAndiPad;//如果需要支持ipad，修改此处
+        UnityEditor.PlayerSettings.iOS.showActivityIndicatorOnLoading =
+            UnityEditor.iOSShowActivityIndicatorOnLoading.DontShow;
+        UnityEditor.PlayerSettings.SetArchitecture(UnityEditor.BuildTargetGroup.iOS, 1); //arm64
+        UnityEditor.PlayerSettings.iOS.appleDeveloperTeamID = "7ZYQ76X7HX"; //变更开发者账号时，需要修改此处
+        UnityEditor.PlayerSettings.defaultInterfaceOrientation = UnityEditor.UIOrientation.Portrait; //如果需要支持横屏，修改此处
+        UnityEditor.PlayerSettings.iOS.targetDevice = UnityEditor.iOSTargetDevice.iPhoneAndiPad; //如果需要支持ipad，修改此处
         UnityEditor.PlayerSettings.iOS.buildNumber = BuildNumber;
 
         UnityEditor.BuildOptions buildOption = UnityEditor.BuildOptions.None;
@@ -213,11 +217,12 @@ public static class ProjectBuildTool
             UnityEditor.PlayerSettings.iOS.allowHTTPDownload = true;
             UnityEditor.PlayerSettings.iOS.requiresFullScreen = true;
             UnityEditor.PlayerSettings.statusBarHidden = true;
-            UnityEditor.PlayerSettings.iOS.showActivityIndicatorOnLoading = UnityEditor.iOSShowActivityIndicatorOnLoading.DontShow;
-            UnityEditor.PlayerSettings.SetArchitecture(UnityEditor.BuildTargetGroup.iOS, 1);//arm64
-            UnityEditor.PlayerSettings.iOS.appleDeveloperTeamID = "7ZYQ76X7HX";//变更开发者账号时，需要修改此处
-            UnityEditor.PlayerSettings.defaultInterfaceOrientation = UnityEditor.UIOrientation.Portrait;//如果需要支持横屏，修改此处
-            UnityEditor.PlayerSettings.iOS.targetDevice = UnityEditor.iOSTargetDevice.iPhoneAndiPad;//如果需要支持ipad，修改此处
+            UnityEditor.PlayerSettings.iOS.showActivityIndicatorOnLoading =
+                UnityEditor.iOSShowActivityIndicatorOnLoading.DontShow;
+            UnityEditor.PlayerSettings.SetArchitecture(UnityEditor.BuildTargetGroup.iOS, 1); //arm64
+            UnityEditor.PlayerSettings.iOS.appleDeveloperTeamID = "7ZYQ76X7HX"; //变更开发者账号时，需要修改此处
+            UnityEditor.PlayerSettings.defaultInterfaceOrientation = UnityEditor.UIOrientation.Portrait; //如果需要支持横屏，修改此处
+            UnityEditor.PlayerSettings.iOS.targetDevice = UnityEditor.iOSTargetDevice.iPhoneAndiPad; //如果需要支持ipad，修改此处
             UnityEditor.PlayerSettings.iOS.buildNumber = "1";
 
             UnityEditor.BuildOptions buildOption = UnityEditor.BuildOptions.None;
@@ -263,50 +268,51 @@ public static class ProjectBuildTool
             Directory.Delete(ProjectName, true);
 
 #if UNITY_ANDROID
-        if (ExportBatchMonoBehavior())
+        //if (ExportBatchMonoBehavior())
+        //{
+        CompilationListener.RequestCompilationAndListen(() =>
         {
-            CompilationListener.RequestCompilationAndListen(() =>
+            if (bool.TryParse(IsBuildBundle, out bool isBuildAssetBundle) && isBuildAssetBundle)
             {
-                if (bool.TryParse(IsBuildBundle, out bool isBuildAssetBundle) && isBuildAssetBundle)
+                if (AssetBundleBuildTool.BuildAssetBundle(Platform.Android, Version, int.Parse(InternalResourceVersion),
+                        bool.Parse(ForceRebuildAssetBundle)))
                 {
-                    if (AssetBundleBuildTool.BuildAssetBundle(Platform.Android, Version, int.Parse(InternalResourceVersion), bool.Parse(ForceRebuildAssetBundle)))
+                    if (bool.TryParse(IsAAB, out bool isAAB) && isAAB)
                     {
-                        if (bool.TryParse(IsAAB, out bool isAAB) && isAAB)
-                        {
-                            UnityEditor.EditorUserBuildSettings.buildAppBundle = true;
-                            UnityEditor.PlayerSettings.Android.useAPKExpansionFiles = true;
-                            UnityEditor.EditorPrefs.SetString("EXPORT_GRADLE_PROJECT", "AAB");
-                        }
-                        else
-                        {
-                            UnityEditor.EditorUserBuildSettings.buildAppBundle = false;
-                            UnityEditor.PlayerSettings.Android.useAPKExpansionFiles = false;
-                            UnityEditor.EditorPrefs.SetString("EXPORT_GRADLE_PROJECT", "APK");
-                        }
-
-                        UnityEditor.PlayerSettings.bundleVersion = Version;
-                        UnityEditor.EditorUserBuildSettings.androidBuildSystem = UnityEditor.AndroidBuildSystem.Gradle;
-                        UnityEditor.EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-
-                        UnityEditor.BuildOptions buildOption = UnityEditor.BuildOptions.None;
-                        buildOption |= UnityEditor.BuildOptions.CompressWithLz4HC;
-
-                        if (bool.TryParse(IsMaterial, out bool isMaterialPackage) && isMaterialPackage)
-                        {
-                            AddEnableMaterialDefineSymbol();
-                        }
-                        else
-                        {
-                            RemoveEnableMaterialDefineSymbol();
-                        }
-
-                        // 开始构建工程
-                        UnityEditor.BuildPipeline.BuildPlayer(GetScenes(), ProjectName, UnityEditor.BuildTarget.Android,
-                            buildOption);
+                        UnityEditor.EditorUserBuildSettings.buildAppBundle = true;
+                        UnityEditor.PlayerSettings.Android.useAPKExpansionFiles = true;
+                        UnityEditor.EditorPrefs.SetString("EXPORT_GRADLE_PROJECT", "AAB");
                     }
+                    else
+                    {
+                        UnityEditor.EditorUserBuildSettings.buildAppBundle = false;
+                        UnityEditor.PlayerSettings.Android.useAPKExpansionFiles = false;
+                        UnityEditor.EditorPrefs.SetString("EXPORT_GRADLE_PROJECT", "APK");
+                    }
+
+                    UnityEditor.PlayerSettings.bundleVersion = Version;
+                    UnityEditor.EditorUserBuildSettings.androidBuildSystem = UnityEditor.AndroidBuildSystem.Gradle;
+                    UnityEditor.EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
+
+                    UnityEditor.BuildOptions buildOption = UnityEditor.BuildOptions.None;
+                    buildOption |= UnityEditor.BuildOptions.CompressWithLz4HC;
+
+                    if (bool.TryParse(IsMaterial, out bool isMaterialPackage) && isMaterialPackage)
+                    {
+                        AddEnableMaterialDefineSymbol();
+                    }
+                    else
+                    {
+                        RemoveEnableMaterialDefineSymbol();
+                    }
+
+                    // 开始构建工程
+                    UnityEditor.BuildPipeline.BuildPlayer(GetScenes(), ProjectName, UnityEditor.BuildTarget.Android,
+                        buildOption);
                 }
-            });
-        }
+            }
+        });
+        //}
 #elif UNITY_IOS
         if (ExportBatchMonoBehavior())
         {
@@ -323,11 +329,14 @@ public static class ProjectBuildTool
                         UnityEditor.PlayerSettings.iOS.allowHTTPDownload = true;
                         UnityEditor.PlayerSettings.iOS.requiresFullScreen = true;
                         UnityEditor.PlayerSettings.statusBarHidden = true;
-                        UnityEditor.PlayerSettings.iOS.showActivityIndicatorOnLoading = UnityEditor.iOSShowActivityIndicatorOnLoading.DontShow;
+                        UnityEditor.PlayerSettings.iOS.showActivityIndicatorOnLoading =
+ UnityEditor.iOSShowActivityIndicatorOnLoading.DontShow;
                         UnityEditor.PlayerSettings.SetArchitecture(UnityEditor.BuildTargetGroup.iOS, 1);//arm64
                         UnityEditor.PlayerSettings.iOS.appleDeveloperTeamID = "7ZYQ76X7HX";//变更开发者账号时，需要修改此处
-                        UnityEditor.PlayerSettings.defaultInterfaceOrientation = UnityEditor.UIOrientation.Portrait;//如果需要支持横屏，修改此处
-                        UnityEditor.PlayerSettings.iOS.targetDevice = UnityEditor.iOSTargetDevice.iPhoneAndiPad;//如果需要支持ipad，修改此处
+                        UnityEditor.PlayerSettings.defaultInterfaceOrientation =
+ UnityEditor.UIOrientation.Portrait;//如果需要支持横屏，修改此处
+                        UnityEditor.PlayerSettings.iOS.targetDevice =
+ UnityEditor.iOSTargetDevice.iPhoneAndiPad;//如果需要支持ipad，修改此处
                         UnityEditor.PlayerSettings.iOS.buildNumber = buildNumber;
 
                         UnityEditor.PlayerSettings.iOS.applicationDisplayName = "Travel Tile - Puzzle Game";

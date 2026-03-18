@@ -40,9 +40,6 @@
       <Resource Name="Game/Prefabs/UI/UISuccessDialog_10010_prefab" LoadType="0" Packed="False" />
       <Resource Name="Game/Prefabs/UI/UITopCoverForm_10003_prefab" LoadType="0" Packed="False" />
       <Resource Name="Game/Scenes/GamePlay_unity" LoadType="0" Packed="False" />
-      <Resource Name="RawAsset/Atlas/Atlas_General" LoadType="0" Packed="False" />
-      <Resource Name="RawAsset/Atlas/Atlas_Item" LoadType="0" Packed="False" />
-      <Resource Name="RawAsset/Atlas/Atlas_Launch" LoadType="0" Packed="False" />
       <Resource Name="RawAsset/Audio/bgm_60000_mp3" LoadType="0" Packed="False" />
       <Resource Name="RawAsset/Audio/Bubble1_60006_mp3" LoadType="0" Packed="False" />
       <Resource Name="RawAsset/Audio/Bubble2_60007_mp3" LoadType="0" Packed="False" />
@@ -103,7 +100,6 @@
       <Asset Guid="23a43dc6205da4443bd57a7dcb39375f" ResourceName="RawAsset/Fonts" />
       <Asset Guid="243451493f798407f8839451045a704e" ResourceName="RawAsset/Sprites" />
       <Asset Guid="258050d9d94a34538bf6ba7a482ff447" ResourceName="RawAsset/Sprites" />
-      <Asset Guid="25e1682a2ce1340808943633c36f5e0a" ResourceName="Game/Prefabs/UI/UIHomeForm_10001_prefab" />
       <Asset Guid="26bbc2c9d8c6c4f5c9c2047636cda447" ResourceName="Game/Localization/uiText_Vietnamese_csv" />
       <Asset Guid="273bd0977a6744763bfb590a882592c9" ResourceName="RawAsset/Sprites" />
       <Asset Guid="280d369c764e64ff2a4df3fb49dd4c08" ResourceName="RawAsset/Sprites" />
@@ -122,9 +118,9 @@
       <Asset Guid="3542ac1bbafd840e6908643d098f025f" ResourceName="RawAsset/Sprites" />
       <Asset Guid="360ae296d20e24f3ca758577cf549f5d" ResourceName="RawAsset/Sprites" />
       <Asset Guid="36c9a8aa03d904d5f8dbb471d4d496d2" ResourceName="RawAsset/Sprites" />
-      <Asset Guid="37b06ecc70ca346699dc896fcebcced9" ResourceName="RawAsset/Sprites" />
       <Asset Guid="38636ff5ac0654afb85f53ee851398c9" ResourceName="RawAsset/Fonts" />
       <Asset Guid="3a7259293308448e7a8757c933469f1e" ResourceName="RawAsset/Sprites" />
+      <Asset Guid="3ad309c0a00154508b87e085c3028221" ResourceName="RawAsset/Sprites" />
       <Asset Guid="3cdb67667fd274fc8a1b58d51b8ec9e4" ResourceName="RawAsset/Sprites" />
       <Asset Guid="3e5224fe88e144f68b198fdee4a58b2d" ResourceName="RawAsset/Sprites" />
       <Asset Guid="3e82bd59259244b3eb21ab049a5d3f14" ResourceName="RawAsset/Sprites" />
@@ -157,7 +153,6 @@
       <Asset Guid="58522f1da0de045338704564fa60cf88" ResourceName="RawAsset/Sprites" />
       <Asset Guid="590a72e426cf9495f89e0137e674bb61" ResourceName="RawAsset/Sprites" />
       <Asset Guid="5a198e6a4b4f3438990aa10b756569cf" ResourceName="Game/BlockShape" />
-      <Asset Guid="5a5fcf817f9be4dcc9eeeee7ee93fc37" ResourceName="RawAsset/Atlas/Atlas_Item" />
       <Asset Guid="5b3da61bf4679404d91f8df76db434ee" ResourceName="RawAsset/Fonts" />
       <Asset Guid="5c6e368bc6e4c4b8c997951e8d786799" ResourceName="RawAsset/Fonts" />
       <Asset Guid="5ddd9bde71c02401f93e3a1342828492" ResourceName="RawAsset/Sprites" />
@@ -183,7 +178,6 @@
       <Asset Guid="70bb37cf304c44468a78ef686b2d3c5a" ResourceName="RawAsset/Fonts" />
       <Asset Guid="70e2803e3d6d84f5a99ee06e61212702" ResourceName="RawAsset/Sprites" />
       <Asset Guid="74cb0147fea6d47c99974fef9777adbc" ResourceName="RawAsset/Sprites" />
-      <Asset Guid="75da4a074a5dd41cf9d1a43594a66ced" ResourceName="RawAsset/Sprites" />
       <Asset Guid="7625ce23e3eb8424db88613117ca2478" ResourceName="Game/Localization/uiText_German_csv" />
       <Asset Guid="7738672d93e194c9e9ccb173752daf2f" ResourceName="RawAsset/Sprites" />
       <Asset Guid="78ffc578f379a49908e42377712be386" ResourceName="RawAsset/Sprites" />
@@ -208,7 +202,7 @@
       <Asset Guid="8a60af8b083794b26b2066de7d5e1730" ResourceName="Game/DataTables" />
       <Asset Guid="8c988c5c3be6f384f9ab7c398047d7af" ResourceName="Game/Prefabs/Pool/ClickEff_31013_prefab" />
       <Asset Guid="8f104c98ad4c74fdea32a2c059636f34" ResourceName="RawAsset/Fonts" />
-      <Asset Guid="8f6c3536ae85a403282cf77fde62d78b" ResourceName="Game/Prefabs/Pool/BlockUnit_31002_prefab" />
+      <Asset Guid="8f6c3536ae85a403282cf77fde62d78b" ResourceName="RawAsset/Sprites" />
       <Asset Guid="904be7d7c47614447afda5da992f231b" ResourceName="RawAsset/Fonts" />
       <Asset Guid="9059c936ecc054ff0a985285f7f4e26f" ResourceName="RawAsset/Sprites" />
       <Asset Guid="92432fec1a9ca41eab4a6b1e7d109da1" ResourceName="RawAsset/Audio/remove_60004_mp3" />
@@ -239,8 +233,10 @@
       <Asset Guid="abb18ea76c86d44669a64e5cf1508181" ResourceName="RawAsset/Fonts" />
       <Asset Guid="ad245d85e2ff145af80496bf64e13943" ResourceName="RawAsset/Sprites" />
       <Asset Guid="ae0df9089c8644ef499fdbbdabb74f28" ResourceName="RawAsset/Sprites" />
+      <Asset Guid="ae840af228ea74efca97bd60eb02783a" ResourceName="RawAsset/Sprites" />
       <Asset Guid="aed5e9333a73d44adaa8553a61f68dce" ResourceName="RawAsset/Sprites" />
       <Asset Guid="afbbe2e79dfac48109da876ce16de333" ResourceName="Game/Prefabs/Pool/BlockUnit_31002_prefab" />
+      <Asset Guid="b0294240d84284345a4d2743601dd5bc" ResourceName="RawAsset/Sprites" />
       <Asset Guid="b040fab5d87de479c877849dd4508e50" ResourceName="Game/Configs" />
       <Asset Guid="b1d03668ea891406e9cd884f85a0252f" ResourceName="RawAsset/Sprites" />
       <Asset Guid="b343c402b633346c9bf12b8711120b97" ResourceName="Game/BlockShape" />
@@ -252,6 +248,7 @@
       <Asset Guid="b6c48138b1c8e49c58df5e7b84419b75" ResourceName="RawAsset/Sprites" />
       <Asset Guid="b6cbb499a0cfc448ba740e72a4cfafdd" ResourceName="Game/Scenes/GamePlay_unity" />
       <Asset Guid="b750e1a72b8574446b60ecc0587aa00a" ResourceName="RawAsset/Sprites" />
+      <Asset Guid="b82805d4ed1cf4bb7bf2b48a1fdf8be3" ResourceName="RawAsset/Sprites" />
       <Asset Guid="b866c777fee374274ba1d6218c8da4fc" ResourceName="Game/BlockShape" />
       <Asset Guid="b8b18787f40514daf927a40aa080b7f9" ResourceName="RawAsset/Sprites" />
       <Asset Guid="b9056fbd9859244698b2c70b0703eca0" ResourceName="RawAsset/Fonts" />
@@ -281,7 +278,6 @@
       <Asset Guid="cad858f4dd1e84862a6774e94a0efe00" ResourceName="RawAsset/Sprites" />
       <Asset Guid="cd7d31524e87e451b99ca1b59a55571b" ResourceName="Game/Prefabs/UI/TransitionForm_10098_prefab" />
       <Asset Guid="cdd46e47504bc48db83362790ff79db4" ResourceName="RawAsset/Fonts" />
-      <Asset Guid="ce4d20b362fae430b95778d73ac668a1" ResourceName="Game/Prefabs/UI/UIHomeForm_10001_prefab" />
       <Asset Guid="cfcf9933c97344759bf625dd10480bef" ResourceName="RawAsset/Sprites" />
       <Asset Guid="cfffd59a90ad847a9a1b70835add191d" ResourceName="Game/Prefabs/UI/AskDialog_10024_prefab" />
       <Asset Guid="d0dca805afc4a0d4db64f84fb55f1064" ResourceName="Game/Prefabs/Pool/ClickEff_31013_prefab" />
@@ -289,7 +285,6 @@
       <Asset Guid="d20ed254fc6ab42a2879f273af8700cb" ResourceName="RawAsset/Fonts" />
       <Asset Guid="d2c1bd8ec0d3c455599ab2bc4e04d45d" ResourceName="RawAsset/Sprites" />
       <Asset Guid="d4c0d50c6039f4b89b1cd08c9d1b4c53" ResourceName="RawAsset/Sprites" />
-      <Asset Guid="d586a4cc757a143139a8acdf3de3913a" ResourceName="Game/Prefabs/UI/UISuccessDialog_10010_prefab" />
       <Asset Guid="d62f21751812443dea3a2adf5b59efe2" ResourceName="RawAsset/Sprites" />
       <Asset Guid="d702dd3eeb4c141f58a7b9b5fd5b8358" ResourceName="RawAsset/Sprites" />
       <Asset Guid="d7ed3f888afdb4b79be6cbdabfee4cac" ResourceName="RawAsset/Sprites" />
@@ -304,7 +299,6 @@
       <Asset Guid="e3b0db99859fd49b88dc4cae75a0f3c7" ResourceName="RawAsset/Sprites" />
       <Asset Guid="e4607bdcf4fc445b184adbea6e3c7999" ResourceName="Game/Prefabs/Pool/BlockItem_31001_prefab" />
       <Asset Guid="e475b32345c3c484d8b2e9eab8a3f988" ResourceName="RawAsset/Fonts" />
-      <Asset Guid="e5c5cb3d6e2584ec3af1ceebbac92a07" ResourceName="RawAsset/Atlas/Atlas_Launch" />
       <Asset Guid="e635f9b8e30414ddf827f38308da6d5a" ResourceName="Game/Prefabs/UI/LoadingDialog_10099_prefab" />
       <Asset Guid="e6451f0631ff1411cad609dd8477d673" ResourceName="RawAsset/Sprites" />
       <Asset Guid="e6eb086b85cdf4bf8a87363a358b4a27" ResourceName="Game/Prefabs/UI/UITopCoverForm_10003_prefab" />
@@ -313,8 +307,6 @@
       <Asset Guid="ef5511e8267384d25b6284bc72b7f344" ResourceName="RawAsset/Sprites" />
       <Asset Guid="efe50357d73964acda6191a15105e3c2" ResourceName="RawAsset/Fonts" />
       <Asset Guid="f04ca3c96e34e4385997291881514e15" ResourceName="Game/Prefabs/UI/UISuccessDialog_10010_prefab" />
-      <Asset Guid="f21bdd5258d404f98835127120a01cbf" ResourceName="RawAsset/Atlas/Atlas_General" />
-      <Asset Guid="f3012802dd63a47319ef4a06f70adb1b" ResourceName="Game/Prefabs/Pool/BlockItem_31001_prefab" />
       <Asset Guid="f32509c056f0344c3aff1e8912619a05" ResourceName="RawAsset/Sprites" />
       <Asset Guid="f61a63332f51e4069ba74806131bc66f" ResourceName="RawAsset/Sprites" />
       <Asset Guid="f720f5e9b7107874ea08d0b1a1974656" ResourceName="Game/Prefabs/Pool/ClickEff_31013_prefab" />
@@ -322,7 +314,6 @@
       <Asset Guid="f752731f645034cf69ab1923b0144b01" ResourceName="RawAsset/Audio/Bubble1_60006_mp3" />
       <Asset Guid="f904c8d864e994936800bef3dc647e00" ResourceName="Game/Localization/uiText_Italian_csv" />
       <Asset Guid="f952c082cb03451daed3ee968ac6c63e" ResourceName="RawAsset/Fonts" />
-      <Asset Guid="f983e7b2449db43d5b595ca25e9a19e8" ResourceName="RawAsset/Sprites" />
       <Asset Guid="f9de3a51dd7304c12927bdd7a9c48b4f" ResourceName="RawAsset/Sprites" />
       <Asset Guid="f9e5c3c678bd648278ff20b652e63d6c" ResourceName="RawAsset/Sprites" />
       <Asset Guid="fa0c43e82cd024a1383374ae6109650e" ResourceName="RawAsset/Sprites" />
