@@ -66,6 +66,7 @@
     <Compile Include="Assets/Scripts/Utils/Utility/AspectFullImage.cs" />
     <Compile Include="Assets/Scripts/Manager/PoolManager/IKBPoolObjectChild.cs" />
     <Compile Include="Assets/Scripts/UI/ChildUI/Currency/ICurrencyGroup.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/UISuccessForm.cs" />
     <Compile Include="Assets/Scripts/Definition/ResourceIdentificationType.cs" />
     <Compile Include="Assets/GameFramework/Libraries/LitJson/JsonException.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/UIGamePlayForm.cs" />
@@ -170,7 +171,6 @@
     <Compile Include="Assets/Scripts/DataTables/Extension/CsvConfigHelper.cs" />
     <Compile Include="Assets/GameFramework/Libraries/LitJson/JsonMockWrapper.cs" />
     <Compile Include="Assets/GameFramework/Libraries/LitJson/Netstandard15Polyfill.cs" />
-    <Compile Include="Assets/Scripts/Tests/GridManagerTests.cs" />
     <Compile Include="Assets/Scripts/UI/UIBase/UIEffectDepth.cs" />
     <Compile Include="Assets/Scripts/UI/UIBase/UGuiForm.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/AspectSafeAreaHelper.cs" />
@@ -191,6 +191,7 @@
     <Compile Include="Assets/Scripts/UI/UIForm/SettingDialog.cs" />
     <Compile Include="Assets/Scripts/UI/ChildUI/Currency/CasualCurrencyGroup.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/LocalizationUtils.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/AskDialog.cs" />
     <Compile Include="Assets/Scripts/Definition/ItemType.cs" />
     <Compile Include="Assets/Scripts/DataTables/Extension/DataTableExtension.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureColdBoot.cs" />
@@ -228,7 +229,6 @@
     <Compile Include="Assets/Scripts/Manager/ProxyManager/ProxyManager.cs" />
     <Compile Include="Assets/Scripts/Manager/VibrateManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PictureNameTool.cs" />
-    <Compile Include="Assets/Scripts/UI/UIForm/UISuccessForm.cs" />
     <None Include="Assets/Resources/Shader/Effect_Distort Add_1.shader" />
     <None Include="Assets/RawAsset/Fonts/TextMeshPro/LineBreaking Following Characters.txt" />
     <None Include="Assets/link.xml" />

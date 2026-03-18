@@ -11,6 +11,7 @@ namespace CubeCrush.View
     public class GameMain : MonoBehaviour
     {
         public static GameMain Instance;
+
         private void Awake()
         {
             Instance = this;
@@ -22,17 +23,14 @@ namespace CubeCrush.View
         public Transform spawnOrigin; // Center/Start of spawn area
         public float cellSize = 3f;
         public float spawnSpacing = 3.0f;
-        
-        [Header("Spawn Settings")]
-        public float spawnAreaWidth = 10f; // 动态生成的区域宽度
 
-        [Header("Hint Settings")]
-        public float hintDelay = 5.0f; // 无操作多久显示提示
+        [Header("Spawn Settings")] public float spawnAreaWidth = 10f; // 动态生成的区域宽度
+
+        [Header("Hint Settings")] public float hintDelay = 5.0f; // 无操作多久显示提示
         public float hintDuration = 2.0f;
         [Range(0, 1)] public float hintAlpha = 0.5f;
-        
-        [Header("Sound Settings")]
-        public int hintSoundId = 10001; 
+
+        [Header("Sound Settings")] public int hintSoundId = 10001;
 
         private float lastInteractionTime;
         private SceneBlockItem currentHint;
@@ -65,7 +63,8 @@ namespace CubeCrush.View
                 EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushSpawnUpdated, OnSpawnUpdated);
                 EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushGameStart, OnGameStart);
                 EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushLinesCleared, OnLinesCleared);
-                EventManager.Instance.RemoveEventListener(Constant.Event.GameOverFillAnimation, OnGameOverFillAnimation);
+                EventManager.Instance.RemoveEventListener(Constant.Event.GameOverFillAnimation,
+                    OnGameOverFillAnimation);
             }
         }
 
@@ -92,7 +91,7 @@ namespace CubeCrush.View
             for (int i = 0; i < shapes.Count; i++)
             {
                 if (shapes[i] == null) continue;
-                
+
                 for (int x = 0; x < GridManager.Instance.cols; x++)
                 {
                     for (int y = 0; y < GridManager.Instance.rows; y++)
@@ -115,7 +114,7 @@ namespace CubeCrush.View
             // 计算提示位置：基于 Grid 的偏移量
             hint.transform.localPosition = gridStartOffset + new Vector3(pos.x * cellSize, pos.y * cellSize, 0);
             hint.Init(shape, -1); // index -1 表示这是一个提示，不参与逻辑
-            
+
             // 设置透明度和动画
             var renderers = hint.GetComponentsInChildren<SpriteRenderer>();
             foreach (var r in renderers)
@@ -124,13 +123,13 @@ namespace CubeCrush.View
                 c.a = hintAlpha;
                 r.color = c;
             }
-            
+
             // 禁用碰撞体以免干扰鼠标事件
             // var collider = hint.GetComponent<BoxCollider2D>();
             // if (collider) collider.enabled = false;
 
             currentHint = hint;
-            
+
             // 简单的淡入淡出动画可以使用协程或 DoTween，这里简化处理
         }
 
@@ -153,11 +152,13 @@ namespace CubeCrush.View
                     var col = placementPreview.GetComponent<BoxCollider2D>();
                     if (col) col.enabled = false;
                 }
+
                 placementPreview.gameObject.SetActive(true);
                 placementPreview.transform.SetParent(gridOrigin, false);
-                placementPreview.transform.localPosition = gridStartOffset + new Vector3(gridPos.x * cellSize, gridPos.y * cellSize, 0);
+                placementPreview.transform.localPosition =
+                    gridStartOffset + new Vector3(gridPos.x * cellSize, gridPos.y * cellSize, 0);
                 placementPreview.Init(shape, -1);
-                
+
                 var renderers = placementPreview.GetComponentsInChildren<SpriteRenderer>();
                 foreach (var r in renderers)
                 {
@@ -182,6 +183,7 @@ namespace CubeCrush.View
             {
                 placementPreview.gameObject.SetActive(false);
             }
+
             HighlightClearLines(new List<int>(), new List<int>(), Color.white);
         }
 
@@ -205,11 +207,12 @@ namespace CubeCrush.View
                 {
                     var animObj = new GameObject("ClearAnim");
                     animObj.transform.SetParent(gridOrigin, false);
-                    animObj.transform.localPosition = gridStartOffset + new Vector3(cell.pos.x * cellSize, cell.pos.y * cellSize, 0);
+                    animObj.transform.localPosition =
+                        gridStartOffset + new Vector3(cell.pos.x * cellSize, cell.pos.y * cellSize, 0);
                     var sr = animObj.AddComponent<SpriteRenderer>();
                     sr.sprite = sceneGrid[cell.pos.x, cell.pos.y].spriteRenderer.sprite;
                     sr.color = cell.color;
-                    
+
                     animObj.transform.DOScale(0.1f, 0.5f).SetEase(Ease.OutQuad);
                     sr.DOFade(0f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() => Destroy(animObj));
                 }
@@ -220,6 +223,8 @@ namespace CubeCrush.View
         {
             StartCoroutine(FillEmptyCellsCoroutine());
         }
+
+        private List<BlockUnit> dropCell = new List<BlockUnit>();
 
         private IEnumerator FillEmptyCellsCoroutine()
         {
@@ -235,31 +240,36 @@ namespace CubeCrush.View
                 }
             }
 
+            dropCell.Clear();
             foreach (var pos in emptyCells)
             {
                 var cell = sceneGrid[pos.x, pos.y];
                 Color randomColor = availableShapes[UnityEngine.Random.Range(0, availableShapes.Count)].blockColor;
-                
-                var animObj = new GameObject("DropAnim");
-                animObj.transform.SetParent(gridOrigin, false);
+
+                BlockUnit drop = GameEntry.PoolManager.SpawnSync<BlockUnit>(31002);
+                drop.transform.SetParent(gridOrigin, false);
                 Vector3 targetPos = gridStartOffset + new Vector3(pos.x * cellSize, pos.y * cellSize, 0);
-                animObj.transform.localPosition = targetPos + new Vector3(0, 10f, 0); // 从上方掉落
-                var sr = animObj.AddComponent<SpriteRenderer>();
-                sr.sprite = cell.spriteRenderer.sprite;
-                sr.color = randomColor;
-                
-                animObj.transform.DOLocalMove(targetPos, 0.3f).SetEase(Ease.OutBounce);
-                
+                drop.transform.localPosition = targetPos + new Vector3(0, 10f, 0); // 从上方掉落
+                drop.spriteRenderer.color = randomColor;
+                drop.transform.DOLocalMove(targetPos, 0.3f).SetEase(Ease.OutBounce);
+                dropCell.Add(drop);
                 yield return new WaitForSeconds(0.1f); // 间隔 0.1 秒
             }
 
             yield return new WaitForSeconds(0.5f);
             EventManager.Instance.NotifyEvent(Constant.Event.GameOver); // 延迟 0.5 秒后打开结算界面
+            yield return new WaitForSeconds(0.5f);
+
+            for (int i = 0; i < dropCell.Count; i++)
+            {
+                GameEntry.PoolManager.DeSpawnSync(dropCell[i]);
+            }
         }
 
         private void OnGameStart(params object[] args)
         {
             lastInteractionTime = Time.time;
+            HideHint();
             GenerateGrid();
             UpdateSpawnArea();
         }
@@ -346,11 +356,11 @@ namespace CubeCrush.View
 
                 var block = GameEntry.PoolManager.SpawnSync<SceneBlockItem>(31001);
                 block.transform.SetParent(spawnOrigin, false);
-                
+
                 // 优化：动态计算生成位置，居中分布
                 float xPos = -actualWidth / 2f + slotWidth * i + slotWidth / 2f;
                 block.transform.localPosition = new Vector3(xPos, 0, 0);
-                
+
                 block.Init(shapes[i], i);
                 sceneSpawnBlocks.Add(block);
             }
@@ -361,7 +371,7 @@ namespace CubeCrush.View
             Vector3 localPos = gridOrigin.InverseTransformPoint(worldPos);
             // 考虑 gridStartOffset
             Vector3 relativePos = localPos - gridStartOffset;
-            
+
             int x = Mathf.RoundToInt(relativePos.x / cellSize);
             int y = Mathf.RoundToInt(relativePos.y / cellSize);
             return new Vector2Int(x, y);

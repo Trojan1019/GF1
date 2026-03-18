@@ -282,14 +282,14 @@ MonoBehaviour:
   maskBg: {fileID: 580952835651436683}
   scrollRects: []
   musicSprites:
-  - {fileID: 21300000, guid: 1e91c9b0095574ca99133ba926c8f312, type: 3}
   - {fileID: 21300000, guid: d7ed3f888afdb4b79be6cbdabfee4cac, type: 3}
+  - {fileID: 21300000, guid: 1e91c9b0095574ca99133ba926c8f312, type: 3}
   soundSprites:
-  - {fileID: 21300000, guid: bd25bcfe299c041d69257fd91267d637, type: 3}
   - {fileID: 21300000, guid: 6bc249e43eaed47e5b733592a8dcffec, type: 3}
+  - {fileID: 21300000, guid: bd25bcfe299c041d69257fd91267d637, type: 3}
   vibrateSprites:
-  - {fileID: 21300000, guid: bf2091ebe34024330a3363a681bb3977, type: 3}
   - {fileID: 21300000, guid: 9eff2f867057e47979ca82a9bfd4f985, type: 3}
+  - {fileID: 21300000, guid: bf2091ebe34024330a3363a681bb3977, type: 3}
   m_MusicImage: {fileID: 2700204016889442227}
   m_SoundImage: {fileID: 8580824052906053833}
   m_VibrateImage: {fileID: 1998668190578567433}

@@ -28,7 +28,7 @@
         SettingDialog = 10021,
         ScoreGuideDialog = 10022,
         TreasureDialog = 10023,
-        LuckySpinAdDialog = 10024,
+        AskDialog = 10024,
 
 
 

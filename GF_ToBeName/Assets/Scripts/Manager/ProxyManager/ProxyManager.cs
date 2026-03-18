@@ -76,7 +76,7 @@ namespace NewSideGame
             GameProxy.ClearDataOnNewDay();
         }
         
-        public static UserProxy UserProxy => Instance.GetProxy<UserProxy>();
-        public static GameProxy GameProxy => Instance.GetProxy<GameProxy>();
+        public static UserProxy UserProxy => Instance != null ? Instance.GetProxy<UserProxy>() : null;
+        public static GameProxy GameProxy => Instance != null ? Instance.GetProxy<GameProxy>() : null;
     }
 }

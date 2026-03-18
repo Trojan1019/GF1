@@ -73,6 +73,7 @@
     <Compile Include="Assets/Scripts/Editor/Platform/IOS/PBXProjectExtensions.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.Vector2Processor.cs" />
     <Compile Include="Assets/Scripts/Editor/Tool/MeshTool.cs" />
+    <Compile Include="Assets/Scripts/Editor/Utility/PlayModeSceneBootstrapper.cs" />
     <Compile Include="Assets/Scripts/Editor/Postprocess/ImagePostprocessor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.Color32Processor.cs" />
     <Compile Include="Assets/Scripts/Editor/Tool/AtlasTool.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.DoubleProcessor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.StringProcessor.cs" />
     <Compile Include="Assets/Scripts/Editor/ResourceBuilder/BuildEventHandler.cs" />
+    <Compile Include="Assets/Scripts/Editor/Utility/SceneSwitcherWindow.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.RectProcessor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.BooleanProcessor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.Vector4Processor.cs" />
@@ -95,8 +97,6 @@
     <Compile Include="Assets/Scripts/Editor/Utility/ProcessCommandUtility.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.Int32Processor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.ColorProcessor.cs" />
-    <Compile Include="Assets/Scripts/Editor/Utility/SceneSwitcherWindow.cs" />
-    <Compile Include="Assets/Scripts/Editor/Utility/PlayModeSceneBootstrapper.cs" />
     <None Include="Assets/Editor/Font/zh.txt" />
     <None Include="Assets/Editor/DataTable/DataTableCodeTemplate.txt" />
     <Reference Include="UnityEngine">

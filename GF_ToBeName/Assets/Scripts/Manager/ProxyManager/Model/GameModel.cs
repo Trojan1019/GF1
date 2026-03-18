@@ -14,5 +14,12 @@ namespace NewSideGame
     [System.Serializable]
     public class GameModel : BaseModel
     {
+        public bool hasSavedGame;
+        public int score;
+        public int cols;
+        public int rows;
+        public int[] gridData;
+        public string[] gridColors;
+        public string[] spawnShapes;
     }
 }
