@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43eac948c1454789b2c98ba739c1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: 69
+  localizationKey: 4
   replaceList: []
   appendSignal: 
 --- !u!1 &4553964520727086115
@@ -1213,6 +1213,7 @@ GameObject:
   - component: {fileID: 8401078676985000810}
   - component: {fileID: 3367661442132828627}
   - component: {fileID: 8018674955799865091}
+  - component: {fileID: 8453781177913238049}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1337,6 +1338,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8453781177913238049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519961385705862572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43eac948c1454789b2c98ba739c1cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizationKey: 6
+  replaceList: []
+  appendSignal: 
 --- !u!1 &9215298995023205220
 GameObject:
   m_ObjectHideFlags: 0

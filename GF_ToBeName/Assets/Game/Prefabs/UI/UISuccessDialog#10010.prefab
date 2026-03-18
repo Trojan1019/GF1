@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43eac948c1454789b2c98ba739c1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: 80
+  localizationKey: 5
   replaceList: []
   appendSignal: 
 --- !u!1 &2198793183477459054
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43eac948c1454789b2c98ba739c1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: 80
+  localizationKey: 2
   replaceList: []
   appendSignal: 
 --- !u!1 &3666466117250613433
@@ -1367,6 +1367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43eac948c1454789b2c98ba739c1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: 80
+  localizationKey: 7
   replaceList: []
   appendSignal: 

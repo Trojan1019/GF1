@@ -1,89 +1,51 @@
 id|strText
 1|Jogar
-2|Sem Anúncios
-3|Pacote para remover anúncios
-4|Remover Anúncios
-5|Descarregar
-6|Pacotes de Moedas
-7|Comprar aumento de jogo
-8|Comprar
-9|Grátis
-10|Não, obrigado.
-11|Ignore a imagem
-12|Obtenha um impulso para Continuar.
-13|Cancelar
-14|Tentar novamente
-15|Álbuns
-16|Viagem
-17|Início
-18|Reiniciar
-19|Continuar
-20|Tempos: <color=#FFFF8A>{0}</color>
-21|Melhor do que {0:N2}% dos jogadores
-22|Duplo
-23|Reivindicação
-24|NívelEspecial:
-25|Clube VIP
-26|Desfruta de Diversão Ilimitada
-27|Acesso ao nível especial
-28|Acesso nível VIP
-29|Recompensas de baú duplo
-30|Download de imagens grátis
-31|Recompensas de nível duplo
-32|Remover anúncios intersticiais
-33|Remover anúncios de banner
-34|Acesso ao nível especial
-35|Acesso de nível VIP
-36|Recompensas de baú duplo
-37|Termos da subscrição
-38|Tempo de subscrição restante {0} dias
-39|Esta é uma subscrição automática renovável. O pagamento é cobrado na sua conta após confirmação. A subscrição é renovada a menos que cancele 24 horas antes do fim do período. A sua conta também será cobrada pela renovação.
-40|Termos de Subscrição
-41|Política de Privacidade
-42|Comprou este tipo
-43|A processar pagamento...<br>Por favor, não feche o jogo.
-44|A carregar
-45|Compra falhou, por favor tente novamente.
-46|Pagamento Inválido
-47|Compra falhou, por favor tente novamente.
-48|Compra efetuada com sucesso
-49|Subscrição Semanal
-50|Subscrição Mensal
-51|Subscrição anual
-52|{0}/{1}Dias
-53|Ativado
-54|Desbloquear Nível Especial
-55|Desbloquear Nível VIP
-56|Não é possível usar a revogação agora
-57|Não é possível usar íman agora
-58|Não é possível avançar agora
-59|Desbloquear VIP
-60|Dias
-61|Venda
-62|Sem Anúncios
-63|Recompensa Diária
-64|SupremeDeal
-65|Restaurar Compra
-66|Desfruta do Jogo?<br> Apoia-nos com 5 estrelas!
-67|Versão:{0}
-68|Nível VIP:
-69|Ambiente
-70|Por favor, ative a permissão de galeria desta aplicação na página de definições, caso contrário não será possível fazer o download.
-71|Loja
-72|Gosta do Jogo?<br>Apoie-nos <br>com 5 estrelas!
-73|Obter Moedas
-74|Clube VIP Acesso Gratuito
-75|Unable to continue synthesis, automatically randomized
-76|Adquirido
-77|Preciso de mais tempo
-78|Tesouro
-79|O anúncio ainda não está pronto. Por favor, tente novamente mais tarde.
-80|X5
-81|Adicionar um buraco
-82|TOQUE NO VIDRO PARA PARTIR
-83|Nível {0}
-84|Festa do Tesouro
-85|Sorteio da Sorte
-86|Rodar
-87|Grátis: {0}
-88|Grátis(esquerda{0})
+2|Melhor Pontuação
+3|Diário
+4|Definições
+5|Pontuação
+6|Voltar
+7|Fim do jogo
+8|Continuar
+9|A carregar...
+10|Confirmar
+11|Sim
+12|Não
+13|Som
+14|Música
+15|Vibração
+16|Ecrã inteiro
+17|Remover anúncios
+18|Ver vídeo
+19|Dica
+20|Pontuação adicionada
+21|Combo x{0}
+22|Novo recorde!
+23|Pontuação alvo
+24|Movimentos restantes
+25|Tempo esgotado
+26|Pausa
+27|Retomar
+28|Sair
+29|Reivindicar
+30|Próximo nível
+31|Seleção de nível
+32|Nível {0}
+33|Fácil
+34|Normal
+35|Difícil
+36|Item
+37|Bomba
+38|Martelo
+39|Embaralhar
+40|Recompensa diária
+41|Dia {0}
+42|Reivindicar agora
+43|Classificação
+44|Conquista
+45|Desafio
+46|Partilhar pontuação
+47|Novo jogador?
+48|Tutorial
+49|Ignorar
+50|Obrigado por jogar!

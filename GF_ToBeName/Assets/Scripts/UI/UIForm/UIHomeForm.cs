@@ -47,8 +47,9 @@ namespace NewSideGame
             if (ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame)
             {
                 // 有存档时，弹窗确认
-                UGUIParams uguiParams = UGUIParams.Create().AddValue("Title", "Confirm").AddValue("Message",
-                        "Are you sure you want to start a new game? Current progress will be lost.")
+                UGUIParams uguiParams = UGUIParams.Create().AddValue("Title", GameEntry.Localization.GetString("10"))
+                    .AddValue("Message",
+                        GameEntry.Localization.GetString("14"))
                     .AddDelegage("OnClickConfirm", (s) =>
                     {
                         ProxyManager.GameProxy.ClearSavedGame();
@@ -82,7 +83,6 @@ namespace NewSideGame
 
             bool hasSave = ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame;
             if (continueBtn != null) continueBtn.gameObject.SetActive(hasSave);
-
         }
 
         private void UpdateScore()
@@ -91,7 +91,7 @@ namespace NewSideGame
             {
                 // 获取并显示最高分
                 int bestScore = ProxyManager.UserProxy != null ? ProxyManager.UserProxy.userModel.bestScore : 0;
-                score.text = string.Format("BestScore:{0:N0}", bestScore); // 使用千位分隔符格式化
+                score.text = string.Format($"{GameEntry.Localization.GetString("2")}:{0:N0}", bestScore); // 使用千位分隔符格式化
             }
         }
 

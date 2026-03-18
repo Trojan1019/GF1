@@ -6,7 +6,6 @@
   <Resource AssetID="10004" AssetName="DebugDialog" AssetPath="Assets/Game/Prefabs/UI/DebugDialog#10004.prefab" />
   <Resource AssetID="10009" AssetName="GlobalToast" AssetPath="Assets/Game/Prefabs/UI/GlobalToast#10009.prefab" />
   <Resource AssetID="10010" AssetName="UISuccessDialog" AssetPath="Assets/Game/Prefabs/UI/UISuccessDialog#10010.prefab" />
-  <Resource AssetID="10014" AssetName="ShopDialog" AssetPath="Assets/Game/Prefabs/UI/ShopDialog#10014.prefab" />
   <Resource AssetID="10021" AssetName="SettingDialog" AssetPath="Assets/Game/Prefabs/UI/SettingDialog#10021.prefab" />
   <Resource AssetID="10024" AssetName="AskDialog" AssetPath="Assets/Game/Prefabs/UI/AskDialog#10024.prefab" />
   <Resource AssetID="10098" AssetName="TransitionForm" AssetPath="Assets/Game/Prefabs/UI/TransitionForm#10098.prefab" />
@@ -26,4 +25,7 @@
   <Resource AssetID="60006" AssetName="cubesplace" AssetPath="Assets/RawAsset/Audio/2cubes-place#60006.ogg" />
   <Resource AssetID="60007" AssetName="cubesplace" AssetPath="Assets/RawAsset/Audio/7cubes-place#60007.ogg" />
   <Resource AssetID="60008" AssetName="cubestake" AssetPath="Assets/RawAsset/Audio/cubes-take#60008.ogg" />
+  <Resource AssetID="60010" AssetName="Click" AssetPath="Assets/RawAsset/Audio/Click#60010.mp3" />
+  <Resource AssetID="82002" AssetName="Bubble" AssetPath="Assets/RawAsset/Audio/Bubble1#82002.mp3" />
+  <Resource AssetID="82003" AssetName="Bubble" AssetPath="Assets/RawAsset/Audio/Bubble2#82003.mp3" />
 </ResourcesIdentification>

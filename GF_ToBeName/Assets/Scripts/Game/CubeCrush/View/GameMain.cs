@@ -179,11 +179,20 @@ namespace CubeCrush.View
 
         public void ClearPreview()
         {
+            HidePreviewGhost();
+            ClearHighlight();
+        }
+
+        public void HidePreviewGhost()
+        {
             if (placementPreview != null)
             {
                 placementPreview.gameObject.SetActive(false);
             }
+        }
 
+        public void ClearHighlight()
+        {
             HighlightClearLines(new List<int>(), new List<int>(), Color.white);
         }
 

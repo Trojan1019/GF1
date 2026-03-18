@@ -94,6 +94,22 @@ namespace NewSideGame
 
             CheckLines(out clearedRows, out clearedCols);
 
+            // 在收集被消除的方块信息前，将对应消除的整行或整列的所有方块颜色统一变更为该方块的预览颜色
+            foreach (int y in clearedRows)
+            {
+                for (int x = 0; x < cols; x++)
+                {
+                    gridColors[x, y] = shape.blockColor;
+                }
+            }
+            foreach (int x in clearedCols)
+            {
+                for (int y = 0; y < rows; y++)
+                {
+                    gridColors[x, y] = shape.blockColor;
+                }
+            }
+
             // Collect cleared cells info before clearing
             foreach (int y in clearedRows)
             {

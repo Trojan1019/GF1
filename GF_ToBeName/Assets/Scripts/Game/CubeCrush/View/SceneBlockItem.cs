@@ -123,8 +123,6 @@ namespace CubeCrush.View
             if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return;
             
             isDragging = false;
-            
-            GameMain.Instance.ClearPreview();
 
             Vector2Int gridPos = GameMain.Instance.WorldToGrid(transform.position);
 
@@ -132,6 +130,9 @@ namespace CubeCrush.View
             {
                 if (GridManager.Instance.CanPlace(shape, gridPos))
                 {
+                    // Valid placement: hide the ghost but keep the grid highlight until placed
+                    GameMain.Instance.HidePreviewGhost();
+
                     Vector3 targetWorldPos = GameMain.Instance.GridToWorld(gridPos);
                     
                     // 放置时缩放0.9倍后回弹动画
@@ -140,11 +141,15 @@ namespace CubeCrush.View
                     seq.Join(transform.DOScale(0.9f, 0.1f).SetUpdate(true));
                     seq.Append(transform.DOScale(1f, 0.1f).SetUpdate(true));
                     seq.OnComplete(() => {
+                        GameMain.Instance.ClearHighlight();
                         GameLoopManager.Instance.OnBlockPlaced(spawnIndex, shape, gridPos);
                     });
                 }
                 else
                 {
+                    // Invalid placement: clear preview completely
+                    GameMain.Instance.ClearPreview();
+                    
                     // Return to spawn
                     transform.DOMove(originalPos, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
                     transform.DOScale(1f, 0.2f).SetUpdate(true);
@@ -152,6 +157,7 @@ namespace CubeCrush.View
             }
             else
             {
+                GameMain.Instance.ClearPreview();
                 transform.position = originalPos;
                 transform.DOScale(1f, 0.1f).SetUpdate(true);
             }

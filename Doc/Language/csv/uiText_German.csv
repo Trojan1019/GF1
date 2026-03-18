@@ -1,89 +1,51 @@
 id|strText
 1|Spielen
-2|Keine Werbung
-3|Entferne Werbungspaket
-4|Entferne Werbung
-5|Herunterladen
-6|Münzpakete
-7|Kaufen Sie Spiel-Boost
-8|Kaufen
-9|Kostenlos
-10|Nein, Danke
-11|Überspringe das Bild
-12|Erhalten Sie einen Boost, um fortzufahren
-13|Abbrechen
-14|Wiederholen
-15|Alben
-16|Reisen
-17|Startseite
-18|Neustart
-19|Weiterhin
-20|Zeiten: <color=#FFFF8A>{0}</color>
-21|Besser als {0:N2}% der Spieler
-22|Doppel
-23|Erheben
-24|Speziallevel:
-25|VIP Club
-26|Erlebe unbegrenzten Spaß
-27|Spezieller Levelzugang
-28|VIP-Ebene Zugang
-29|Doppelte Truhenbelohnungen
-30|Kostenloser Bild-Download
-31|Doppelte Level-Belohnungen
-32|Entfernen Sie Zwischenanzeigenschaltungen
-33|Entferne Bannerwerbung
-34|Spezieller Levelzugriff
-35|VIP-Stufenzugang
-36|Doppelte Truhenbelohnungen
-37|Abonnementbedingungen
-38|Verbleibende Abonnementzeit {0} Tage
-39|Dies ist ein automatisch verlängerbares Abonnement. Die Zahlung wird nach Bestätigung von Ihrem Konto abgebucht. Das Abonnement wird verlängert, es sei denn, Sie kündigen 24 Stunden vor Ablauf des Zeitraums. Ihr Konto wird auch für die Verlängerung belastet.
-40|Abonnementbedingungen
-41|Datenschutz-Bestimmungen
-42|Sie haben dieses Typs gekauft.
-43|Zahlungsabwicklung...<br>Bitte schließen Sie das Spiel nicht.
-44|Laden
-45|Kauf fehlgeschlagen, bitte versuchen Sie es erneut.
-46|Ungültige Zahlung
-47|Kauf fehlgeschlagen, bitte versuchen Sie es erneut.
-48|Kauf erfolgreich
-49|Wöchentliches Abonnement
-50|Monatliches Abonnement
-51|Jährliches Abonnement
-52|{0}/{1}Tage
-53|Aktiviert
-54|Unlock Spezielle Ebene
-55|Schalte VIP-Stufe frei
-56|Kann nicht widerrufen werden.
-57|Kann den Magneten jetzt nicht verwenden
-58|Kann jetzt nicht herausdrängen
-59|VIP-Freischaltung
-60|Tage
-61|Verkauf
-62|Keine Werbung
-63|Tägliche Belohnung
-64|SupremeDeal
-65|Kauf wiederherstellen
-66|Genieße das Spiel?<br>Unterstütze uns mit 5 Sternen!
-67|Version:{0}
-68|VIP-Stufe:
-69|Einstellung
-70|Bitte aktivieren Sie die Galerieberechtigung dieser App auf der Einstellungsseite, ansonsten wird es nicht möglich sein, herunterzuladen.
-71|Geschäft
-72|Genießen Sie das Spiel?<br>Unterstützen Sie uns <br>mit 5 Sternen!
-73|Hol dir Münzen
-74|<color=#FFED52>VIP Club </color>Kostenloser Zugang
-75|Unable to continue synthesis, automatically randomized
-76|Gekauft
-77|Benötigen mehr Zeit
-78|Schatz
-79|Die Anzeige ist noch nicht fertig. Bitte versuchen Sie es später erneut.
-80|X5
-81|Füge ein Loch hinzu
-82|Berühren Sie das Glas, um es zu brechen
-83|Level {0}
-84|Schatzfest
-85|Glücksrad
-86|Drehen
-87|Kostenlos:{0}
-88|Kostenlos(links{0})
+2|Bestwert
+3|Täglich
+4|Einstellungen
+5|Punktzahl
+6|Zurück
+7|Spielende
+8|Weiter
+9|Lädt...
+10|Bestätigen
+11|Ja
+12|Nein
+13|Ton
+14|Musik
+15|Vibration
+16|Vollbild
+17|Werbung entfernen
+18|Video ansehen
+19|Tipp
+20|Punkte hinzugefügt
+21|Combo x{0}
+22|Neuer Rekord!
+23|Zielwert
+24|Züge übrig
+25|Zeit abgelaufen
+26|Pause
+27|Fortfahren
+28|Verlassen
+29|Einlösen
+30|Nächstes Level
+31|Level auswählen
+32|Level {0}
+33|Einfach
+34|Normal
+35|Schwer
+36|Gegenstand
+37|Bombe
+38|Hammer
+39|Mischen
+40|Täglicher Bonus
+41|Tag {0}
+42|Jetzt einlösen
+43|Bestenliste
+44|Errungenschaft
+45|Herausforderung
+46|Ergebnis teilen
+47|Neu hier?
+48|Anleitung
+49|Überspringen
+50|Danke fürs Spielen!

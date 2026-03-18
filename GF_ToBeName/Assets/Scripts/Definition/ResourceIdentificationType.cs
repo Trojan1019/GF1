@@ -9,7 +9,6 @@
         DebugDialog10004 = 10004,
         GlobalToast10009 = 10009,
         UISuccessDialog10010 = 10010,
-        ShopDialog10014 = 10014,
         SettingDialog10021 = 10021,
         AskDialog10024 = 10024,
         TransitionForm10098 = 10098,
@@ -29,5 +28,8 @@
         cubesplace60006 = 60006,
         cubesplace60007 = 60007,
         cubestake60008 = 60008,
+        Click60010 = 60010,
+        Bubble82002 = 82002,
+        Bubble82003 = 82003,
     }  
 }
