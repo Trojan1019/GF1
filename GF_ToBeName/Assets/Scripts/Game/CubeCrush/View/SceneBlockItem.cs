@@ -29,7 +29,8 @@ namespace CubeCrush.View
             {
                 var unit = GameEntry.PoolManager.SpawnSync<BlockUnit>(31002);
                 unit.transform.SetParent(transform);
-                unit.transform.localPosition = new Vector3(cell.x * GameMain.Instance.cellSize, cell.y * GameMain.Instance.cellSize, 0);
+                unit.transform.localPosition = new Vector3(cell.x * GameMain.Instance.cellSize,
+                    cell.y * GameMain.Instance.cellSize, 0);
                 unit.spriteRenderer.color = shape.blockColor;
             }
 
@@ -84,7 +85,7 @@ namespace CubeCrush.View
         {
             if (spawnIndex == -1) return; // 提示虚影不响应点击
             if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return; // 游戏结束后禁用交互
-            
+
             // 通知用户操作，重置空闲计时器
             GameMain.Instance?.OnUserInteraction();
 
@@ -102,12 +103,12 @@ namespace CubeCrush.View
         {
             if (spawnIndex == -1) return;
             if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return;
-            
+
             if (isDragging)
             {
                 Vector3 mouseWorldPos = GetMouseWorldPos();
                 transform.position = mouseWorldPos + dragOffset;
-                
+
                 Vector2Int gridPos = GameMain.Instance.WorldToGrid(transform.position);
                 if (gridPos != lastGridPos)
                 {
@@ -121,7 +122,7 @@ namespace CubeCrush.View
         {
             if (spawnIndex == -1) return;
             if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return;
-            
+
             isDragging = false;
 
             Vector2Int gridPos = GameMain.Instance.WorldToGrid(transform.position);
@@ -134,13 +135,19 @@ namespace CubeCrush.View
                     GameMain.Instance.HidePreviewGhost();
 
                     Vector3 targetWorldPos = GameMain.Instance.GridToWorld(gridPos);
-                    
+                    // 播放拖拽方块音效（鼠标按下瞬间）
+                    if (GameLoopManager.Instance != null)
+                    {
+                        GameEntry.Sound.PlaySound(Constant.SoundId.Bubble1);
+                    }
+
                     // 放置时缩放0.9倍后回弹动画
                     Sequence seq = DOTween.Sequence();
                     seq.Append(transform.DOMove(targetWorldPos, 0.05f).SetUpdate(true));
                     seq.Join(transform.DOScale(0.9f, 0.1f).SetUpdate(true));
                     seq.Append(transform.DOScale(1f, 0.1f).SetUpdate(true));
-                    seq.OnComplete(() => {
+                    seq.OnComplete(() =>
+                    {
                         GameMain.Instance.ClearHighlight();
                         GameLoopManager.Instance.OnBlockPlaced(spawnIndex, shape, gridPos);
                     });
@@ -149,7 +156,7 @@ namespace CubeCrush.View
                 {
                     // Invalid placement: clear preview completely
                     GameMain.Instance.ClearPreview();
-                    
+
                     // Return to spawn
                     transform.DOMove(originalPos, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
                     transform.DOScale(1f, 0.2f).SetUpdate(true);

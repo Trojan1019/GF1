@@ -260,7 +260,10 @@ namespace CubeCrush.View
                 Vector3 targetPos = gridStartOffset + new Vector3(pos.x * cellSize, pos.y * cellSize, 0);
                 drop.transform.localPosition = targetPos + new Vector3(0, 10f, 0); // 从上方掉落
                 drop.spriteRenderer.color = randomColor;
-                drop.transform.DOLocalMove(targetPos, 0.3f).SetEase(Ease.OutBounce);
+                drop.transform.DOLocalMove(targetPos, 0.3f).SetEase(Ease.OutBounce).OnComplete(() =>
+                {
+                    GameEntry.Sound.PlaySound(Constant.SoundId.Place);
+                });
                 dropCell.Add(drop);
                 yield return new WaitForSeconds(0.1f); // 间隔 0.1 秒
             }

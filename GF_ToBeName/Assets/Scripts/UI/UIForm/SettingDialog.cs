@@ -88,14 +88,14 @@ namespace NewSideGame
             m_BackBtn.gameObject.SetActive(SceneHelper.IsPuzzleScene());
 
             m_SoundImage.sprite = GameEntry.Setting.GetBool(Constant.Setting.SoundMuted)
-                ? soundSprites[1]
-                : soundSprites[0];
+                ? soundSprites[0]
+                : soundSprites[1];
             m_MusicImage.sprite = GameEntry.Setting.GetBool(Constant.Setting.MusicMuted)
-                ? musicSprites[1]
-                : musicSprites[0];
+                ? musicSprites[0]
+                : musicSprites[1];
             m_VibrateImage.sprite = GameEntry.Setting.GetBool(Constant.Setting.VibrationMuted)
-                ? vibrateSprites[1]
-                : vibrateSprites[0];
+                ? vibrateSprites[0]
+                : vibrateSprites[1];
 
             UpdateDynamicSprites();
         }

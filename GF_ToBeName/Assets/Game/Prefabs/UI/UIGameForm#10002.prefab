@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 3263912049094153908}
+  bestScoreText: {fileID: 2540156200054849343}
   restartButton: {fileID: 9083051003628741823}
   settingButton: {fileID: 226656948972019998}
 --- !u!1 &1761878052989709559

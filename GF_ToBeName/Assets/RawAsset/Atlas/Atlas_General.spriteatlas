@@ -62,44 +62,112 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 3288e8000aed14a0798358eaadea3e53, type: 3}
+  - {fileID: 21300000, guid: bd1d3f20873964acf9209017b108e6c6, type: 3}
+  - {fileID: 21300000, guid: 531ec83020de24b7f80dd45b4fca5db6, type: 3}
   - {fileID: 21300000, guid: 99608750539de48d18e43980996f08dc, type: 3}
   - {fileID: 21300000, guid: fce33b80b30c746ffadeb5ab96e41d07, type: 3}
+  - {fileID: 21300000, guid: ba5c1c80ca0e643649aee457a6fd7369, type: 3}
+  - {fileID: 21300000, guid: 1e91c9b0095574ca99133ba926c8f312, type: 3}
+  - {fileID: 21300000, guid: b476dd01c25bd4bf7a1e8bd355d305ba, type: 3}
   - {fileID: 21300000, guid: 9b07961159ba54e4f920a4775e38ac7a, type: 3}
+  - {fileID: 21300000, guid: 582e5731e05334a4baedd52f6ede9f56, type: 3}
+  - {fileID: 21300000, guid: c49f07f1ef8ea4de4b68a5a995173aad, type: 3}
+  - {fileID: 21300000, guid: 6179b742a99dd43e3967b14e2b9bef7c, type: 3}
   - {fileID: 21300000, guid: 10de6b72f40fc4706911e0b75efc3077, type: 3}
+  - {fileID: 21300000, guid: 2f85e1b2914bd4563b980127f7498b5f, type: 3}
+  - {fileID: 21300000, guid: 0f5124e2b82ed4db6865f47d95351f89, type: 3}
+  - {fileID: 21300000, guid: f61a63332f51e4069ba74806131bc66f, type: 3}
   - {fileID: 21300000, guid: aed5e9333a73d44adaa8553a61f68dce, type: 3}
   - {fileID: 21300000, guid: 4258def3333ed4f7c9a144f4b76188f9, type: 3}
+  - {fileID: 21300000, guid: 0f349ec438c0c484abcbd6baa29126b2, type: 3}
+  - {fileID: 21300000, guid: 431680e4c1d544238a4745d795cc0ac9, type: 3}
   - {fileID: 21300000, guid: 83c286e4948c041989c3eb4e76613a19, type: 3}
+  - {fileID: 21300000, guid: 6bc249e43eaed47e5b733592a8dcffec, type: 3}
+  - {fileID: 21300000, guid: 0d6731c5aad4f4e03bea1c341e977c59, type: 3}
+  - {fileID: 21300000, guid: 9eff2f867057e47979ca82a9bfd4f985, type: 3}
   - {fileID: 21300000, guid: 42a3af07f45f14ea0a6a031f646f4d2a, type: 3}
+  - {fileID: 21300000, guid: c47d3008f5b134fdd93eb9b6b2a7d553, type: 3}
+  - {fileID: 21300000, guid: b1d03668ea891406e9cd884f85a0252f, type: 3}
+  - {fileID: 21300000, guid: d7ed3f888afdb4b79be6cbdabfee4cac, type: 3}
   - {fileID: 21300000, guid: fe5e8d98331064715abe14f32915a494, type: 3}
   - {fileID: 21300000, guid: 32f3a3b87cd3747b9bf641e568c1cf45, type: 3}
+  - {fileID: 21300000, guid: 6a63ef398306547be8cad5f83b8994a3, type: 3}
   - {fileID: 21300000, guid: 243451493f798407f8839451045a704e, type: 3}
   - {fileID: 21300000, guid: 3e82bd59259244b3eb21ab049a5d3f14, type: 3}
+  - {fileID: 21300000, guid: b6a18a999eb8a4fb8814bdcf49b03a72, type: 3}
   - {fileID: 21300000, guid: 85aa6f2a189674a1ab31f65ce5e08c43, type: 3}
   - {fileID: 21300000, guid: de62a7aa0e8f24799b09126eeac5f890, type: 3}
+  - {fileID: 21300000, guid: 36c9a8aa03d904d5f8dbb471d4d496d2, type: 3}
   - {fileID: 21300000, guid: 115f35eac212542fc85fa4ae95527eed, type: 3}
+  - {fileID: 21300000, guid: 3542ac1bbafd840e6908643d098f025f, type: 3}
+  - {fileID: 21300000, guid: 07369a4b71e3c47fe86372c16974f6d9, type: 3}
+  - {fileID: 21300000, guid: bf2091ebe34024330a3363a681bb3977, type: 3}
   - {fileID: 21300000, guid: 6999f6ebad4bd4cb8ad1d36367b9e30a, type: 3}
+  - {fileID: 21300000, guid: d4c0d50c6039f4b89b1cd08c9d1b4c53, type: 3}
+  - {fileID: 21300000, guid: 7c4ed06ca329f4b68b133ca8791678d5, type: 3}
+  - {fileID: 21300000, guid: 22a287fc1a62243d6884a9fd0574d4a8, type: 3}
+  - {fileID: 21300000, guid: 1430e41db55d0410eae9ca1f4cfd6554, type: 3}
+  - {fileID: 21300000, guid: 678ce66dd793f4ef79eb579d6547d9d2, type: 3}
   - {fileID: 21300000, guid: 6e7e968d663bf4287bc0f1b4d8f64cf0, type: 3}
   - {fileID: 21300000, guid: 089ebd3e7f7d647759849d45a02a2fe6, type: 3}
+  - {fileID: 21300000, guid: d702dd3eeb4c141f58a7b9b5fd5b8358, type: 3}
+  - {fileID: 21300000, guid: 3e5224fe88e144f68b198fdee4a58b2d, type: 3}
+  - {fileID: 21300000, guid: bd25bcfe299c041d69257fd91267d637, type: 3}
   - {fileID: 21300000, guid: 31df283fd8b404df58cc55e23f0bfbf8, type: 3}
   m_PackedSpriteNamesToIndex:
+  - UI_Banner_Wood
+  - UI_Icon_Close
+  - UI_Button_Green
   - Icon_Sad
   - greenline
+  - UI_Bar_Fill_Green
+  - function_icon_music
+  - UI_Panel_Paper_Inset
   - img_explain_arrow
+  - UI_Panel_Tab_Active
+  - Pattern_Panel_BlueSquare_Bottom
+  - UI_Bar_Fill_Orange
   - icon_back
+  - function_icon_volume_up
+  - Panel_Bg
+  - UI_Icon_Confirm
   - image_shadow
   - red_line
+  - UI_Button_Blue
+  - UI_Button_Red
   - purchase_tag3
+  - function_icon_sound_mute
+  - UI_Panel_Paper
+  - function_icon_mobile_vibration
   - reward_show_corner
+  - UI_Icon_Refresh
+  - UI_Bar_Fill_Red
+  - function_icon_music_mute
   - Bg_SinglePropReward
   - icon_ad
+  - btn_rectangle_01_n_green
   - img_shrink
   - icon
+  - UI_Bar_Fill_Blue
   - icon_add
   - HomeButtonBtn
+  - UI_Bar
   - Bg_White
+  - UI_Panel_Tab_Inactive
+  - function_icon_volume_mute
+  - function_icon_mobile
   - reddot_bg
+  - UI_Button_Grey
+  - UI_Icon_Settings
+  - UI_Panel_Window
+  - UI_Panel_Window_Blank
+  - UI_Mask
   - Img_Fail
   - reward_show_di
+  - UI_Misc_Button_Close
+  - UI_Button_Orange
+  - function_icon_sound
   - bg_light
   m_RenderDataMap: {}
   m_Tag: Atlas_General

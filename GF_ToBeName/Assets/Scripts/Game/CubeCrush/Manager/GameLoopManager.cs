@@ -9,13 +9,7 @@ namespace CubeCrush.Manager
     {
         public int score;
         public bool isGameOver { get; private set; }
-
-        [Header("Sound Config")]
-        public int placeSoundId = 10002;
-        public int clearSoundId = 10003;
-        public int winSoundId = 10004;
-        public int loseSoundId = 10005;
-
+        
         private void Start()
         {
             StartGame();
@@ -52,10 +46,10 @@ namespace CubeCrush.Manager
                 score += points;
 
                 // 播放音效
-                GameEntry.Sound.PlaySound(placeSoundId);
+                //GameEntry.Sound.PlaySound(placeSoundId);
                 if (clearedLines > 0)
                 {
-                    GameEntry.Sound.PlaySound(clearSoundId);
+                    GameEntry.Sound.PlaySound(Constant.SoundId.Remove);
                     // 触发消除动画和震动
                     EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushLinesCleared, clearedCells);
 #if UNITY_ANDROID || UNITY_IOS
@@ -87,7 +81,7 @@ namespace CubeCrush.Manager
                 ProxyManager.UserProxy.UpdateBestScore(score);
             }
             
-            GameEntry.Sound.PlaySound(loseSoundId);
+            //GameEntry.Sound.PlaySound(Constant.SoundId.Click);
 #if UNITY_ANDROID || UNITY_IOS
             Handheld.Vibrate();
 #endif

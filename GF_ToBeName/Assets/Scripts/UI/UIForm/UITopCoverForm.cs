@@ -14,9 +14,6 @@ namespace NewSideGame
         private UnityEngine.UI.VerticalLayoutGroup m_RightBar => GetRef<UnityEngine.UI.VerticalLayoutGroup>("RightBar");
         public SettingGMButton m_DebugBtn;
 
-        private CasualCurrencyGroup m_CasualCurrency;
-        public CasualCurrencyGroup CasualCurrency => m_CasualCurrency;
-
         private float lastestShowTime;
 
         private GameObject m_HomeRightBar;
@@ -47,12 +44,6 @@ namespace NewSideGame
             base.OnOpen(userData);
 
             m_Instance = this;
-
-            m_CasualCurrency = GameEntry.PoolManager.SpawnSync<CasualCurrencyGroup>(CasualCurrencyGroup.CasualAssetId);
-            m_CasualCurrency.InitialCurrency(transform, new List<ItemType>() { ItemType.Coin });
-            m_CasualCurrency.SetDepth(1);
-            m_CasualCurrency.gameObject.SetActive(false);
-
             m_DebugBtn.gameObject.SetActive(false);
 
 #if UNITY_EDITOR
@@ -62,23 +53,10 @@ namespace NewSideGame
 
         public GameObject rectangle;
 
-        public void HideBanner()
-        {
-            if (rectangle != null)
-            {
-                rectangle.gameObject.SetActive(false);
-            }
-        }
-
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
             m_Instance = null;
-            if (m_CasualCurrency != null)
-            {
-                GameEntry.PoolManager.DeSpawnSync(m_CasualCurrency);
-                m_CasualCurrency = null;
-            }
         }
     }
 }

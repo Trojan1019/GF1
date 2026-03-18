@@ -10,8 +10,8 @@ namespace NewSideGame
 {
     public class UIGamePlayForm : UGuiForm
     {
-        [Header("UI Components")]
-        public TextMeshProUGUI scoreText;
+        [Header("UI Components")] public TextMeshProUGUI scoreText;
+        public TextMeshProUGUI bestScoreText;
         public Button restartButton;
         public Button settingButton;
 
@@ -23,11 +23,12 @@ namespace NewSideGame
 
             EventManager.Instance.AddEventListener(Constant.Event.GameOver, OnGameOver);
             EventManager.Instance.AddEventListener(Constant.Event.RefreshScore, OnRefreshScore);
-            
+
             if (restartButton != null)
             {
                 restartButton.onClick.RemoveAllListeners();
-                restartButton.onClick.AddListener(() => {
+                restartButton.onClick.AddListener(() =>
+                {
                     // 按钮点击弹性反馈
                     restartButton.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
                     GameLoopManager.Instance.Restart();
@@ -44,9 +45,15 @@ namespace NewSideGame
                     GameEntry.UI.OpenUIForm(UIFormType.SettingDialog);
                 });
             }
-            
+
             displayScore = GameLoopManager.Instance.score;
             if (scoreText != null) scoreText.text = $"Score: {displayScore}";
+            if (bestScoreText != null)
+            {
+                // 获取并显示最高分
+                int bestScore = ProxyManager.UserProxy != null ? ProxyManager.UserProxy.userModel.bestScore : 0;
+                bestScoreText.text = string.Format("{0}:{1:N0}", GameEntry.Localization.GetString("2"), bestScore); // 使用千位分隔符格式化
+            }
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -56,6 +63,7 @@ namespace NewSideGame
                 EventManager.Instance.RemoveEventListener(Constant.Event.GameOver, OnGameOver);
                 EventManager.Instance.RemoveEventListener(Constant.Event.RefreshScore, OnRefreshScore);
             }
+
             base.OnClose(isShutdown, userData);
         }
 
@@ -77,7 +85,8 @@ namespace NewSideGame
             if (scoreText != null)
             {
                 // 分数滚动动画
-                DOTween.To(() => displayScore, x => {
+                DOTween.To(() => displayScore, x =>
+                {
                     displayScore = x;
                     scoreText.text = $"Score: {displayScore}";
                 }, newScore, 0.3f).SetEase(Ease.OutCubic).SetUpdate(true);

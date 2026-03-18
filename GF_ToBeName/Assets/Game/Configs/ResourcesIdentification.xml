@@ -17,15 +17,11 @@
   <Resource AssetID="31005" AssetName="ItemEff" AssetPath="Assets/Game/Prefabs/Pool/ItemEff#31005.prefab" />
   <Resource AssetID="31013" AssetName="ClickEff" AssetPath="Assets/Game/Prefabs/Pool/ClickEff#31013.prefab" />
   <Resource AssetID="60000" AssetName="bgm" AssetPath="Assets/RawAsset/Audio/bgm#60000.mp3" />
-  <Resource AssetID="60001" AssetName="collect" AssetPath="Assets/RawAsset/Audio/collect#60001.mp3" />
-  <Resource AssetID="60002" AssetName="click" AssetPath="Assets/RawAsset/Audio/click#60002.mp3" />
+  <Resource AssetID="60001" AssetName="Click" AssetPath="Assets/RawAsset/Audio/Click#60001.mp3" />
+  <Resource AssetID="60002" AssetName="collect" AssetPath="Assets/RawAsset/Audio/collect#60002.mp3" />
   <Resource AssetID="60003" AssetName="win" AssetPath="Assets/RawAsset/Audio/win#60003.mp3" />
   <Resource AssetID="60004" AssetName="remove" AssetPath="Assets/RawAsset/Audio/remove#60004.mp3" />
-  <Resource AssetID="60005" AssetName="cubeplace" AssetPath="Assets/RawAsset/Audio/cube-place#60005.wav" />
-  <Resource AssetID="60006" AssetName="cubesplace" AssetPath="Assets/RawAsset/Audio/2cubes-place#60006.ogg" />
-  <Resource AssetID="60007" AssetName="cubesplace" AssetPath="Assets/RawAsset/Audio/7cubes-place#60007.ogg" />
-  <Resource AssetID="60008" AssetName="cubestake" AssetPath="Assets/RawAsset/Audio/cubes-take#60008.ogg" />
-  <Resource AssetID="60010" AssetName="Click" AssetPath="Assets/RawAsset/Audio/Click#60010.mp3" />
-  <Resource AssetID="82002" AssetName="Bubble" AssetPath="Assets/RawAsset/Audio/Bubble1#82002.mp3" />
-  <Resource AssetID="82003" AssetName="Bubble" AssetPath="Assets/RawAsset/Audio/Bubble2#82003.mp3" />
+  <Resource AssetID="60005" AssetName="Place" AssetPath="Assets/RawAsset/Audio/Place#60005.wav" />
+  <Resource AssetID="60006" AssetName="Bubble" AssetPath="Assets/RawAsset/Audio/Bubble1#60006.mp3" />
+  <Resource AssetID="60007" AssetName="Bubble" AssetPath="Assets/RawAsset/Audio/Bubble2#60007.mp3" />
 </ResourcesIdentification>

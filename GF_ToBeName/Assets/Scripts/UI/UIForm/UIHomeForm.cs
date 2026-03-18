@@ -80,7 +80,7 @@ namespace NewSideGame
         {
             base.OnOpen(userData);
             UpdateScore();
-
+          
             bool hasSave = ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame;
             if (continueBtn != null) continueBtn.gameObject.SetActive(hasSave);
         }
@@ -91,7 +91,7 @@ namespace NewSideGame
             {
                 // 获取并显示最高分
                 int bestScore = ProxyManager.UserProxy != null ? ProxyManager.UserProxy.userModel.bestScore : 0;
-                score.text = string.Format($"{GameEntry.Localization.GetString("2")}:{0:N0}", bestScore); // 使用千位分隔符格式化
+                score.text = string.Format("{0}:{1:N0}", GameEntry.Localization.GetString("2"), bestScore); // 使用千位分隔符格式化
             }
         }
 

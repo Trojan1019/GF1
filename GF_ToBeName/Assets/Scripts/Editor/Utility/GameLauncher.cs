@@ -52,7 +52,7 @@ public class GameLauncher
 
                 if (!excludedScenes.Contains(EditorSceneManager.GetActiveScene().path))
                 {
-                    EditorSceneManager.OpenScene("Assets/Resources/Scenes/KBScene.unity");
+                    EditorSceneManager.OpenScene("Assets/Resources/Scenes/MainScene.unity");
                 }
             }
         }

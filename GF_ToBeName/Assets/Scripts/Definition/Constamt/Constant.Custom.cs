@@ -44,7 +44,7 @@ namespace NewSideGame
             public const int OnRefreshHomePanel = 5; //刷新主页
             public const int RefreshScore = 6; //
             public const int GameOver = 7; //
-            
+
             public const int CubeCrushGridUpdated = 101;
             public const int CubeCrushSpawnUpdated = 102;
             public const int CubeCrushGameStart = 103;
@@ -63,7 +63,7 @@ namespace NewSideGame
             public const string SpecialLvCost = "SpecialLvCost"; //特殊关卡花费
             public const string VipLvCost = "VipLvCost"; //Vip关卡花费
 
-            public const string BalloonCoin = "BalloonCoin";//漂浮气球金币
+            public const string BalloonCoin = "BalloonCoin"; //漂浮气球金币
 
             public const string AdFbEnableTrack = "Ad.FB.EnableTrack";
         }
@@ -75,6 +75,18 @@ namespace NewSideGame
 
             public const string UILayerName = "UI";
             public static readonly int UILayerId = LayerMask.NameToLayer(UILayerName);
+        }
+
+        public static class SoundId
+        {
+            public const int Bgm = 1001;
+            public const int Click = 2001;
+            public const int Collect = 2002;
+            public const int Win = 2003;
+            public const int Remove = 2004;
+            public const int Place = 2005;
+            public const int Bubble1 = 2006;
+            public const int Bubble2 = 2007;
         }
     }
 }

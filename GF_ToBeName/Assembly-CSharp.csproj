@@ -232,7 +232,6 @@
     <None Include="Assets/Resources/Shader/Effect_Distort Add_1.shader" />
     <None Include="Assets/RawAsset/Fonts/TextMeshPro/LineBreaking Following Characters.txt" />
     <None Include="Assets/link.xml" />
-    <None Include="Assets/StreamingAssets/google-services-desktop.json" />
     <None Include="Assets/GameFramework/Libraries/link.xml" />
     <None Include="Assets/RawAsset/Spine/Hand/Hand.atlas.txt" />
     <None Include="Assets/Resources/Shader/CircleGuide.shader" />

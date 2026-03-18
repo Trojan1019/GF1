@@ -151,7 +151,7 @@ public static class ProjectBuildTool
     private static UnityEditor.EditorBuildSettingsScene[] GetScenes()
     {
         UnityEditor.EditorBuildSettingsScene[] scenes = new UnityEditor.EditorBuildSettingsScene[1];
-        scenes[0] = new UnityEditor.EditorBuildSettingsScene("Assets/Resources/Scenes/KBScene.unity", true);
+        scenes[0] = new UnityEditor.EditorBuildSettingsScene("Assets/Resources/Scenes/MainScene.unity", true);
         UnityEditor.EditorBuildSettings.scenes = scenes;
 
         return UnityEditor.EditorBuildSettings.scenes;
@@ -165,7 +165,7 @@ public static class ProjectBuildTool
         // 将时间格式化为 "yyyyMMdd" 格式
         string formattedTime = currentTime.ToString("yyyyMMddHHmm");
 
-        string PROJECT_NAME = $"../Build/Project/Android/Puzzle_{formattedTime}.apk";
+        string PROJECT_NAME = $"../Build/Project/Android/{formattedTime}.apk";
 
         UnityEditor.EditorUserBuildSettings.buildAppBundle = false;
         UnityEditor.PlayerSettings.Android.useAPKExpansionFiles = false;
@@ -185,7 +185,7 @@ public static class ProjectBuildTool
         if (AssetBundleBuildTool.BuildAssetBundle(Platform.Android, Application.version, 1, false))
         {
             UnityEditor.EditorBuildSettingsScene[] scenes = new UnityEditor.EditorBuildSettingsScene[1];
-            scenes[0] = new UnityEditor.EditorBuildSettingsScene("Assets/Resources/Scenes/KBScene.unity", true);
+            scenes[0] = new UnityEditor.EditorBuildSettingsScene("Assets/Resources/Scenes/MainScene.unity", true);
             UnityEditor.EditorBuildSettings.scenes = scenes;
 
             BuildApk();
@@ -198,7 +198,7 @@ public static class ProjectBuildTool
         if (AssetBundleBuildTool.BuildAssetBundle(Platform.IOS, Application.version, 1, true))
         {
             UnityEditor.EditorBuildSettingsScene[] scenes = new UnityEditor.EditorBuildSettingsScene[1];
-            scenes[0] = new UnityEditor.EditorBuildSettingsScene("Assets/Resources/Scenes/KBScene.unity", true);
+            scenes[0] = new UnityEditor.EditorBuildSettingsScene("Assets/Resources/Scenes/MainScene.unity", true);
             UnityEditor.EditorBuildSettings.scenes = scenes;
 
             UnityEditor.PlayerSettings.SplashScreen.show = false;
