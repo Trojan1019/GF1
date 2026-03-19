@@ -28,5 +28,6 @@ namespace NewSideGame
 
         public Dictionary<int, int> shopFreeMap = new Dictionary<int, int>();
 
+        public bool isAdRemove;
     }
 }

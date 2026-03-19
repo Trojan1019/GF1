@@ -4,7 +4,7 @@ using CubeCrush.Manager;
 using NewSideGame;
 using DG.Tweening;
 
-namespace CubeCrush.View
+namespace NewSideGame
 {
     [RequireComponent(typeof(BoxCollider2D))]
     public class SceneBlockItem : ActivatablePoolPrefabBase

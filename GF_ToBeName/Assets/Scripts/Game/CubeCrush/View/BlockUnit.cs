@@ -1,7 +1,7 @@
 using UnityEngine;
 using NewSideGame;
 
-namespace CubeCrush.View
+namespace NewSideGame
 {
     public class BlockUnit : ActivatablePoolPrefabBase
     {

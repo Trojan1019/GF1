@@ -50,6 +50,15 @@ namespace NewSideGame
             public const int CubeCrushGameStart = 103;
             public const int CubeCrushLinesCleared = 104;
             public const int GameOverFillAnimation = 105;
+            
+            #region 广告事件
+            public const int AdLoaded = 2001;
+            public const int AdFailedToLoad = 2002;
+            public const int AdOpened = 2003;
+            public const int AdClosed = 2004;
+            public const int AdRewarded = 2005;
+            public const int AdImpressionRecorded = 2006;
+            #endregion
         }
 
         public static class Config

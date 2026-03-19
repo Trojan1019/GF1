@@ -49,8 +49,10 @@
     <Compile Include="Assets/Scripts/UI/ChildUI/Currency/CurrencyCell.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureGamePlay.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureChangeScene.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/UI/ScorePopup.cs" />
     <Compile Include="Assets/Scripts/Utils/TMPHelper.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/BannerHelper.cs" />
+    <Compile Include="Assets/Scripts/Manager/AdManager/Adapters/AdMobAdapter.cs" />
     <Compile Include="Assets/Scripts/Utils/Time/TimerExtensions.cs" />
     <Compile Include="Assets/Scripts/DataTables/DRShopItem.cs" />
     <Compile Include="Assets/Scripts/Definition/DataTableType.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="Assets/Scripts/Manager/ShaderManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PlayerPrefsTool.cs" />
     <Compile Include="Assets/Scripts/DataTables/Extension/DRExcelExtend.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/ScorePopupManager.cs" />
     <Compile Include="Assets/Scripts/Manager/Effect/FlyElementTarget.cs" />
     <Compile Include="Assets/Scripts/Manager/Effect/AutoDestroy.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/EasyInput.cs" />
@@ -146,6 +149,7 @@
     <Compile Include="Assets/Scripts/Utils/Singleton/Singleton.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/ShopDialog.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/UITopCoverForm.cs" />
+    <Compile Include="Assets/Scripts/Manager/AdManager/AdManager.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/GameMain.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureLaunch.cs" />
     <Compile Include="Assets/Scripts/Manager/ConditionEventManager.cs" />
@@ -188,11 +192,14 @@
     <Compile Include="Assets/Scripts/Utils/Utility/ObjectPool.cs" />
     <Compile Include="Assets/Scripts/Utils/ScrollView/ScrollDynamicListChildItem.cs" />
     <Compile Include="Assets/Scripts/Utils/ExceptionHelper.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/GameMain.ScorePopup.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/View/CameraResizer.cs" />
     <Compile Include="Assets/GameFramework/Libraries/LitJson/JsonData.cs" />
     <Compile Include="Assets/Scripts/Manager/PoolManager/BaseUnitObject.cs" />
     <Compile Include="Assets/Scripts/UI/UIBase/UGuiGroupHelper.cs" />
     <Compile Include="Assets/Scripts/Utils/Time/TimeUtils.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/View/BlockUnit.cs" />
+    <Compile Include="Assets/Scripts/Manager/AdManager/AdConfig.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/UIHomeForm.cs" />
     <Compile Include="Assets/Scripts/UI/UIBase/UGUIParams.cs" />
     <Compile Include="Assets/Scripts/Definition/Constamt/Constant.Ad.cs" />
@@ -214,7 +221,6 @@
     <Compile Include="Assets/Scripts/Manager/ProxyManager/ProxyManager.cs" />
     <Compile Include="Assets/Scripts/Manager/VibrateManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PictureNameTool.cs" />
-    <Compile Include="Assets/Scripts/Game/CubeCrush/View/CameraResizer.cs" />
     <None Include="Assets/Resources/Shader/Effect_Distort Add_1.shader" />
     <None Include="Assets/RawAsset/Fonts/TextMeshPro/LineBreaking Following Characters.txt" />
     <None Include="Assets/link.xml" />

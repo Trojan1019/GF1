@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using CubeCrush.Data;
-using CubeCrush.View;
+using NewSideGame;
 using NewSideGame;
 
 namespace NewSideGame

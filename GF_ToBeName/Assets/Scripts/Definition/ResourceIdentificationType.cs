@@ -17,6 +17,7 @@
         GridCell31000 = 31000,
         BlockItem31001 = 31001,
         BlockUnit31002 = 31002,
+        ScoreUpText31003 = 31003,
         ItemEff31005 = 31005,
         ClickEff31013 = 31013,
         bgm60000 = 60000,

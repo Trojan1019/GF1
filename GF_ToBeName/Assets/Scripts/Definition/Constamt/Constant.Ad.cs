@@ -29,6 +29,21 @@ namespace NewSideGame
             #region banner
             public const string tt_banner = "tt_banner";//banner
             #endregion
+            
+            #region AdMob
+            public const string admob_app_id_android = "ca-app-pub-3940256099942544~3347511713";
+            public const string admob_app_id_ios = "ca-app-pub-3940256099942544~1458002511";
+            
+            public const string admob_test_banner = "ca-app-pub-3940256099942544/6300978111";
+            public const string admob_test_interstitial = "ca-app-pub-3940256099942544/1033173712";
+            public const string admob_test_rewarded = "ca-app-pub-3940256099942544/5224354917";
+            
+            public const string admob_banner_home = "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx";
+            public const string admob_interstitial_game_over = "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx";
+            public const string admob_interstitial_restart = "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx";
+            public const string admob_rewarded_double_score = "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx";
+            public const string admob_rewarded_get_booster = "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx";
+            #endregion
         }
     }
 }

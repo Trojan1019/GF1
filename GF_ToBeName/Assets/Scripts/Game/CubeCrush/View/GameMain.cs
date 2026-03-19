@@ -6,9 +6,9 @@ using CubeCrush.Data;
 using NewSideGame;
 using DG.Tweening;
 
-namespace CubeCrush.View
+namespace NewSideGame
 {
-    public class GameMain : MonoBehaviour
+    public partial class GameMain : MonoBehaviour
     {
         public static GameMain Instance;
 
@@ -57,15 +57,12 @@ namespace CubeCrush.View
 
         private void OnDisable()
         {
-            if (EventManager.Instance != null)
-            {
-                EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushGridUpdated, OnGridUpdated);
-                EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushSpawnUpdated, OnSpawnUpdated);
-                EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushGameStart, OnGameStart);
-                EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushLinesCleared, OnLinesCleared);
-                EventManager.Instance.RemoveEventListener(Constant.Event.GameOverFillAnimation,
-                    OnGameOverFillAnimation);
-            }
+            EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushGridUpdated, OnGridUpdated);
+            EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushSpawnUpdated, OnSpawnUpdated);
+            EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushGameStart, OnGameStart);
+            EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushLinesCleared, OnLinesCleared);
+            EventManager.Instance.RemoveEventListener(Constant.Event.GameOverFillAnimation,
+                OnGameOverFillAnimation);
         }
 
         private void Update()
@@ -284,6 +281,8 @@ namespace CubeCrush.View
             HideHint();
             GenerateGrid();
             UpdateSpawnArea();
+            
+            ClearAllPopups();
         }
 
         private void GenerateGrid()
