@@ -15,6 +15,8 @@ namespace NewSideGame
 
         private UnityEngine.UI.Button m_BackBtn => GetRef<UnityEngine.UI.Button>("BackBtn");
         private UnityEngine.UI.Button m_CloseBtn => GetRef<UnityEngine.UI.Button>("CloseBtn");
+        private UnityEngine.UI.Button m_PrivacyPolicyBtn => GetRef<UnityEngine.UI.Button>("PrivacyPolicyBtn");
+        private UnityEngine.UI.Button m_UserLicenseBtn => GetRef<UnityEngine.UI.Button>("UserLicenseBtn");
 
         [Header("Dynamic Sprites")] public Sprite[] musicSprites; // 0:正常 1:暂停
         public Sprite[] soundSprites;
@@ -75,6 +77,28 @@ namespace NewSideGame
             GameEntry.Setting.SetBool(Constant.Setting.VibrationMuted, set);
 
             m_VibrateImage.sprite = set ? vibrateSprites[0] : vibrateSprites[1];
+        }
+
+        private void OnClick_PrivacyPolicyBtn()
+        {
+            if (m_PrivacyPolicyBtn != null)
+            {
+                m_PrivacyPolicyBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            }
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
+            
+            Application.OpenURL(Constant.Config.URL_Privacy_Policy);
+        }
+
+        private void OnClick_UserLicenseBtn()
+        {
+            if (m_UserLicenseBtn != null)
+            {
+                m_UserLicenseBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            }
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
+            
+            Application.OpenURL(Constant.Config.URL_User_License);
         }
 
         #endregion

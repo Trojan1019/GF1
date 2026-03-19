@@ -67,7 +67,7 @@ namespace NewSideGame
             {
                 displayScore = 0;
                 scoreText.text = string.Format("{0}:{1:N0}", GameEntry.Localization.GetString("5"), displayScore);
-
+                bestScoreText.text = string.Format("{0}:{1:N0}", GameEntry.Localization.GetString("2"), finalScore);
                 // 以每秒500分的速度滚动
                 float duration = finalScore > 0 ? Mathf.Max(0.5f, finalScore / 500f) : 0.5f;
 

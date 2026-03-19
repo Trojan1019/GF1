@@ -9,7 +9,14 @@ namespace NewSideGame
 
         public void Init()
         {
+            transform.localScale = Vector3.one;
             if (spriteRenderer != null) spriteRenderer.color = Color.gray;
+        }
+
+        public override void OnDeSpawn(PoolManager ppm)
+        {
+            base.OnDeSpawn(ppm);
+            transform.localScale = Vector3.one;
         }
     }
 }

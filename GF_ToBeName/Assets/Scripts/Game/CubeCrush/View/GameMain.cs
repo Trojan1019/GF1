@@ -255,6 +255,7 @@ namespace NewSideGame
 
                 BlockUnit drop = GameEntry.PoolManager.SpawnSync<BlockUnit>(31002);
                 drop.transform.SetParent(gridOrigin, false);
+                drop.transform.localScale = Vector3.one;
                 Vector3 targetPos = gridStartOffset + new Vector3(pos.x * cellSize, pos.y * cellSize, 0);
                 drop.transform.localPosition = targetPos + new Vector3(0, 10f, 0); // 从上方掉落
                 drop.spriteRenderer.color = randomColor;
