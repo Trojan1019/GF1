@@ -29,14 +29,14 @@ namespace NewSideGame
                 }
             }
 
-            NotifySpawnUpdate();
+            NotifySpawnUpdate(true);
         }
 
         public bool UseBlock(int index)
         {
             if (index < 0 || index >= currentShapes.Count) return false;
             currentShapes[index] = null; // Mark as used
-            NotifySpawnUpdate();
+            NotifySpawnUpdate(false);
             return true;
         }
 
@@ -50,9 +50,9 @@ namespace NewSideGame
             return true;
         }
 
-        private void NotifySpawnUpdate()
+        private void NotifySpawnUpdate(bool spawn = true)
         {
-            EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushSpawnUpdated);
+            EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushSpawnUpdated,spawn);
         }
     }
 }

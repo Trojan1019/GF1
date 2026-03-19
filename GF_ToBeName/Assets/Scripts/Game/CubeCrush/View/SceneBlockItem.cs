@@ -17,12 +17,32 @@ namespace NewSideGame
         private Vector3 dragOffset;
         private bool isDragging;
         private Vector2Int lastGridPos = new Vector2Int(-999, -999);
+        private bool hasScaledToFullSize;
+        private bool isFirstSpawn = true;
 
-        public void Init(BlockShape shape, int index)
+        public void Init(BlockShape shape, int index,bool spawn)
         {
             ClearCells(); // 确保复用时清理旧的子物体
             this.shape = shape;
             this.spawnIndex = index;
+            hasScaledToFullSize = false;
+            isFirstSpawn = spawn;
+            
+            if (index != -1)
+            {
+                if (isFirstSpawn)
+                {
+                    transform.localScale = Vector3.zero;
+                }
+                else
+                {
+                    transform.localScale = Vector3.one * GameMain.Instance.spawnSize;
+                }
+            }
+            else
+            {
+                transform.localScale = Vector3.one;
+            }
 
             // Construct visual
             foreach (var cell in shape.cells)
@@ -38,6 +58,12 @@ namespace NewSideGame
 
             // Adjust collider to fit shape
             UpdateCollider(GameMain.Instance.cellSize);
+
+            if (index != -1 && isFirstSpawn)
+            {
+                transform.DOScale(GameMain.Instance.spawnSize, 0.2f).SetEase(Ease.OutBack).SetUpdate(true);
+                isFirstSpawn = false;
+            }
         }
 
         public override void OnDeSpawn(PoolManager ppm)
@@ -88,6 +114,9 @@ namespace NewSideGame
             if (spawnIndex == -1) return; // 提示虚影不响应点击
             if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return; // 游戏结束后禁用交互
 
+            // 播放方块拾取音效
+            GameEntry.Sound.PlaySound(Constant.SoundId.BlockPickup);
+
             // 通知用户操作，重置空闲计时器
             GameMain.Instance?.OnUserInteraction();
 
@@ -98,7 +127,14 @@ namespace NewSideGame
             lastGridPos = new Vector2Int(-999, -999);
 
             // 选中时放大效果
-            transform.DOScale(1.1f, 0.1f).SetUpdate(true);
+            Sequence seq = DOTween.Sequence();
+            if (!hasScaledToFullSize)
+            {
+                seq.Append(transform.DOScale(1f, 0.15f).SetUpdate(true));
+                hasScaledToFullSize = true;
+            }
+
+            seq.Append(transform.DOScale(1.1f, 0.1f).SetUpdate(true));
         }
 
         private void OnMouseDrag()
@@ -161,14 +197,16 @@ namespace NewSideGame
 
                     // Return to spawn
                     transform.DOMove(originalPos, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
-                    transform.DOScale(1f, 0.2f).SetUpdate(true);
+                    float targetScale = hasScaledToFullSize ? 1f : GameMain.Instance.spawnSize;
+                    transform.DOScale(targetScale, 0.2f).SetUpdate(true);
                 }
             }
             else
             {
                 GameMain.Instance.ClearPreview();
                 transform.position = originalPos;
-                transform.DOScale(1f, 0.1f).SetUpdate(true);
+                float targetScale = hasScaledToFullSize ? 1f : GameMain.Instance.spawnSize;
+                transform.DOScale(targetScale, 0.1f).SetUpdate(true);
             }
         }
 

@@ -480,16 +480,22 @@ MonoBehaviour:
   popupParent: {fileID: 1479466895}
   availableShapes:
   - {fileID: 11400000, guid: b343c402b633346c9bf12b8711120b97, type: 2}
+  - {fileID: 11400000, guid: 16445af2b27f44871867c109f197bd7d, type: 2}
   - {fileID: 11400000, guid: b866c777fee374274ba1d6218c8da4fc, type: 2}
   - {fileID: 11400000, guid: 29bfd197cc24949a0ab4f0bb39e363b4, type: 2}
-  - {fileID: 11400000, guid: 16445af2b27f44871867c109f197bd7d, type: 2}
   - {fileID: 11400000, guid: 01e7128031e99446fb4d159f2c5e23ea, type: 2}
   - {fileID: 11400000, guid: 5a198e6a4b4f3438990aa10b756569cf, type: 2}
   - {fileID: 11400000, guid: 0e2646330faae48d6a3c565ee79f58d2, type: 2}
+  - {fileID: 11400000, guid: f70e4cbb718ac4228bf1923f58ec4510, type: 2}
+  - {fileID: 11400000, guid: 5cdb2c5616b814ce08167e5dd153cd77, type: 2}
+  - {fileID: 11400000, guid: b9d1d7b0f887a4f38b9d6e15f976347f, type: 2}
+  - {fileID: 11400000, guid: 0c1a5f44695c04ac2a00131993d8c365, type: 2}
+  - {fileID: 11400000, guid: ffec956e4cfd74582be66e46558eadcb, type: 2}
   gridOrigin: {fileID: 269306729}
   spawnOrigin: {fileID: 374942140}
   cellSize: 1.56
   spawnSpacing: 10
+  spawnSize: 0.7
   spawnAreaWidth: 13
   hintDelay: 8
   hintDuration: 2

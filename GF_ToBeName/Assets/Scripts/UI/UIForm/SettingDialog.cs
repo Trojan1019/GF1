@@ -31,12 +31,15 @@ namespace NewSideGame
         private void OnClick_CloseBtn()
         {
             m_CloseBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
+
             Close();
         }
 
         private void OnClick_BackBtn()
         {
             m_BackBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
 
             Close();
             SceneHelper.LoadHomeScene();
@@ -45,6 +48,7 @@ namespace NewSideGame
         private void OnClick_SoundBtn()
         {
             m_SoundImage.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
 
             bool set = !GameEntry.Setting.GetBool(Constant.Setting.SoundMuted);
             GameEntry.Setting.SetBool(Constant.Setting.SoundMuted, set);
@@ -55,6 +59,7 @@ namespace NewSideGame
         private void OnClick_MusicBtn()
         {
             m_MusicImage.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
 
             bool set = !GameEntry.Setting.GetBool(Constant.Setting.MusicMuted);
             GameEntry.Setting.SetBool(Constant.Setting.MusicMuted, set);
@@ -87,52 +92,64 @@ namespace NewSideGame
             m_VersionText.text = GameEntry.Localization.GetString("67", Application.version);
             m_BackBtn.gameObject.SetActive(SceneHelper.IsPuzzleScene());
 
-            m_SoundImage.sprite = GameEntry.Setting.GetBool(Constant.Setting.SoundMuted)
-                ? soundSprites[0]
-                : soundSprites[1];
-            m_MusicImage.sprite = GameEntry.Setting.GetBool(Constant.Setting.MusicMuted)
-                ? musicSprites[0]
-                : musicSprites[1];
-            m_VibrateImage.sprite = GameEntry.Setting.GetBool(Constant.Setting.VibrationMuted)
-                ? vibrateSprites[0]
-                : vibrateSprites[1];
-
             UpdateDynamicSprites();
         }
 
         /// <summary>
-        /// 根据游戏状态更新设置面板的图标
+        /// 根据配置状态更新设置面板的图标
         /// </summary>
         private void UpdateDynamicSprites()
         {
-            // 默认状态索引 0，可以根据当前的 Procedure 或游戏状态进行判断
-            int stateIndex = 0;
-
-            // 判断是否在游戏中
-            if (GameEntry.Procedure.CurrentProcedure is ProcedureGamePlay)
+            // 更新 Sound Sprite
+            if (m_SoundImage != null && soundSprites != null && soundSprites.Length >= 2)
             {
-                // 可以进一步通过 GameLoopManager 判断是否暂停或结束
-                // 这里假设 1 表示游戏中
-                stateIndex = 1;
+                bool isSoundMuted = false;
+                try
+                {
+                    isSoundMuted = GameEntry.Setting.GetBool(Constant.Setting.SoundMuted);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning($"[SettingDialog] Failed to get SoundMuted setting, using default (false). Error: {e.Message}");
+                }
+                m_SoundImage.sprite = isSoundMuted ? soundSprites[0] : soundSprites[1];
+                m_SoundImage.DOFade(1f, 0.3f).From(0f).SetUpdate(true);
+            }
+            else
+            {
+                Debug.LogError("[SettingDialog] m_SoundImage or soundSprites is not properly configured.");
             }
 
-            // 更新 Sprite，并实现平滑过渡
-            if (musicSprites != null && musicSprites.Length > stateIndex && m_MusicImage != null)
+            // 更新 Music Sprite
+            if (m_MusicImage != null && musicSprites != null && musicSprites.Length >= 2)
             {
-                m_MusicImage.sprite = musicSprites[stateIndex];
-                m_MusicImage.DOFade(1f, 0.3f).From(0f);
+                bool isMusicMuted = false;
+                try
+                {
+                    isMusicMuted = GameEntry.Setting.GetBool(Constant.Setting.MusicMuted);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning($"[SettingDialog] Failed to get MusicMuted setting, using default (false). Error: {e.Message}");
+                }
+                m_MusicImage.sprite = isMusicMuted ? musicSprites[0] : musicSprites[1];
+                m_MusicImage.DOFade(1f, 0.3f).From(0f).SetUpdate(true);
             }
 
-            if (soundSprites != null && soundSprites.Length > stateIndex && m_SoundImage != null)
+            // 更新 Vibrate Sprite
+            if (m_VibrateImage != null && vibrateSprites != null && vibrateSprites.Length >= 2)
             {
-                m_SoundImage.sprite = soundSprites[stateIndex];
-                m_SoundImage.DOFade(1f, 0.3f).From(0f);
-            }
-
-            if (vibrateSprites != null && vibrateSprites.Length > stateIndex && m_VibrateImage != null)
-            {
-                m_VibrateImage.sprite = vibrateSprites[stateIndex];
-                m_VibrateImage.DOFade(1f, 0.3f).From(0f);
+                bool isVibrateMuted = false;
+                try
+                {
+                    isVibrateMuted = GameEntry.Setting.GetBool(Constant.Setting.VibrationMuted);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning($"[SettingDialog] Failed to get VibrationMuted setting, using default (false). Error: {e.Message}");
+                }
+                m_VibrateImage.sprite = isVibrateMuted ? vibrateSprites[0] : vibrateSprites[1];
+                m_VibrateImage.DOFade(1f, 0.3f).From(0f).SetUpdate(true);
             }
         }
 

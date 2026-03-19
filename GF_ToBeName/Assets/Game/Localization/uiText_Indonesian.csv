@@ -1,89 +1,51 @@
 id|strText
 1|Mainkan
-2|Tidak Ada Iklan
-3|Paket Hapus Iklan
-4|Hapus IKLAN
-5|Unduh
-6|Paket Koin
-7|Beli peningkatan permainan
-8|Beli
-9|Gratis
-10|Tidak, Terima kasih
-11|Lewati gambar
-12|Dapatkan satu dorongan untuk Melanjutkan
-13|Batal
-14|Coba lagi
-15|Album
-16|Perjalanan
-17|Rumah
-18|Mulai ulang
-19|Lanjutkan
-20|Waktu: <color=#FFFF8A>{0}</color>
-21|Lebih baik dari {0:N2}% pemain
-22|Ganda
-23|Klaim
-24|Tingkat Khusus:
-25|Klub VIP
-26|Nikmati Keseruan Tanpa Batas
-27|Akses level khusus
-28|Akses level VIP
-29|Hadiah Peti Ganda
-30|Unduh gambar gratis
-31|Penggandaan imbalan level ganda
-32|Hapus iklan interstisial
-33|Hapus iklan banner
-34|Akses level khusus
-35|Akses level VIP
-36|Hadiah peti ganda
-37|Syarat Langganan
-38|Sisa waktu langganan {0} hari
-39|Ini adalah langganan yang diperbarui secara otomatis. Pembayaran akan dibebankan ke akun Anda setelah konfirmasi. Langganan diperbarui kecuali Anda berhenti langganan 24 jam sebelum periode berakhir. Akun Anda juga akan dikenai biaya untuk perpanjangan.
-40|Syarat Langganan
-41|Kebijakan Privasi
-42|Anda telah membeli tipe ini
-43|Memproses Pembayaran...<br>Tolong jangan menutup permainan.
-44|Memuat
-45|Pembelian gagal, silakan coba lagi.
-46|Pembayaran Tidak Valid
-47|Pembelian gagal, silakan coba lagi.
-48|Pembelian Berhasil
-49|Langganan Mingguan
-50|Langganan Bulanan
-51|Langganan Tahunan
-52|{0}/{1}Hari
-53|Diaktifkan
-54|Buka Level Khusus
-55|Buka Level VIP
-56|Tidak Bisa Menggunakan Pembatalan Sekarang
-57|Tidak Bisa Menggunakan Magnet Sekarang
-58|Tidak Bisa Dorong Keluar Sekarang
-59|Buka VIP
-60|Hari
-61|Diskon
-62|Tanpa Iklan
-63|Hadiah Harian
-64|PenawaranMutiara
-65|Pulihkan Pembelian
-66|Nikmati Game ini?<br>Dukung kami dengan 5 bintang!
-67|Versi: {0}
-68|Level VIP:
-69|Pengaturan
-70|Harap nyalakan izin galeri dari aplikasi ini pada halaman pengaturan, jika tidak, tidak akan dapat mengunduh
-71|Toko
-72|Nikmati Permainan?<br>Dukung kami <br>dengan 5 bintang!
-73|Dapatkan Koin
-74|Club VIP Akses Gratis
-75|Unable to continue synthesis, automatically randomized
-76|Dibeli
-77|Perlu waktu lebih
-78|Harta Karun
-79|Iklan belum siap. Silakan coba lagi nanti.
-80|X5
-81|Tambahkan lubang
-82|TEKAN PADA KACA UNTUK MEMATAHKAN
-83|Tingkat {0}
-84|Pesta Harta Karun
-85|Putaran Keberuntungan
-86|Putar
-87|Gratis: {0}
-88|Gratis(left{0})
+2|Skor Tertinggi
+3|Harian
+4|Pengaturan
+5|Skor
+6|Kembali
+7|Permainan Selesai
+8|Lanjutkan
+9|Sedang Memuat...
+10|Konfirmasi
+11|Ya
+12|Tidak
+13|Suara
+14|Musik
+15|Getaran
+16|Layar Penuh
+17|Hapus Iklan
+18|Tonton Video
+19|Petunjuk
+20|Skor Ditambahkan
+21|Combo x{0}
+22|Rekor Baru!
+23|Skor Target
+24|Langkah Tersisa
+25|Waktu Habis
+26|Jeda
+27|Lanjutkan
+28|Keluar
+29|Ambil
+30|Level Berikutnya
+31|Pilih Level
+32|Level {0}
+33|Mudah
+34|Normal
+35|Sulit
+36|Item
+37|Bom
+38|Palu
+39|Acak Ulang
+40|Hadiah Harian
+41|Hari {0}
+42|Ambil Sekarang
+43|Papan Peringkat
+44|Prestasi
+45|Tantangan
+46|Bagikan Skor
+47|Pemain Baru?
+48|Tutorial
+49|Lewati
+50|Terima kasih telah bermain!

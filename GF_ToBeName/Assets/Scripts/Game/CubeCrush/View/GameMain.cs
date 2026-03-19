@@ -23,6 +23,7 @@ namespace NewSideGame
         public Transform spawnOrigin; // Center/Start of spawn area
         public float cellSize = 3f;
         public float spawnSpacing = 3.0f;
+        public float spawnSize = 0.5f;
 
         [Header("Spawn Settings")] public float spawnAreaWidth = 10f; // 动态生成的区域宽度
 
@@ -110,7 +111,7 @@ namespace NewSideGame
             hint.transform.SetParent(gridOrigin, false);
             // 计算提示位置：基于 Grid 的偏移量
             hint.transform.localPosition = gridStartOffset + new Vector3(pos.x * cellSize, pos.y * cellSize, 0);
-            hint.Init(shape, -1); // index -1 表示这是一个提示，不参与逻辑
+            hint.Init(shape, -1,false); // index -1 表示这是一个提示，不参与逻辑
 
             // 设置透明度和动画
             var renderers = hint.GetComponentsInChildren<SpriteRenderer>();
@@ -154,7 +155,7 @@ namespace NewSideGame
                 placementPreview.transform.SetParent(gridOrigin, false);
                 placementPreview.transform.localPosition =
                     gridStartOffset + new Vector3(gridPos.x * cellSize, gridPos.y * cellSize, 0);
-                placementPreview.Init(shape, -1);
+                placementPreview.Init(shape, -1, false);
 
                 var renderers = placementPreview.GetComponentsInChildren<SpriteRenderer>();
                 foreach (var r in renderers)
@@ -280,8 +281,8 @@ namespace NewSideGame
             lastInteractionTime = Time.time;
             HideHint();
             GenerateGrid();
-            UpdateSpawnArea();
-            
+            UpdateSpawnArea(true);
+
             ClearAllPopups();
         }
 
@@ -338,10 +339,14 @@ namespace NewSideGame
 
         private void OnSpawnUpdated(params object[] args)
         {
-            UpdateSpawnArea();
+            if (args != null && args.Length > 0)
+            {
+                bool spawn = (bool)args[0];
+                UpdateSpawnArea(spawn);
+            }
         }
 
-        private void UpdateSpawnArea()
+        private void UpdateSpawnArea(bool spawn)
         {
             foreach (var block in sceneSpawnBlocks)
             {
@@ -361,6 +366,8 @@ namespace NewSideGame
             int maxSlots = BlockSpawner.Instance.spawnSlots;
             float slotWidth = actualWidth / maxSlots;
 
+            bool hasPlayedSpawnSound = false;
+            
             for (int i = 0; i < shapes.Count; i++)
             {
                 if (shapes[i] == null) continue;
@@ -372,8 +379,14 @@ namespace NewSideGame
                 float xPos = -actualWidth / 2f + slotWidth * i + slotWidth / 2f;
                 block.transform.localPosition = new Vector3(xPos, 0, 0);
 
-                block.Init(shapes[i], i);
+                block.Init(shapes[i], i,spawn);
                 sceneSpawnBlocks.Add(block);
+                
+                if (spawn && !hasPlayedSpawnSound)
+                {
+                    GameEntry.Sound.PlaySound(Constant.SoundId.BlockSpawn);
+                    hasPlayedSpawnSound = true;
+                }
             }
         }
 

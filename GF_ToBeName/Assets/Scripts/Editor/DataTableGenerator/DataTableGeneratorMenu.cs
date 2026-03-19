@@ -51,7 +51,9 @@ namespace NewSideGame
             }
 
 
-            string dataTablePath = Utility.Path.GetRegularPath($"{Application.dataPath}/{DataTableGenerator.DataTablePath.Replace("Assets/", "")}");
+            string dataTablePath =
+                Utility.Path.GetRegularPath(
+                    $"{Application.dataPath}/{DataTableGenerator.DataTablePath.Replace("Assets/", "")}");
             if (Directory.Exists(dataTablePath))
             {
                 string[] fileNames = Directory.GetFiles(dataTablePath, "*", SearchOption.AllDirectories);
@@ -72,10 +74,12 @@ namespace NewSideGame
                     if (dataTableName == "GlobalConfig")
                         continue;
 
-                    DataTableProcessor dataTableProcessor = DataTableGenerator.CreateDataTableProcessor(fileInfo.FullName);
+                    DataTableProcessor dataTableProcessor =
+                        DataTableGenerator.CreateDataTableProcessor(fileInfo.FullName);
                     if (!DataTableGenerator.CheckRawData(dataTableProcessor, dataTableName))
                     {
-                        Debug.LogError(Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
+                        Debug.LogError(
+                            Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
                         break;
                     }
 
@@ -99,13 +103,8 @@ namespace NewSideGame
             {
                 ProcessCommandUtility.ProcessCommand("/bin/sh", "uiText.sh", workingDirectory);
             }
-            else
-            {
-                // ProcessCommand("uiText.bat", "", Application.dataPath + "/../Doc/TranslationTool/");
-            }
-
+            
             AssetDatabase.Refresh();
         }
-
     }
 }

@@ -66,7 +66,10 @@ namespace CubeCrush.Manager
                     GameEntry.Sound.PlaySound(Constant.SoundId.Remove);
                     EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushLinesCleared, clearedCells);
 #if UNITY_ANDROID || UNITY_IOS
-                    Handheld.Vibrate();
+                    if (clearedLines >= 2 && !GameEntry.Setting.GetBool(Constant.Setting.VibrationMuted))
+                    {
+                        Handheld.Vibrate();
+                    }
 #endif
                 }
 
@@ -96,7 +99,10 @@ namespace CubeCrush.Manager
 
             //GameEntry.Sound.PlaySound(Constant.SoundId.Click);
 #if UNITY_ANDROID || UNITY_IOS
-            Handheld.Vibrate();
+            if (!GameEntry.Setting.GetBool(Constant.Setting.VibrationMuted))
+            {
+                Handheld.Vibrate();
+            }
 #endif
 
             // 触发填满网格动画

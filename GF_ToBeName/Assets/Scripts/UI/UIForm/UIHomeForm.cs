@@ -37,6 +37,9 @@ namespace NewSideGame
 
         private void OnClick_ContinueBtn()
         {
+            continueBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
+
             // 设置一个标志位告诉 GamePlay 场景去读取存档
             GameEntry.Setting.SetBool("LoadSavedGame", true);
             SceneHelper.LoadGameScene(() => { });
@@ -44,6 +47,9 @@ namespace NewSideGame
 
         private void OnClick_NewGameBtn()
         {
+            newGameBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
+
             if (ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame)
             {
                 // 有存档时，弹窗确认
@@ -68,6 +74,8 @@ namespace NewSideGame
         private void OnClick_SettingBtn()
         {
             settingBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            GameEntry.Sound.PlaySound(Constant.SoundId.Click);
+
             GameEntry.UI.OpenUIForm(UIFormType.SettingDialog);
         }
 
@@ -80,19 +88,16 @@ namespace NewSideGame
         {
             base.OnOpen(userData);
             UpdateScore();
-          
+
             bool hasSave = ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame;
             if (continueBtn != null) continueBtn.gameObject.SetActive(hasSave);
         }
 
         private void UpdateScore()
         {
-            if (score != null)
-            {
-                // 获取并显示最高分
-                int bestScore = ProxyManager.UserProxy != null ? ProxyManager.UserProxy.userModel.bestScore : 0;
-                score.text = string.Format("{0}:{1:N0}", GameEntry.Localization.GetString("2"), bestScore); // 使用千位分隔符格式化
-            }
+            // 获取并显示最高分
+            int bestScore = ProxyManager.UserProxy != null ? ProxyManager.UserProxy.userModel.bestScore : 0;
+            score.text = string.Format("{0}:{1:N0}", GameEntry.Localization.GetString("2"), bestScore); // 使用千位分隔符格式化
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)

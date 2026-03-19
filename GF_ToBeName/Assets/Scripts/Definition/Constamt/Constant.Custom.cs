@@ -96,6 +96,8 @@ namespace NewSideGame
             public const int Place = 2005;
             public const int Bubble1 = 2006;
             public const int Bubble2 = 2007;
+            public const int BlockSpawn = 2008;
+            public const int BlockPickup = 2009;
         }
     }
 }

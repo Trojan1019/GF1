@@ -14,5 +14,5 @@ mv $uiTextTemPath $uiTextPath
 
 java -jar ExcelToCsv.jar $outputPath/ $csvPath/ 2>ExcelToCsv.log
 
-cp "$csvPath"/uiText_*.csv "$basePath"/../../../Puzzle/Assets/Game/Localization
+cp "$csvPath"/uiText_*.csv "$basePath"/../../../GF_ToBeName/Assets/Game/Localization
 
