@@ -97,6 +97,7 @@
     <Compile Include="Assets/Scripts/Editor/Utility/ProcessCommandUtility.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.Int32Processor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.ColorProcessor.cs" />
+    <Compile Include="Assets/Scripts/Editor/StageEditor/CubeCrushStageEditorWindow.cs" />
     <None Include="Assets/Editor/Font/zh.txt" />
     <None Include="Assets/Editor/DataTable/DataTableCodeTemplate.txt" />
     <Reference Include="UnityEngine">

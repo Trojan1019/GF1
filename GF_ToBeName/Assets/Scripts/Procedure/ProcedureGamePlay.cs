@@ -22,7 +22,7 @@ namespace NewSideGame
             
             // 每次进入游戏流程时，根据设置决定是加载存档还是新游戏
             bool loadSave = GameEntry.Setting.GetBool("LoadSavedGame", false);
-            GameLoopManager.Instance.StartGame();
+            GameLoopManager.Instance.StartGame(loadSave);
         }
     }
 }

@@ -11,10 +11,7 @@ namespace NewSideGame
 
     public class ProcedureLaunch : ProcedureBase
     {
-        private readonly List<Language> _supportLanguage = new List<Language>
-        {
-            Language.English
-        };
+        private readonly List<Language> _supportLanguage = LocalizationLanguageHelper.SupportedLanguages;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {

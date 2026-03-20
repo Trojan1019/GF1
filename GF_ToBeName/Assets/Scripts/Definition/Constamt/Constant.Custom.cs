@@ -50,6 +50,9 @@ namespace NewSideGame
             public const int CubeCrushGameStart = 103;
             public const int CubeCrushLinesCleared = 104;
             public const int GameOverFillAnimation = 105;
+
+            public const int LoadDictionarySuccess = 201;
+            public const int LoadDictionaryFailure = 201;
             
             #region 广告事件
             public const int AdLoaded = 2001;

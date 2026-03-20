@@ -112,7 +112,8 @@ namespace NewSideGame
         private void OnMouseDown()
         {
             if (spawnIndex == -1) return; // 提示虚影不响应点击
-            if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return; // 游戏结束后禁用交互
+            if (GameLoopManager.Instance != null && (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending))
+                return; // 游戏结束/通关暂停后禁用交互
 
             // 播放方块拾取音效
             GameEntry.Sound.PlaySound(Constant.SoundId.BlockPickup);
@@ -140,7 +141,7 @@ namespace NewSideGame
         private void OnMouseDrag()
         {
             if (spawnIndex == -1) return;
-            if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return;
+            if (GameLoopManager.Instance != null && (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending)) return;
 
             if (isDragging)
             {
@@ -159,7 +160,7 @@ namespace NewSideGame
         private void OnMouseUp()
         {
             if (spawnIndex == -1) return;
-            if (GameLoopManager.Instance != null && GameLoopManager.Instance.isGameOver) return;
+            if (GameLoopManager.Instance != null && (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending)) return;
 
             isDragging = false;
 

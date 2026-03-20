@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using GameFramework;
+using GameFramework.Event;
+using GameFramework.Localization;
+using TMPro;
+using UnityEngine.UI;
+using UnityGameFramework.Runtime;
 
 namespace NewSideGame
 {
@@ -17,6 +22,7 @@ namespace NewSideGame
         private UnityEngine.UI.Button m_CloseBtn => GetRef<UnityEngine.UI.Button>("CloseBtn");
         private UnityEngine.UI.Button m_PrivacyPolicyBtn => GetRef<UnityEngine.UI.Button>("PrivacyPolicyBtn");
         private UnityEngine.UI.Button m_UserLicenseBtn => GetRef<UnityEngine.UI.Button>("UserLicenseBtn");
+        private TMP_Dropdown m_LanguageDropdown => GetRef<TMP_Dropdown>("LanguageDropdown");
 
         [Header("Dynamic Sprites")] public Sprite[] musicSprites; // 0:正常 1:暂停
         public Sprite[] soundSprites;
@@ -27,6 +33,10 @@ namespace NewSideGame
         public UnityEngine.UI.Image m_VibrateImage;
 
         #endregion
+
+
+        private bool _isApplyingLanguage;
+        private Language _pendingLanguage;
 
         #region SerializeField
 
@@ -117,6 +127,8 @@ namespace NewSideGame
             m_BackBtn.gameObject.SetActive(SceneHelper.IsPuzzleScene());
 
             UpdateDynamicSprites();
+            InitLanguageDropdown();
+            RegisterLanguageReloadCallbacks();
         }
 
         /// <summary>
@@ -179,7 +191,112 @@ namespace NewSideGame
 
         protected override void OnClose(bool isShutdown, object userData)
         {
+            UnregisterLanguageReloadCallbacks();
+
+            if (m_LanguageDropdown != null)
+            {
+                m_LanguageDropdown.onValueChanged.RemoveListener(OnLanguageDropdownValueChanged);
+            }
+
             base.OnClose(isShutdown, userData);
+        }
+
+        private void RegisterLanguageReloadCallbacks()
+        {
+            // 使用 GameFramework 事件系统监听字典加载结果（ProcedurePreload 同样如此）
+            GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
+            GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
+        }
+
+        private void UnregisterLanguageReloadCallbacks()
+        {
+            GameEntry.Event.Unsubscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
+            GameEntry.Event.Unsubscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
+        }
+
+        private void InitLanguageDropdown()
+        {
+            if (m_LanguageDropdown == null) return;
+
+            var supported = LocalizationLanguageHelper.SupportedLanguages;
+            List<string> options = new List<string>(supported.Count);
+
+            for (int i = 0; i < supported.Count; i++)
+            {
+                options.Add(supported[i].ToString());
+            }
+
+            m_LanguageDropdown.ClearOptions();
+            m_LanguageDropdown.AddOptions(options);
+
+            int currentIndex = 0;
+            for (int i = 0; i < supported.Count; i++)
+            {
+                if (supported[i] == GameEntry.Localization.Language)
+                {
+                    currentIndex = i;
+                    break;
+                }
+            }
+
+            m_LanguageDropdown.SetValueWithoutNotify(currentIndex);
+            m_LanguageDropdown.onValueChanged.RemoveListener(OnLanguageDropdownValueChanged);
+            m_LanguageDropdown.onValueChanged.AddListener(OnLanguageDropdownValueChanged);
+        }
+
+        private void OnLanguageDropdownValueChanged(int index)
+        {
+            if (_isApplyingLanguage) return;
+
+            var supported = LocalizationLanguageHelper.SupportedLanguages;
+            if (index < 0 || index >= supported.Count) return;
+
+            ApplyLanguage(supported[index]);
+        }
+
+        private void ApplyLanguage(Language language)
+        {
+            if (GameEntry.Localization == null) return;
+
+            string path = LocalizationLanguageHelper.GetAssetPath(language);
+            if (string.IsNullOrEmpty(path))
+                path = LocalizationLanguageHelper.GetAssetPath(Language.English);
+
+            _pendingLanguage = language;
+            _isApplyingLanguage = true;
+
+            // 保存设置（ProcedureLaunch 会在下次启动时用这个值决定默认语言）
+            GameEntry.Setting.SetString(Constant.Setting.Language, language.ToString());
+            GameEntry.Setting.Save();
+
+            GameEntry.Localization.Language = language;
+
+            // 异步加载字典文件
+            GameEntry.Localization.ReadData(path, this);
+        }
+
+        private void OnLoadDictionarySuccess(object sender, GameEventArgs e)
+        {
+            var ne = (LoadDictionarySuccessEventArgs)e;
+            if (ne.UserData != this) return;
+
+            _isApplyingLanguage = false;
+            if (m_VersionText != null)
+                m_VersionText.text = GameEntry.Localization.GetString("67", Application.version);
+            EventManager.Instance.NotifyEvent(Constant.Event.LanguageChangeSuccess);
+        }
+
+        private void OnLoadDictionaryFailure(object sender, GameEventArgs e)
+        {
+            var ne = (LoadDictionaryFailureEventArgs)e;
+            if (ne.UserData != this) return;
+
+            _pendingLanguage = Language.English;
+            _isApplyingLanguage = false;
+
+            string path = LocalizationLanguageHelper.GetAssetPath(Language.English);
+            GameEntry.Localization.Language = Language.English;
+            GameEntry.Localization.ReadData(path, this);
         }
     }
 }

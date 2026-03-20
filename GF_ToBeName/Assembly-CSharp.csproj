@@ -172,7 +172,6 @@
     <Compile Include="Assets/Scripts/Utils/ScrollView/IScrollDynamicListItem.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/LocalizationForUndeal.cs" />
     <Compile Include="Assets/Scripts/Manager/ProxyManager/Proxy/BaseProxy.cs" />
-    <Compile Include="Assets/Scripts/Game/CubeCrush/View/GameMain.cs" />
     <Compile Include="Assets/Scripts/Definition/UIFormType.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/UIButtonScale.cs" />
     <Compile Include="Assets/GameFramework/Libraries/LitJson/JsonReader.cs" />
@@ -221,6 +220,11 @@
     <Compile Include="Assets/Scripts/Manager/ProxyManager/ProxyManager.cs" />
     <Compile Include="Assets/Scripts/Manager/VibrateManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PictureNameTool.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/GameMain.StageSurvival.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushStageDatabase.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushStage.cs" />
+    <Compile Include="Assets/Scripts/Utils/Utility/LocalizationLanguageHelper.cs" />
+    <Compile Include="Assets\Scripts\Game\CubeCrush\Manager\GameMain.SurvivalStage.cs" />
     <None Include="Assets/Resources/Shader/Effect_Distort Add_1.shader" />
     <None Include="Assets/RawAsset/Fonts/TextMeshPro/LineBreaking Following Characters.txt" />
     <None Include="Assets/link.xml" />

@@ -23,6 +23,7 @@ namespace NewSideGame
 
             EventManager.Instance.AddEventListener(Constant.Event.GameOver, OnGameOver);
             EventManager.Instance.AddEventListener(Constant.Event.RefreshScore, OnRefreshScore);
+            EventManager.Instance.AddEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
 
             if (restartButton != null)
             {
@@ -47,7 +48,10 @@ namespace NewSideGame
             }
 
             displayScore = GameLoopManager.Instance.score;
-            if (scoreText != null) scoreText.text = $"Score: {displayScore}";
+            if (scoreText != null)
+            {
+                UpdateScoreText(displayScore);
+            }
             if (bestScoreText != null)
             {
                 // 获取并显示最高分
@@ -62,6 +66,7 @@ namespace NewSideGame
             {
                 EventManager.Instance.RemoveEventListener(Constant.Event.GameOver, OnGameOver);
                 EventManager.Instance.RemoveEventListener(Constant.Event.RefreshScore, OnRefreshScore);
+                EventManager.Instance.RemoveEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
             }
 
             base.OnClose(isShutdown, userData);
@@ -80,6 +85,17 @@ namespace NewSideGame
             UpdateScore(GameLoopManager.Instance.score);
         }
 
+        private void OnLanguageChanged(object[] args)
+        {
+            // 重新刷新当前显示的分数文本与最高分标签（不重置分数滚动动画进度）
+            UpdateScoreText(displayScore);
+            if (bestScoreText != null)
+            {
+                int bestScore = ProxyManager.UserProxy != null ? ProxyManager.UserProxy.userModel.bestScore : 0;
+                bestScoreText.text = string.Format("{0}:{1:N0}", GameEntry.Localization.GetString("2"), bestScore);
+            }
+        }
+
         private void UpdateScore(int newScore)
         {
             if (scoreText != null)
@@ -88,8 +104,37 @@ namespace NewSideGame
                 DOTween.To(() => displayScore, x =>
                 {
                     displayScore = x;
-                    scoreText.text = $"Score: {displayScore}";
+                    UpdateScoreText(displayScore);
                 }, newScore, 0.3f).SetEase(Ease.OutCubic).SetUpdate(true);
+            }
+        }
+
+        private void UpdateScoreText(int currentScore)
+        {
+            if (GameLoopManager.Instance == null) return;
+
+            if (GameMain.Instance != null && GameMain.Instance.IsStageSurvival)
+            {
+                int stageIndex = GameLoopManager.Instance.StageIndex;
+                int stageStartScore = GameLoopManager.Instance.StageStartScore;
+                int stageTargetDelta = GameLoopManager.Instance.StageTargetDelta;
+                int scoreDelta = currentScore - stageStartScore;
+
+                string scoreLabel = GameEntry.Localization.GetString("5"); // 分数
+                string stageLabel = string.Format(GameEntry.Localization.GetString("32"), stageIndex); // 第 {0} 关
+                string targetLabel = GameEntry.Localization.GetString("23"); // 目标分数
+                scoreText.text = string.Format("{0}:{1:N0}\n{2}\n{3}:{4:N0}/{5:N0}",
+                    scoreLabel,
+                    currentScore,
+                    stageLabel,
+                    targetLabel,
+                    scoreDelta,
+                    stageTargetDelta);
+            }
+            else
+            {
+                string scoreLabel = GameEntry.Localization.GetString("5"); // 分数
+                scoreText.text = string.Format("{0}:{1:N0}", scoreLabel, currentScore);
             }
         }
     }

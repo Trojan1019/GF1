@@ -427,7 +427,6 @@ GameObject:
   - component: {fileID: 7720230876280308074}
   - component: {fileID: 1613839590354527403}
   - component: {fileID: 7382904659706150558}
-  - component: {fileID: 5663245098783291500}
   m_Layer: 5
   m_Name: MessageText
   m_TagString: Untagged
@@ -452,8 +451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 417, y: 80}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 593.6663, y: 234.5611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1613839590354527403
 CanvasRenderer:
@@ -552,21 +551,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5663245098783291500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586251892138373046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43eac948c1454789b2c98ba739c1cdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localizationKey: 3
-  replaceList: []
-  appendSignal: 
 --- !u!1 &3311013669818812963
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +697,6 @@ GameObject:
   - component: {fileID: 3002460925074133677}
   - component: {fileID: 1031526496464892045}
   - component: {fileID: 6987125419083786885}
-  - component: {fileID: 7815460207458268971}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -838,21 +821,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7815460207458268971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3841596532621649682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43eac948c1454789b2c98ba739c1cdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localizationKey: 3
-  replaceList: []
-  appendSignal: 
 --- !u!1 &5404684302585916253
 GameObject:
   m_ObjectHideFlags: 0

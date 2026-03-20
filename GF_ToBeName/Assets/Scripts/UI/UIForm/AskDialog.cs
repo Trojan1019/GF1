@@ -17,14 +17,33 @@ namespace NewSideGame
 
         public UGUIParamsDelegate OnClickConfirm;
 
+        private string _titleKey;
+        private string _messageKey;
+
+        private void RefreshLocalizedText()
+        {
+            if (GameEntry.Localization == null) return;
+
+            if (TitleText != null && !string.IsNullOrEmpty(_titleKey))
+                TitleText.text = GameEntry.Localization.GetString(_titleKey);
+
+            if (MessageText != null && !string.IsNullOrEmpty(_messageKey))
+                MessageText.text = GameEntry.Localization.GetString(_messageKey);
+        }
+
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            string TitleStr = m_Params.GetStringParams("Title");
-            string MessageStr = m_Params.GetStringParams("Message");
             OnClickConfirm = m_Params.GetDelegage("OnClickConfirm");
 
+            // 现在 Title/Message 传进来的都是 localizationKey，这样语言切换时可以自动刷新
+            _titleKey = m_Params.GetStringParams("Title");
+            _messageKey = m_Params.GetStringParams("Message");
+
+            EventManager.Instance.AddEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
+            RefreshLocalizedText();
+            
             if (ConfirmButton != null)
             {
                 ConfirmButton.onClick.RemoveAllListeners();
@@ -50,7 +69,16 @@ namespace NewSideGame
 
         protected override void OnClose(bool isShutdown, object userData)
         {
+            if (EventManager.Instance != null)
+            {
+                EventManager.Instance.RemoveEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
+            }
             base.OnClose(isShutdown, userData);
+        }
+
+        private void OnLanguageChanged(object[] args)
+        {
+            RefreshLocalizedText();
         }
     }
 }

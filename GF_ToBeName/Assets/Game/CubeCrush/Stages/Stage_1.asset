@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8f015477acd4db8b5c1cc004374a44, type: 3}
+  m_Name: Stage_1
+  m_EditorClassIdentifier: 
+  stageIndex: 1
+  targetScoreLocal: 1000
+  prefilledCells:
+  - x: 0
+    y: 4
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 1
+    y: 4
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 0
+    y: 3
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 1
+    y: 3
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 2
+    y: 4
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 2
+    y: 3
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 5
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 7
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 6
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 2
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 1
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 0
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 0
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 1
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 2
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 5
+    y: 3
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 5
+    y: 4
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 6
+    y: 4
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 6
+    y: 3
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 4
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 3
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 5
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 6
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 7
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  spawnSequence:
+  - {fileID: 11400000, guid: 29bfd197cc24949a0ab4f0bb39e363b4, type: 2}
