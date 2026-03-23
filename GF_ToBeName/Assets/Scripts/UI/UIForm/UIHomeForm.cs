@@ -29,7 +29,6 @@ namespace NewSideGame
             if (settingBtn != null) settingBtn.onClick.AddListener(OnClick_SettingBtn);
 
             EventManager.Instance.AddEventListener(Constant.Event.OnRefreshHomePanel, RefreshHomePanel);
-            EventManager.Instance.AddEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
         }
 
         private void OnDisable()
@@ -40,7 +39,6 @@ namespace NewSideGame
             if (settingBtn != null) settingBtn.onClick.RemoveAllListeners();
 
             EventManager.Instance.RemoveEventListener(Constant.Event.OnRefreshHomePanel, RefreshHomePanel);
-            EventManager.Instance.RemoveEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
         }
 
         private void OnClick_ContinueBtn()
@@ -135,6 +133,10 @@ namespace NewSideGame
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
+
+            // 用 UI 生命周期注册语言刷新，避免被其他弹窗临时 disable 后丢失实时刷新。
+            AddEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
+
             UpdateScore();
 
             bool hasSave = ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame;

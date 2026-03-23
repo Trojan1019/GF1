@@ -66,8 +66,8 @@ namespace NewSideGame
 
         public static class Config
         {
-            public const string URL_Privacy_Policy = "https://superlight-engine.com/privacy";
-            public const string URL_User_License = "https://superlight-engine.com/userLicense";
+            public const string URL_Privacy_Policy = "";
+            public const string URL_User_License = "";
 
             public const string DownloadCoinCost = "DownloadCoinCost"; //下载图片金币花费
             public const string PropCoinCost = "PropCoinCost"; //道具金币花费

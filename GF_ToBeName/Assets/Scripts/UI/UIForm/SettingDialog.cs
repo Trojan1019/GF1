@@ -282,7 +282,7 @@ namespace NewSideGame
 
             _isApplyingLanguage = false;
             if (m_VersionText != null)
-                m_VersionText.text = GameEntry.Localization.GetString("67", Application.version);
+                m_VersionText.text =$"Version：{ Application.version}";
             EventManager.Instance.NotifyEvent(Constant.Event.LanguageChangeSuccess);
         }
 

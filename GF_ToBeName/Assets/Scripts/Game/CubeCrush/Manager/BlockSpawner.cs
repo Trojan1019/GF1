@@ -18,6 +18,8 @@ namespace NewSideGame
         // 当 spawnSequence 用完后，后续生成仍然随机（符合你的需求）。
 
         private readonly List<BlockShape> _spawnSequence = new List<BlockShape>();
+        // 当 GameMain.availableShapes 为空/全为 null 时，Stage 随机补充可以从 spawnSequence 兜底取值
+        private readonly List<BlockShape> _randomFallbackPool = new List<BlockShape>();
         private bool _useSpawnSequence;
         private int _spawnCursor; // 下一次 SpawnBlocks 将从 spawnCursor 开始取 spawnSequence
 
@@ -27,6 +29,7 @@ namespace NewSideGame
         {
             _useSpawnSequence = false;
             _spawnSequence.Clear();
+            _randomFallbackPool.Clear();
             _spawnCursor = 0;
         }
 
@@ -34,10 +37,19 @@ namespace NewSideGame
         {
             _useSpawnSequence = true;
             _spawnSequence.Clear();
+            _randomFallbackPool.Clear();
 
             if (spawnSequence != null)
             {
                 _spawnSequence.AddRange(spawnSequence);
+
+                // 构建兜底随机池：从 spawnSequence 中收集所有非空形状
+                foreach (var s in spawnSequence)
+                {
+                    if (s == null) continue;
+                    if (!_randomFallbackPool.Contains(s))
+                        _randomFallbackPool.Add(s);
+                }
             }
 
             _spawnCursor = Mathf.Max(0, spawnCursorStart);
@@ -97,17 +109,9 @@ namespace NewSideGame
             else
             {
                 // Classic: 随机从可用形状取
-                int count = GameMain.Instance.availableShapes.Count;
                 for (int i = 0; i < spawnSlots; i++)
                 {
-                    if (count > 0)
-                    {
-                        currentShapes.Add(GameMain.Instance.availableShapes[Random.Range(0, count)]);
-                    }
-                    else
-                    {
-                        currentShapes.Add(null);
-                    }
+                    currentShapes.Add(GetRandomAvailableShapeOrNull());
                 }
             }
 
@@ -116,19 +120,28 @@ namespace NewSideGame
 
         private BlockShape GetRandomAvailableShapeOrNull()
         {
-            if (GameMain.Instance == null || GameMain.Instance.availableShapes == null)
-                return null;
-
-            // 过滤掉空引用，避免 Random.Range 的候选里出现 null
-            // 注：这里为可读性直接生成列表；如果你后面性能要优化，再缓存非空列表。
-            List<BlockShape> nonNull = new List<BlockShape>();
-            foreach (var s in GameMain.Instance.availableShapes)
+            // 1) 优先用 GameMain.availableShapes（全局可用形状池）
+            if (GameMain.Instance != null && GameMain.Instance.availableShapes != null)
             {
-                if (s != null) nonNull.Add(s);
+                // 过滤掉空引用，避免 Random.Range 的候选里出现 null
+                // 注：这里为可读性直接生成列表；如果你后面性能要优化，再缓存非空列表。
+                List<BlockShape> nonNull = new List<BlockShape>();
+                foreach (var s in GameMain.Instance.availableShapes)
+                {
+                    if (s != null) nonNull.Add(s);
+                }
+
+                if (nonNull.Count > 0)
+                    return nonNull[Random.Range(0, nonNull.Count)];
             }
 
-            if (nonNull.Count == 0) return null;
-            return nonNull[Random.Range(0, nonNull.Count)];
+            // 2) 如果全局池取不到（空/全为 null），stage 随机兜底从 spawnSequence 中取
+            if (_randomFallbackPool.Count > 0)
+            {
+                return _randomFallbackPool[Random.Range(0, _randomFallbackPool.Count)];
+            }
+
+            return null;
         }
 
         public bool UseBlock(int index)
