@@ -16,19 +16,28 @@ namespace NewSideGame
         public Button DenyButton;
 
         public UGUIParamsDelegate OnClickConfirm;
+        public UGUIParamsDelegate OnClickDeny;
 
         private string _titleKey;
         private string _messageKey;
+
+        private string ResolveText(string keyOrText)
+        {
+            if (GameEntry.Localization == null || string.IsNullOrEmpty(keyOrText)) return keyOrText;
+            var localized = GameEntry.Localization.GetString(keyOrText);
+            if (string.IsNullOrEmpty(localized) || localized.Contains("<NoKey>")) return keyOrText; // 允许传纯文本
+            return localized;
+        }
 
         private void RefreshLocalizedText()
         {
             if (GameEntry.Localization == null) return;
 
             if (TitleText != null && !string.IsNullOrEmpty(_titleKey))
-                TitleText.text = GameEntry.Localization.GetString(_titleKey);
+                TitleText.text = ResolveText(_titleKey);
 
             if (MessageText != null && !string.IsNullOrEmpty(_messageKey))
-                MessageText.text = GameEntry.Localization.GetString(_messageKey);
+                MessageText.text = ResolveText(_messageKey);
         }
 
         protected override void OnOpen(object userData)
@@ -36,6 +45,7 @@ namespace NewSideGame
             base.OnOpen(userData);
 
             OnClickConfirm = m_Params.GetDelegage("OnClickConfirm");
+            OnClickDeny = m_Params.GetDelegage("OnClickDeny");
 
             // 现在 Title/Message 传进来的都是 localizationKey，这样语言切换时可以自动刷新
             _titleKey = m_Params.GetStringParams("Title");
@@ -62,6 +72,7 @@ namespace NewSideGame
                 DenyButton.onClick.AddListener(() =>
                 {
                     DenyButton.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+                    OnClickDeny?.Invoke();
                     Close();
                 });
             }

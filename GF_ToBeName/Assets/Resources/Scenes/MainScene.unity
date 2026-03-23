@@ -135,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 624520027680296520, guid: aeaf889a415a9442b9a9427f5d4472f8, type: 3}
       propertyPath: m_EditorLanguage
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 624520027680296520, guid: aeaf889a415a9442b9a9427f5d4472f8, type: 3}
       propertyPath: m_JsonHelperTypeName

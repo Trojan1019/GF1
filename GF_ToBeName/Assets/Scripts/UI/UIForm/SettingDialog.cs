@@ -8,6 +8,9 @@ using GameFramework.Localization;
 using TMPro;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace NewSideGame
 {
@@ -37,6 +40,7 @@ namespace NewSideGame
 
         private bool _isApplyingLanguage;
         private Language _pendingLanguage;
+        private int _lastLanguageIndex = 0;
 
         #region SerializeField
 
@@ -240,6 +244,7 @@ namespace NewSideGame
             }
 
             m_LanguageDropdown.SetValueWithoutNotify(currentIndex);
+            _lastLanguageIndex = currentIndex;
             m_LanguageDropdown.onValueChanged.RemoveListener(OnLanguageDropdownValueChanged);
             m_LanguageDropdown.onValueChanged.AddListener(OnLanguageDropdownValueChanged);
         }
@@ -251,30 +256,40 @@ namespace NewSideGame
             var supported = LocalizationLanguageHelper.SupportedLanguages;
             if (index < 0 || index >= supported.Count) return;
 
-            ApplyLanguage(supported[index]);
-        }
+            Language selected = supported[index];
+            if (selected == GameEntry.Localization.Language) return;
 
-        private void ApplyLanguage(Language language)
-        {
-            if (GameEntry.Localization == null) return;
-
-            string path = LocalizationLanguageHelper.GetAssetPath(language);
-            if (string.IsNullOrEmpty(path))
-                path = LocalizationLanguageHelper.GetAssetPath(Language.English);
-
-            _pendingLanguage = language;
+            // 方案1：语言不实时生效，改为“需要重启”弹窗确认。
             _isApplyingLanguage = true;
 
-            // 保存设置（ProcedureLaunch 会在下次启动时用这个值决定默认语言）
-            GameEntry.Setting.SetString(Constant.Setting.Language, language.ToString());
-            GameEntry.Setting.Save();
+            int oldIndex = _lastLanguageIndex;
+            m_LanguageDropdown.SetValueWithoutNotify(index); // 保持用户选择态；如果拒绝会在 OnClickDeny 回滚
 
-            GameEntry.Localization.Language = language;
+            string restartMessage = "Language change will take effect after restarting the game. Restart now?";
 
-            // 异步加载字典文件
-            GameEntry.Localization.ReadData(path, this);
+            UGUIParams uguiParams = UGUIParams.Create()
+                .AddValue("Title", "10") // 通用“Confirm/确认”文本
+                .AddValue("Message", restartMessage) // 这里允许纯文本（AskDialog 已支持兜底）
+                .AddDelegage("OnClickConfirm", (s) =>
+                {
+                    GameEntry.Setting.SetString(Constant.Setting.Language, selected.ToString());
+                    GameEntry.Setting.Save();
+#if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit();
+#endif
+                })
+                .AddDelegage("OnClickDeny", (s) =>
+                {
+                    if (m_LanguageDropdown != null)
+                        m_LanguageDropdown.SetValueWithoutNotify(oldIndex);
+                    _isApplyingLanguage = false;
+                });
+
+            GameEntry.UI.OpenUIForm(UIFormType.AskDialog, uguiParams);
         }
-
+        
         private void OnLoadDictionarySuccess(object sender, GameEventArgs e)
         {
             var ne = (LoadDictionarySuccessEventArgs)e;

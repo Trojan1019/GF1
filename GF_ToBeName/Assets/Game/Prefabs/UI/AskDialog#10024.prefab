@@ -482,7 +482,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Remove ads Pack
+  m_text: A long Meassage To Test  the Message Box.A long Meassage To Test  the Message
+    Box.A long Meassage To Test  the Message Box.A long Meassage To Test  the Message
+    Box.A long Meassage To Test  the Message Box.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ffb0454bd85c40fb9d4621c4e852cdc, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e475b32345c3c484d8b2e9eab8a3f988, type: 2}
@@ -509,7 +511,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
+  m_fontSize: 31.2
   m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -525,7 +527,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
