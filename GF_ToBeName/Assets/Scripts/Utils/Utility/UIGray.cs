@@ -1,8 +1,3 @@
-﻿//------------------------------------------------------------
-// File : UIGray.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 置灰脚本
-//------------------------------------------------------------
 using UnityEngine;
 using UnityEngine.UI;
 #if UNITY_EDITOR

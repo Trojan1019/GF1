@@ -1,10 +1,4 @@
 using System.Collections.Generic;
-//------------------------------------------------------------
-// File : GameManager.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using UnityEngine;
 
 namespace NewSideGame

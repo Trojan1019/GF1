@@ -1,8 +1,3 @@
-//------------------------------------------------------------
-// File : AspectFullImage.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
 using UnityEngine;
 using UnityEngine.UI;
 

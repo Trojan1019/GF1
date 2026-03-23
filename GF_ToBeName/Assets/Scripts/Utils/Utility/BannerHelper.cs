@@ -1,8 +1,3 @@
-// //------------------------------------------------------------
-// // File : BannerHelper.cs
-// // Email: yang.li@kingboat.io
-// // Desc : 
-// //------------------------------------------------------------
 // using UnityEngine;
 // using NewSideGame;
 //

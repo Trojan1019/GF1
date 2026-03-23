@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : TransitionForm.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;

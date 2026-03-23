@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : BaseProxy.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 数据存储基类
-//------------------------------------------------------------
-
 using System;
 using System.Collections.Generic;
 using UnityGameFramework.Runtime;

@@ -1,8 +1,3 @@
-﻿//------------------------------------------------------------
-// File : CUtility.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 基础工具类
-//------------------------------------------------------------
 using System;
 using System.Collections.Generic;
 using UnityEngine;

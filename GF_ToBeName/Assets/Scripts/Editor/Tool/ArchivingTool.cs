@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : LMTools.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 
-//------------------------------------------------------------
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,14 +56,6 @@ public class ArchivingTool : EditorWindow
     private void OnGUI()
     {
         EditorGUILayout.BeginHorizontal();
-
-        var lastReviewVersion = reviewVersion;
-        GUILayout.Label("是否审核版");
-        reviewVersion = EditorGUILayout.Toggle("", reviewVersion, GUILayout.Width(20));
-        if (lastReviewVersion != reviewVersion)
-        {
-            UnityEditor.EditorPrefs.SetBool("REVIEWVERSION", reviewVersion);
-        }
 
         if (GUILayout.Button("刷新"))
         {

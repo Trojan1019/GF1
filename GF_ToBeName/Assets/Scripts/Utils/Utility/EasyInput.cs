@@ -1,8 +1,3 @@
-﻿//------------------------------------------------------------
-// File : EasyInput.cs
-// Email: mailto:zhiqiang.yang@cootek.cn
-// Desc : 
-//------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using GameFramework.UI;

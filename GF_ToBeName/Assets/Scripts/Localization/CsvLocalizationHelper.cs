@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : CsvLocalizationHelper.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : Csv 格式的本地化辅助器。
-//------------------------------------------------------------
-
 using System;
 using System.IO;
 using GameFramework;

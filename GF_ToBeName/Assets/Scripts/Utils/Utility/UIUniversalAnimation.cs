@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : UIButtonEffect.cs
-// Email: zewei.zhuang@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using System;
 using UnityEngine;
 using DG.Tweening;

@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : SceneHelper.cs
-// Email: mailto:yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using System;
 using System.IO;
 using System.Collections;

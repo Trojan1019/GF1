@@ -1,8 +1,3 @@
-﻿//------------------------------------------------------------
-// File : VibrateManager.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 震动管理
-//------------------------------------------------------------
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using NewSideGame;

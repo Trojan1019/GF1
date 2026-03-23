@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : CurrencyCell.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 
-//------------------------------------------------------------
-
 using System;
 using System.Collections;
 using System.Collections.Generic;

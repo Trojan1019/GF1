@@ -1,8 +1,3 @@
-//------------------------------------------------------------
-// File : TUnit.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 
-//------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

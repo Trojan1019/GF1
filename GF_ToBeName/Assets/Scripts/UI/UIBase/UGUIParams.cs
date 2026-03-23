@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : UGUIParams.cs
-// Email: mailto:zhiqiang.yang
-// Desc : UGUIForm参数类，用于界面交互参数传递
-//------------------------------------------------------------
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

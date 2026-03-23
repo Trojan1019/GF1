@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : ProxyManager.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 数据模式存储管理类
-//------------------------------------------------------------
-
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

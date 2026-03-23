@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : RedDotManager.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using UnityEngine;
 using System.Collections.Generic;
 

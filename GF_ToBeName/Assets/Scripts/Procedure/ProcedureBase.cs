@@ -1,8 +1,3 @@
-//------------------------------------------------------------
-// File : ProcedureBase.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
 using UnityEngine;
 using System;
 using UnityGameFramework.Runtime;

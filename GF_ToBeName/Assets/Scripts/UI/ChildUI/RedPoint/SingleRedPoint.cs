@@ -1,8 +1,3 @@
-//------------------------------------------------------------
-// File : SingleRedPoint.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
 using UnityEngine;
 
 namespace NewSideGame

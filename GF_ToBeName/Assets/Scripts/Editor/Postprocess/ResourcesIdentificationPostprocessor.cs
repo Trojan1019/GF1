@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : ResourcesIdentificationPostprocessor.cs
-// Email: mailto:zewei.zhuang@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using System;
 using System.Collections;
 using System.Collections.Generic;

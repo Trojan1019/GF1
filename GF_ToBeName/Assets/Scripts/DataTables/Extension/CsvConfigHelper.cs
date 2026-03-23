@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : CsvConfigHelper.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 配置文件加载读取解析
-//------------------------------------------------------------
-
 using GameFramework;
 using GameFramework.Config;
 using System;

@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : EventManager.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 客户端事件管理器
-//------------------------------------------------------------
-
 using System.Collections.Generic;
 using UnityGameFramework.Runtime;
 using GameFramework;

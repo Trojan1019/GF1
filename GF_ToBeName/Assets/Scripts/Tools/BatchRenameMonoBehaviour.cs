@@ -1,9 +1,3 @@
-// //------------------------------------------------------------
-// // File : BatchRenameAllMonoBehaviours.cs
-// // Email: yang.li@kingboat.io
-// // Desc : MonoBehaviours 批量重命名工具
-// //------------------------------------------------------------
-//
 // #if UNITY_EDITOR
 //
 // using UnityEditor;

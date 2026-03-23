@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : .cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using System;
 using UnityEngine;
 using System.Collections.Generic;

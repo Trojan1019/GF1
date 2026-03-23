@@ -1,8 +1,3 @@
-//------------------------------------------------------------
-// File : AutoDestroy.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 
-//------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using NewSideGame;

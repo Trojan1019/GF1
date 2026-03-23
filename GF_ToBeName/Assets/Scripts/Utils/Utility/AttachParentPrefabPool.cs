@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : PrefabPoolAttachParent.cs
-// Email: mailto:zewei.zhuang@kingboat.io
-// Desc : 依附与父级的对象池，对象池的生命周期与父级对象一起
-//------------------------------------------------------------
-
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : TransformUtility.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 namespace NewSideGame
 {
     using UnityEngine;

@@ -1,8 +1,3 @@
-//------------------------------------------------------------
-// File : ConditionEventManager.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
 using UnityEngine;
 using System;
 using System.Collections.Generic;

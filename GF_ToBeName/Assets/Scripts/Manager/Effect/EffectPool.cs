@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : EffectPool.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 
-//------------------------------------------------------------
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

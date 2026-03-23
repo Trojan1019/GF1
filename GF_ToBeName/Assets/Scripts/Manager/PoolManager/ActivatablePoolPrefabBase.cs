@@ -1,8 +1,3 @@
-//------------------------------------------------------------
-// File : ActivatablePoolPrefabBase.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 
-//------------------------------------------------------------
 using UnityEngine;
 
 namespace NewSideGame

@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : GameLauncher.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 
-//------------------------------------------------------------
-
 #if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;

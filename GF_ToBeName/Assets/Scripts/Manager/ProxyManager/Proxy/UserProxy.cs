@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : UserProxy.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 玩家数据存储
-//------------------------------------------------------------
-
 using System;
 using System.Linq;
 using GameFramework.DataTable;

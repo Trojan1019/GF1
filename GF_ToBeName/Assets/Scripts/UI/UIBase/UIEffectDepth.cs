@@ -1,13 +1,7 @@
-﻿//------------------------------------------------------------
-// File : UIEffectDepth.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 特效层级管理
-
 /// UI 特效做好会有很多层级
 /// 例如：-1，-9，3，4，10 这5个Particle System
 ///      现在需求是 <=-1 的Particle System 需要显示在UI 的后面，>-1的 显示在UI 的前面
 ///      则这个m_ManualDepth 就应该设置为-1
-//------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,9 +1,3 @@
-//------------------------------------------------------------
-// File : LaunchPage.cs
-// Email: yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

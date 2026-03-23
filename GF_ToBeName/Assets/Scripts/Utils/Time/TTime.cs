@@ -1,8 +1,3 @@
-﻿//------------------------------------------------------------
-// File : TTime.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 全局时间管理
-//------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

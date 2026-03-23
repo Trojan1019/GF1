@@ -1,8 +1,3 @@
-﻿//------------------------------------------------------------
-// File : DateTimeHelper.cs
-// Email: mailto:zhiqiang.yang
-// Desc : 登陆、登出、跨天时间管理 （暂时用本地时间）
-//------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

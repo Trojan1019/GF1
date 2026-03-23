@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : TMPHelper.cs
-// Email: mailto:yang.li@kingboat.io
-// Desc : 
-//------------------------------------------------------------
-
 using System;
 using System.Collections;
 using System.Collections.Generic;

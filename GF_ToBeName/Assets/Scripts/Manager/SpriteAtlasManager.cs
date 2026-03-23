@@ -1,9 +1,3 @@
-﻿//------------------------------------------------------------
-// File : SpriteAtlasManager.cs
-// Email: mailto:zhiqiang.yang@kingboat.io
-// Desc : 图集管理器
-//------------------------------------------------------------
-
 using System;
 using System.Collections.Generic;
 using GameFramework;

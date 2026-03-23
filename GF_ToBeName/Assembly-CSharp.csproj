@@ -78,7 +78,6 @@
     <Compile Include="Assets/Scripts/Utils/ScrollView/ScrollDynamicList.cs" />
     <Compile Include="Assets/Scripts/Utils/ScrollView/ScrollGridHorizontal.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/ProgressLiner.cs" />
-    <Compile Include="Assets/Scripts/UI/ChildUI/Shop/RewardItem.cs" />
     <Compile Include="Assets/Scripts/Definition/Constamt/Constant.UIGroup.cs" />
     <Compile Include="Assets/Scripts/Manager/SpriteAtlasManager.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureSplash.cs" />
@@ -116,7 +115,6 @@
     <Compile Include="Assets/Scripts/Utils/Time/Timer.cs" />
     <Compile Include="Assets/Scripts/Manager/UIManager.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureInitResources.cs" />
-    <Compile Include="Assets/Scripts/UI/ChildUI/Shop/ShopItem.cs" />
     <Compile Include="Assets/Scripts/UI/UIBase/IUGUIChild.cs" />
     <Compile Include="Assets/Scripts/Manager/ProxyManager/Model/UserModel.cs" />
     <Compile Include="Assets/Scripts/Definition/Constamt/Constant.Custom.cs" />
@@ -147,7 +145,6 @@
     <Compile Include="Assets/Scripts/Utils/Utility/TweenRotation.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/UIUniversalAnimation.cs" />
     <Compile Include="Assets/Scripts/Utils/Singleton/Singleton.cs" />
-    <Compile Include="Assets/Scripts/UI/UIForm/ShopDialog.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/UITopCoverForm.cs" />
     <Compile Include="Assets/Scripts/Manager/AdManager/AdManager.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/GameMain.cs" />
