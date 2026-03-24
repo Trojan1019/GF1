@@ -15,6 +15,7 @@
   <Resource AssetID="31001" AssetName="BlockItem" AssetPath="Assets/Game/Prefabs/Pool/BlockItem#31001.prefab" />
   <Resource AssetID="31002" AssetName="BlockUnit" AssetPath="Assets/Game/Prefabs/Pool/BlockUnit#31002.prefab" />
   <Resource AssetID="31003" AssetName="ScoreUpText" AssetPath="Assets/Game/Prefabs/Pool/ScoreUpText#31003.prefab" />
+  <Resource AssetID="31004" AssetName="GoalItem" AssetPath="Assets/Game/Prefabs/Pool/GoalItem#31004.prefab" />
   <Resource AssetID="31005" AssetName="ItemEff" AssetPath="Assets/Game/Prefabs/Pool/ItemEff#31005.prefab" />
   <Resource AssetID="31013" AssetName="ClickEff" AssetPath="Assets/Game/Prefabs/Pool/ClickEff#31013.prefab" />
   <Resource AssetID="60000" AssetName="bgm" AssetPath="Assets/RawAsset/Audio/bgm#60000.mp3" />

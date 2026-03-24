@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageIndex: 1
   targetScoreLocal: 1000
+  itemAttachProbability: 0.6
   prefilledCells:
   - x: 0
     y: 4
@@ -89,3 +90,6 @@ MonoBehaviour:
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   spawnSequence:
   - {fileID: 11400000, guid: 29bfd197cc24949a0ab4f0bb39e363b4, type: 2}
+  goalRequirements:
+  - itemType: 2
+    requiredCount: 20

@@ -3,6 +3,7 @@ using CubeCrush.Data;
 using CubeCrush.Manager;
 using NewSideGame;
 using DG.Tweening;
+using System.Collections.Generic;
 
 namespace NewSideGame
 {
@@ -13,6 +14,8 @@ namespace NewSideGame
 
         private BlockShape shape;
         private int spawnIndex;
+        private CubeCrushGoalItemType goalItemType = CubeCrushGoalItemType.None;
+        private readonly List<GoalItemFx> activeGoalItemFx = new List<GoalItemFx>();
         private Vector3 originalPos;
         private Vector3 dragOffset;
         private bool isDragging;
@@ -20,11 +23,12 @@ namespace NewSideGame
         private bool hasScaledToFullSize;
         private bool isFirstSpawn = true;
 
-        public void Init(BlockShape shape, int index,bool spawn)
+        public void Init(BlockShape shape, int index,bool spawn, CubeCrushGoalItemType itemType = CubeCrushGoalItemType.None)
         {
             ClearCells(); // 确保复用时清理旧的子物体
             this.shape = shape;
             this.spawnIndex = index;
+            this.goalItemType = itemType;
             hasScaledToFullSize = false;
             isFirstSpawn = spawn;
             
@@ -54,6 +58,19 @@ namespace NewSideGame
                 unit.transform.localScale = Vector3.one;
 
                 unit.spriteRenderer.color = shape.blockColor;
+
+                if (goalItemType != CubeCrushGoalItemType.None && GameMain.Instance.goalItemFxAssetId > 0)
+                {
+                    GoalItemFx itemFx = GameEntry.PoolManager.SpawnSync<GoalItemFx>(GameMain.Instance.goalItemFxAssetId);
+                    if (itemFx != null)
+                    {
+                        itemFx.transform.SetParent(unit.transform, false);
+                        itemFx.transform.localPosition = Vector3.zero;
+                        itemFx.transform.localScale = Vector3.one;
+                        itemFx.Init(GameMain.Instance.GetGoalItemSprite(goalItemType), Color.white);
+                        activeGoalItemFx.Add(itemFx);
+                    }
+                }
             }
 
             // Adjust collider to fit shape
@@ -74,6 +91,15 @@ namespace NewSideGame
 
         private void ClearCells()
         {
+            for (int i = 0; i < activeGoalItemFx.Count; i++)
+            {
+                if (activeGoalItemFx[i] != null)
+                {
+                    GameEntry.PoolManager.DeSpawnSync(activeGoalItemFx[i]);
+                }
+            }
+            activeGoalItemFx.Clear();
+
             var units = GetComponentsInChildren<BlockUnit>();
             foreach (var unit in units)
             {
@@ -112,8 +138,9 @@ namespace NewSideGame
         private void OnMouseDown()
         {
             if (spawnIndex == -1) return; // 提示虚影不响应点击
-            if (GameLoopManager.Instance != null && (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending))
-                return; // 游戏结束/通关暂停后禁用交互
+            if (GameMain.Instance.IsClearingAnimationPlaying) return;
+            if (GameMain.Instance.IsGameOverFillAnimating) return;
+            if (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending) return; // 游戏结束/通关暂停后禁用交互
 
             // 播放方块拾取音效
             GameEntry.Sound.PlaySound(Constant.SoundId.BlockPickup);
@@ -141,7 +168,9 @@ namespace NewSideGame
         private void OnMouseDrag()
         {
             if (spawnIndex == -1) return;
-            if (GameLoopManager.Instance != null && (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending)) return;
+            if (GameMain.Instance.IsClearingAnimationPlaying) return;
+            if (GameMain.Instance.IsGameOverFillAnimating) return;
+            if (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending) return;
 
             if (isDragging)
             {
@@ -160,54 +189,35 @@ namespace NewSideGame
         private void OnMouseUp()
         {
             if (spawnIndex == -1) return;
-            if (GameLoopManager.Instance != null && (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending)) return;
+            if (GameMain.Instance.IsClearingAnimationPlaying) return;
+            if (GameMain.Instance.IsGameOverFillAnimating) return;
+            if (GameLoopManager.Instance.isGameOver || GameLoopManager.Instance.IsStageClearPending) return;
 
             isDragging = false;
 
             Vector2Int gridPos = GameMain.Instance.WorldToGrid(transform.position);
 
-            if (GameLoopManager.Instance != null)
+            if (GridManager.Instance.CanPlace(shape, gridPos))
             {
-                if (GridManager.Instance.CanPlace(shape, gridPos))
-                {
-                    // Valid placement: hide the ghost but keep the grid highlight until placed
-                    GameMain.Instance.HidePreviewGhost();
-
-                    Vector3 targetWorldPos = GameMain.Instance.GridToWorld(gridPos);
-                    // 播放拖拽方块音效（鼠标按下瞬间）
-                    if (GameLoopManager.Instance != null)
-                    {
-                        GameEntry.Sound.PlaySound(Constant.SoundId.Bubble1);
-                    }
-
-                    // 放置时缩放0.9倍后回弹动画
-                    Sequence seq = DOTween.Sequence();
-                    seq.Append(transform.DOMove(targetWorldPos, 0.05f).SetUpdate(true));
-                    seq.Join(transform.DOScale(0.9f, 0.1f).SetUpdate(true));
-                    seq.Append(transform.DOScale(1f, 0.1f).SetUpdate(true));
-                    seq.OnComplete(() =>
-                    {
-                        GameMain.Instance.ClearHighlight();
-                        GameLoopManager.Instance.OnBlockPlaced(spawnIndex, shape, gridPos);
-                    });
-                }
-                else
-                {
-                    // Invalid placement: clear preview completely
-                    GameMain.Instance.ClearPreview();
-
-                    // Return to spawn
-                    transform.DOMove(originalPos, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
-                    float targetScale = hasScaledToFullSize ? 1f : GameMain.Instance.spawnSize;
-                    transform.DOScale(targetScale, 0.2f).SetUpdate(true);
-                }
+                // Valid placement: 不做“底部方块组飞行移动”，直接落逻辑
+                GameMain.Instance.HidePreviewGhost();
+                GameMain.Instance.ClearHighlight();
+                GameEntry.Sound.PlaySound(Constant.SoundId.Bubble1);
+                GameLoopManager.Instance.OnBlockPlaced(spawnIndex, shape, gridPos);
             }
             else
             {
+                // Invalid placement: clear preview completely
                 GameMain.Instance.ClearPreview();
-                transform.position = originalPos;
-                float targetScale = hasScaledToFullSize ? 1f : GameMain.Instance.spawnSize;
-                transform.DOScale(targetScale, 0.1f).SetUpdate(true);
+
+                // Return to spawn
+                transform.DOMove(originalPos, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
+                // 回到“生成区大小”：只有放置到桌面成功后才会触发槽位刷新/重新 Init。
+                float targetScale = GameMain.Instance.spawnSize;
+                transform.DOScale(targetScale, 0.2f).SetUpdate(true);
+
+                // 重置状态：下一次拿起时仍走完整拾取缩放流程
+                hasScaledToFullSize = false;
             }
         }
 

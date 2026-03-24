@@ -14,6 +14,7 @@ namespace CubeCrush.Manager
         private int stageStartTotalScore = 0; // 进入当前关时的累计总分
         private int stageTargetLocalScore = 0; // 本关目标分（本关累计分）
         private int highestStageCleared = 0;
+        private readonly List<CubeCrushGoalProgress> stageGoals = new List<CubeCrushGoalProgress>();
 
         private bool isStageClearPending = false; // 通关 UI 暂停状态：禁止交互
 
@@ -22,6 +23,7 @@ namespace CubeCrush.Manager
         public int StageTargetDelta => stageTargetLocalScore; // 兼容旧 UI 字段名
         public int MaxStageReached => highestStageCleared;
         public bool IsStageClearPending => isStageClearPending;
+        public List<CubeCrushGoalProgress> StageGoals => stageGoals;
 
         // 用于“保存节流”，避免每次落子都触发 Setting.Save()
         private float _lastSaveTime;
@@ -56,6 +58,7 @@ namespace CubeCrush.Manager
             stageIndex = 1;
             stageStartTotalScore = 0;
             stageTargetLocalScore = 0;
+            stageGoals.Clear();
 
             BlockSpawner.Instance.ConfigureClassicSpawn();
             GridManager.Instance.InitializeGrid();
@@ -80,6 +83,11 @@ namespace CubeCrush.Manager
                 stageStartTotalScore = model.stageStartTotalScore;
                 stageTargetLocalScore = GameMain.Instance.GetStageTargetLocalScore(stageIndex);
                 isStageClearPending = model.isStageClearPending;
+                RestoreStageGoals(model);
+                if (stageGoals.Count == 0)
+                {
+                    InitStageGoalsFromConfig(GameMain.Instance.GetStageConfig(stageIndex));
+                }
 
                 RestoreStageGridAndSpawns(model);
 
@@ -103,11 +111,16 @@ namespace CubeCrush.Manager
 
             // 兜底：如果 stage 列表为空，targetScoreLocal 会返回 0，此时会直接触发通关 UI
             stageTargetLocalScore = GameMain.Instance.GetStageTargetLocalScore(stageIndex);
+            InitStageGoalsFromConfig(GameMain.Instance.GetStageConfig(stageIndex));
 
             GridManager.Instance.InitializeGrid();
 
             var cfg = GameMain.Instance.GetStageConfig(stageIndex);
-            BlockSpawner.Instance.ConfigureStageSpawn(cfg != null ? cfg.spawnSequence : null, 0);
+            BlockSpawner.Instance.ConfigureStageSpawn(
+                cfg != null ? cfg.spawnSequence : null,
+                0,
+                cfg != null ? cfg.goalRequirements : null,
+                cfg != null ? cfg.itemAttachProbability : 0f);
             BlockSpawner.Instance.SpawnBlocks();
 
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGameStart);
@@ -146,6 +159,7 @@ namespace CubeCrush.Manager
                     }
 
                     GridManager.Instance.gridColors[x, y] = parsed;
+                    GridManager.Instance.gridGoalItems[x, y] = model.gridGoalItems != null && index < model.gridGoalItems.Length ? model.gridGoalItems[index] : 0;
                 }
             }
 
@@ -161,10 +175,16 @@ namespace CubeCrush.Manager
             }
 
             List<BlockShape> restoredCurrentShapes = new List<BlockShape>();
+            List<CubeCrushGoalItemType> restoredCurrentItems = new List<CubeCrushGoalItemType>();
             if (model.spawnShapes != null)
             {
                 for (int i = 0; i < model.spawnShapes.Length; i++)
                 {
+                    CubeCrushGoalItemType itemType = CubeCrushGoalItemType.None;
+                    if (model.spawnItemTypes != null && i < model.spawnItemTypes.Length)
+                        itemType = (CubeCrushGoalItemType)model.spawnItemTypes[i];
+                    restoredCurrentItems.Add(itemType);
+
                     string shapeName = model.spawnShapes[i];
                     if (string.IsNullOrEmpty(shapeName))
                     {
@@ -187,6 +207,7 @@ namespace CubeCrush.Manager
                 spawnSequence,
                 model.spawnCursor,
                 restoredCurrentShapes,
+                restoredCurrentItems,
                 notifyUI: false);
         }
 
@@ -203,6 +224,7 @@ namespace CubeCrush.Manager
 
                 GridManager.Instance.grid[cell.x, cell.y] = 1;
                 GridManager.Instance.gridColors[cell.x, cell.y] = cell.color;
+                GridManager.Instance.gridGoalItems[cell.x, cell.y] = (int)CubeCrushGoalItemType.None;
             }
         }
 
@@ -211,9 +233,11 @@ namespace CubeCrush.Manager
             if (isGameOver) return;
             if (isStageClearPending) return;
 
-            if (GridManager.Instance.PlaceBlock(shape, pos, out List<int> clearedRows, out List<int> clearedCols,
+            CubeCrushGoalItemType placedItemType = BlockSpawner.Instance.GetItemAt(spawnIndex);
+            if (GridManager.Instance.PlaceBlock(shape, pos, placedItemType, out List<int> clearedRows, out List<int> clearedCols,
                     out List<ClearedCellInfo> clearedCells))
             {
+                // 放置完成后占用该槽位（道具不在这里“消耗/收集”，而是在棋盘格被消除时收集）
                 BlockSpawner.Instance.UseBlock(spawnIndex);
 
                 int clearedLines = clearedRows.Count + clearedCols.Count;
@@ -226,38 +250,47 @@ namespace CubeCrush.Manager
 
                 score += points;
 
-                if (GameMain.Instance != null)
-                {
-                    Vector3 placementWorldPos = GameMain.Instance.GridToWorld(pos);
-                    int placementScore = shape.cells.Count;
+                Vector3 placementWorldPos = GameMain.Instance.GridToWorld(pos);
+                int placementScore = shape.cells.Count;
 
-                    if (clearedLines > 0)
-                    {
-                        GameMain.Instance.ShowClearScore(placementScore, clearedLines, placementWorldPos);
-                    }
-                    else
-                    {
-                        GameMain.Instance.ShowPlacementScore(placementScore, placementWorldPos);
-                    }
+                if (clearedLines > 0)
+                {
+                    GameMain.Instance.ShowClearScore(placementScore, clearedLines, placementWorldPos);
+                }
+                else
+                {
+                    GameMain.Instance.ShowPlacementScore(placementScore, placementWorldPos);
                 }
 
                 if (clearedLines > 0)
                 {
                     GameEntry.Sound.PlaySound(Constant.SoundId.Remove);
-                    EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushLinesCleared, clearedCells);
+                    // 传入 rows/cols，便于按“从左到右/从上到下”逐格播放消除特效
+                    EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushLinesCleared, clearedCells, clearedRows, clearedCols);
 #if UNITY_ANDROID || UNITY_IOS
                     if (clearedLines >= 2 && !GameEntry.Setting.GetBool(Constant.Setting.VibrationMuted))
                     {
                         Handheld.Vibrate();
                     }
 #endif
+                    // 在真正被清除的格子上收集道具（保持 icon 直到消除发生）
+                    if (clearedCells != null)
+                    {
+                        for (int i = 0; i < clearedCells.Count; i++)
+                        {
+                            var info = clearedCells[i];
+                            if (info == null) continue;
+                            if (info.itemType == CubeCrushGoalItemType.None) continue;
+                            CollectGoalItem(info.itemType);
+                        }
+                    }
                 }
 
                 // Stage clear check（通关 UI 手动推进下一关）
-                if (GameMain.Instance != null && GameMain.Instance.IsStageSurvival)
+                if (GameMain.Instance.IsStageSurvival)
                 {
                     int stageLocalScore = score - stageStartTotalScore;
-                    if (!isStageClearPending && stageLocalScore >= stageTargetLocalScore)
+                    if (!isStageClearPending && stageLocalScore >= stageTargetLocalScore && AreAllGoalsCompleted())
                     {
                         TriggerStageClear();
                         return;
@@ -336,7 +369,9 @@ namespace CubeCrush.Manager
                 highestStageCleared: highestStageCleared,
                 stageStartTotalScore: stageStartTotalScore,
                 spawnCursor: BlockSpawner.Instance.SpawnCursor,
-                isStageClearPending: isStageClearPending);
+                isStageClearPending: isStageClearPending,
+                goals: stageGoals,
+                spawnItems: BlockSpawner.Instance.currentShapeItems);
         }
 
         public void NextStage()
@@ -347,13 +382,18 @@ namespace CubeCrush.Manager
             stageIndex += 1;
             stageStartTotalScore = score;
             stageTargetLocalScore = GameMain.Instance.GetStageTargetLocalScore(stageIndex);
+            InitStageGoalsFromConfig(GameMain.Instance.GetStageConfig(stageIndex));
 
             var cfg = GameMain.Instance.GetStageConfig(stageIndex);
 
             // 重新初始化场面（清空网格 + 应用下一关预置 + 重置底部序列）
             GridManager.Instance.InitializeGrid();
 
-            BlockSpawner.Instance.ConfigureStageSpawn(cfg != null ? cfg.spawnSequence : null, 0);
+            BlockSpawner.Instance.ConfigureStageSpawn(
+                cfg != null ? cfg.spawnSequence : null,
+                0,
+                cfg != null ? cfg.goalRequirements : null,
+                cfg != null ? cfg.itemAttachProbability : 0f);
             BlockSpawner.Instance.SpawnBlocks();
 
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGameStart);
@@ -402,6 +442,66 @@ namespace CubeCrush.Manager
             isStageClearPending = false;
             isGameOver = false;
             StartGame(false);
+        }
+
+        private void InitStageGoalsFromConfig(CubeCrushStage cfg)
+        {
+            stageGoals.Clear();
+            if (cfg == null || cfg.goalRequirements == null) return;
+            for (int i = 0; i < cfg.goalRequirements.Count; i++)
+            {
+                var req = cfg.goalRequirements[i];
+                if (req == null || req.itemType == CubeCrushGoalItemType.None || req.requiredCount <= 0) continue;
+                stageGoals.Add(new CubeCrushGoalProgress
+                {
+                    itemType = req.itemType,
+                    requiredCount = req.requiredCount,
+                    remainingCount = req.requiredCount
+                });
+            }
+            EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGoalProgressChanged);
+        }
+
+        private void RestoreStageGoals(GameModel model)
+        {
+            stageGoals.Clear();
+            if (model == null || model.goalItemTypes == null || model.goalRequiredCounts == null || model.goalRemainingCounts == null)
+                return;
+
+            int count = Mathf.Min(model.goalItemTypes.Length, Mathf.Min(model.goalRequiredCounts.Length, model.goalRemainingCounts.Length));
+            for (int i = 0; i < count; i++)
+            {
+                stageGoals.Add(new CubeCrushGoalProgress
+                {
+                    itemType = (CubeCrushGoalItemType)model.goalItemTypes[i],
+                    requiredCount = model.goalRequiredCounts[i],
+                    remainingCount = model.goalRemainingCounts[i]
+                });
+            }
+            EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGoalProgressChanged);
+        }
+
+        private void CollectGoalItem(CubeCrushGoalItemType itemType)
+        {
+            if (itemType == CubeCrushGoalItemType.None) return;
+            for (int i = 0; i < stageGoals.Count; i++)
+            {
+                if (stageGoals[i].itemType != itemType) continue;
+                stageGoals[i].remainingCount = Mathf.Max(0, stageGoals[i].remainingCount - 1);
+                EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGoalProgressChanged);
+                GameEntry.Sound.PlaySound(Constant.SoundId.Collect);
+                return;
+            }
+        }
+
+        private bool AreAllGoalsCompleted()
+        {
+            if (stageGoals.Count == 0) return true;
+            for (int i = 0; i < stageGoals.Count; i++)
+            {
+                if (stageGoals[i].remainingCount > 0) return false;
+            }
+            return true;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace NewSideGame
     {
         public Vector2Int pos;
         public Color color;
+        public CubeCrushGoalItemType itemType;
     }
 
     public class GridManager : MonoSingleton<GridManager>
@@ -18,6 +19,7 @@ namespace NewSideGame
         // 0: Empty, 1: Filled
         public int[,] grid;
         public Color[,] gridColors;
+        public int[,] gridGoalItems;
 
         private void Awake()
         {
@@ -28,12 +30,14 @@ namespace NewSideGame
         {
             grid = new int[cols, rows];
             gridColors = new Color[cols, rows];
+            gridGoalItems = new int[cols, rows];
             for (int x = 0; x < cols; x++)
             {
                 for (int y = 0; y < rows; y++)
                 {
                     grid[x, y] = 0;
                     gridColors[x, y] = Color.clear;
+                    gridGoalItems[x, y] = (int)CubeCrushGoalItemType.None;
                 }
             }
 
@@ -80,7 +84,7 @@ namespace NewSideGame
             }
         }
 
-        public bool PlaceBlock(BlockShape shape, Vector2Int pos, out List<int> clearedRows, out List<int> clearedCols,
+        public bool PlaceBlock(BlockShape shape, Vector2Int pos, CubeCrushGoalItemType itemType, out List<int> clearedRows, out List<int> clearedCols,
             out List<ClearedCellInfo> clearedCells)
         {
             clearedRows = new List<int>();
@@ -93,6 +97,7 @@ namespace NewSideGame
             {
                 grid[pos.x + cell.x, pos.y + cell.y] = 1;
                 gridColors[pos.x + cell.x, pos.y + cell.y] = shape.blockColor;
+                gridGoalItems[pos.x + cell.x, pos.y + cell.y] = (int)itemType;
             }
 
             CheckLines(out clearedRows, out clearedCols);
@@ -103,7 +108,12 @@ namespace NewSideGame
                 for (int x = 0; x < cols; x++)
                 {
                     gridColors[x, y] = shape.blockColor;
-                    clearedCells.Add(new ClearedCellInfo { pos = new Vector2Int(x, y), color = gridColors[x, y] });
+                    clearedCells.Add(new ClearedCellInfo
+                    {
+                        pos = new Vector2Int(x, y),
+                        color = gridColors[x, y],
+                        itemType = (CubeCrushGoalItemType)gridGoalItems[x, y]
+                    });
                 }
             }
 
@@ -116,7 +126,7 @@ namespace NewSideGame
                     if (!clearedRows.Contains(y))
                     {
                         clearedCells.Add(new ClearedCellInfo
-                            { pos = new Vector2Int(x, y), color = gridColors[x, y] });
+                            { pos = new Vector2Int(x, y), color = gridColors[x, y], itemType = (CubeCrushGoalItemType)gridGoalItems[x, y] });
                     }
                 }
             }
@@ -167,12 +177,20 @@ namespace NewSideGame
         {
             foreach (int y in rowsToClear)
             {
-                for (int x = 0; x < cols; x++) grid[x, y] = 0;
+                for (int x = 0; x < cols; x++)
+                {
+                    grid[x, y] = 0;
+                    gridGoalItems[x, y] = (int)CubeCrushGoalItemType.None;
+                }
             }
 
             foreach (int x in colsToClear)
             {
-                for (int y = 0; y < rows; y++) grid[x, y] = 0;
+                for (int y = 0; y < rows; y++)
+                {
+                    grid[x, y] = 0;
+                    gridGoalItems[x, y] = (int)CubeCrushGoalItemType.None;
+                }
             }
         }
 

@@ -50,6 +50,8 @@ namespace NewSideGame
             public const int CubeCrushGameStart = 103;
             public const int CubeCrushLinesCleared = 104;
             public const int GameOverFillAnimation = 105;
+            public const int CubeCrushGoalProgressChanged = 106;
+            public const int CubeCrushGoalItemCollectedFly = 107;
 
             public const int LoadDictionarySuccess = 201;
             public const int LoadDictionaryFailure = 201;

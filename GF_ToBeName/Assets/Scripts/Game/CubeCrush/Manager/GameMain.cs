@@ -10,6 +10,13 @@ namespace NewSideGame
 {
     public partial class GameMain : MonoBehaviour
     {
+        [System.Serializable]
+        public class GoalItemSpriteEntry
+        {
+            public CubeCrushGoalItemType itemType = CubeCrushGoalItemType.None;
+            public Sprite sprite;
+        }
+
         public static GameMain Instance;
 
         private void Awake()
@@ -37,6 +44,10 @@ namespace NewSideGame
         private float lastInteractionTime;
         private SceneBlockItem currentHint;
         private Vector3 gridStartOffset;
+        private bool isClearingAnimationPlaying;
+        public bool isGameOverFillAnimating;
+        public bool IsClearingAnimationPlaying => isClearingAnimationPlaying;
+        public bool IsGameOverFillAnimating => isGameOverFillAnimating;
 
         private SceneBlockItem placementPreview;
 
@@ -47,6 +58,10 @@ namespace NewSideGame
         private SceneGridCell[,] sceneGrid;
 
         private List<SceneBlockItem> sceneSpawnBlocks = new List<SceneBlockItem>();
+        [Header("Goal Item Visuals")]
+        [Tooltip("Pooled GoalItemFx asset id, configured in prefab naming system.")]
+        public int goalItemFxAssetId = 31004;
+        [SerializeField] private List<GoalItemSpriteEntry> goalItemSprites = new List<GoalItemSpriteEntry>();
 
         private void OnEnable()
         {
@@ -219,26 +234,89 @@ namespace NewSideGame
 
         private void OnLinesCleared(params object[] args)
         {
-            if (args.Length > 0 && args[0] is List<ClearedCellInfo> cleared)
-            {
-                foreach (var cell in cleared)
-                {
-                    var animObj = new GameObject("ClearAnim");
-                    animObj.transform.SetParent(gridOrigin, false);
-                    animObj.transform.localPosition =
-                        gridStartOffset + new Vector3(cell.pos.x * cellSize, cell.pos.y * cellSize, 0);
-                    var sr = animObj.AddComponent<SpriteRenderer>();
-                    sr.sprite = sceneGrid[cell.pos.x, cell.pos.y].spriteRenderer.sprite;
-                    sr.color = cell.color;
+            if (args == null || args.Length < 1) return;
 
-                    animObj.transform.DOScale(0.1f, 0.5f).SetEase(Ease.OutQuad);
-                    sr.DOFade(0f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() => Destroy(animObj));
+            if (!(args[0] is List<ClearedCellInfo> clearedCells) || clearedCells == null) return;
+
+            // 新需求：逐行/逐列有方向地消失：
+            // 行：x 从左到右；列：y 从上到下。
+            List<int> clearedRows = args.Length > 1 && args[1] is List<int> listRows ? listRows : null;
+            List<int> clearedCols = args.Length > 2 && args[2] is List<int> listCols ? listCols : null;
+
+            // 动画期间禁用交互输入
+            isClearingAnimationPlaying = true;
+
+            // 兼容旧触发：如果没传行/列，则退回“并行淡出”
+            if (clearedRows == null && clearedCols == null)
+            {
+                foreach (var cell in clearedCells)
+                {
+                    if (sceneGrid != null && sceneGrid[cell.pos.x, cell.pos.y] != null)
+                        sceneGrid[cell.pos.x, cell.pos.y].PlayClearFx(0f, 0.5f);
+                }
+                StartCoroutine(EndClearAnimationAfter(0.5f));
+                return;
+            }
+
+            float lineTotalDuration = 0.5f;
+            float cellFxDuration = 0.16f;
+            float maxEndTime = 0f;
+
+            // 逐行消失：同一行内部按 x 升序延迟
+            if (clearedRows != null)
+            {
+                foreach (int y in clearedRows)
+                {
+                    var cellsInRow = clearedCells.FindAll(c => c.pos.y == y);
+                    cellsInRow.Sort((a, b) => a.pos.x.CompareTo(b.pos.x));
+
+                    int count = cellsInRow.Count;
+                    if (count <= 0) continue;
+
+                    float stepDur = count <= 1 ? 0f : Mathf.Max(0.01f, (lineTotalDuration - cellFxDuration) / (count - 1));
+                    for (int i = 0; i < count; i++)
+                    {
+                        float delay = i * stepDur;
+                        if (sceneGrid != null && sceneGrid[cellsInRow[i].pos.x, cellsInRow[i].pos.y] != null)
+                            sceneGrid[cellsInRow[i].pos.x, cellsInRow[i].pos.y].PlayClearFx(delay, cellFxDuration);
+                        maxEndTime = Mathf.Max(maxEndTime, delay + cellFxDuration);
+                    }
                 }
             }
+
+            // 逐列消失：同一列内部按 y 降序延迟（从上到下）
+            if (clearedCols != null)
+            {
+                foreach (int x in clearedCols)
+                {
+                    var cellsInCol = clearedCells.FindAll(c => c.pos.x == x);
+                    cellsInCol.Sort((a, b) => b.pos.y.CompareTo(a.pos.y));
+
+                    int count = cellsInCol.Count;
+                    if (count <= 0) continue;
+
+                    float stepDur = count <= 1 ? 0f : Mathf.Max(0.01f, (lineTotalDuration - cellFxDuration) / (count - 1));
+                    for (int i = 0; i < count; i++)
+                    {
+                        float delay = i * stepDur;
+                        if (sceneGrid != null && sceneGrid[cellsInCol[i].pos.x, cellsInCol[i].pos.y] != null)
+                            sceneGrid[cellsInCol[i].pos.x, cellsInCol[i].pos.y].PlayClearFx(delay, cellFxDuration);
+                        maxEndTime = Mathf.Max(maxEndTime, delay + cellFxDuration);
+                    }
+                }
+            }
+            StartCoroutine(EndClearAnimationAfter(maxEndTime));
+        }
+
+        private IEnumerator EndClearAnimationAfter(float delay)
+        {
+            if (delay > 0f) yield return new WaitForSeconds(delay);
+            isClearingAnimationPlaying = false;
         }
 
         private void OnGameOverFillAnimation(params object[] args)
         {
+            isGameOverFillAnimating = true;
             StartCoroutine(FillEmptyCellsCoroutine());
         }
 
@@ -286,6 +364,7 @@ namespace NewSideGame
             {
                 GameEntry.PoolManager.DeSpawnSync(dropCell[i]);
             }
+            isGameOverFillAnimating = false;
         }
 
         private void OnGameStart(params object[] args)
@@ -336,6 +415,7 @@ namespace NewSideGame
             if (sceneGrid == null) return;
             int[,] data = GridManager.Instance.grid;
             Color[,] colors = GridManager.Instance.gridColors;
+            int[,] goalItems = GridManager.Instance.gridGoalItems;
             int rows = data.GetLength(1);
             int cols = data.GetLength(0);
 
@@ -344,7 +424,10 @@ namespace NewSideGame
                 for (int y = 0; y < rows; y++)
                 {
                     bool filled = data[x, y] != 0;
-                    sceneGrid[x, y].SetState(filled, filled ? colors[x, y] : Color.gray);
+                    CubeCrushGoalItemType itemType = (CubeCrushGoalItemType)goalItems[x, y];
+                    Sprite itemSprite = itemType != CubeCrushGoalItemType.None ? GetGoalItemSprite(itemType) : null;
+                    // 丢失兜底：只要 grid 数据里记录了道具类型，这里每次刷新都会重新绑定 sprite
+                    sceneGrid[x, y].SetState(filled, filled ? colors[x, y] : Color.gray, itemSprite);
                 }
             }
         }
@@ -391,7 +474,8 @@ namespace NewSideGame
                 float xPos = -actualWidth / 2f + slotWidth * i + slotWidth / 2f;
                 block.transform.localPosition = new Vector3(xPos, 0, 0);
 
-                block.Init(shapes[i], i,spawn);
+                CubeCrushGoalItemType itemType = BlockSpawner.Instance.GetItemAt(i);
+                block.Init(shapes[i], i, spawn, itemType);
                 sceneSpawnBlocks.Add(block);
                 
                 if (spawn && !hasPlayedSpawnSound)
@@ -417,6 +501,18 @@ namespace NewSideGame
         {
             Vector3 localPos = gridStartOffset + new Vector3(gridPos.x * cellSize, gridPos.y * cellSize, 0);
             return gridOrigin.TransformPoint(localPos);
+        }
+
+        public Sprite GetGoalItemSprite(CubeCrushGoalItemType itemType)
+        {
+            if (itemType == CubeCrushGoalItemType.None || goalItemSprites == null) return null;
+            for (int i = 0; i < goalItemSprites.Count; i++)
+            {
+                var e = goalItemSprites[i];
+                if (e == null) continue;
+                if (e.itemType == itemType) return e.sprite;
+            }
+            return null;
         }
     }
 }

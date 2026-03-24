@@ -64,6 +64,7 @@
     <Compile Include="Assets/Scripts/Utils/ScrollView/ScrollDynamicListItem.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureBase.cs" />
     <Compile Include="Assets/Scripts/Tools/StringConvertTool.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushStageDatabase.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/AspectFullImage.cs" />
     <Compile Include="Assets/Scripts/Manager/PoolManager/IKBPoolObjectChild.cs" />
     <Compile Include="Assets/Scripts/UI/ChildUI/Currency/ICurrencyGroup.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets/Scripts/Utils/ScrollView/ScrollDynamicList.cs" />
     <Compile Include="Assets/Scripts/Utils/ScrollView/ScrollGridHorizontal.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/ProgressLiner.cs" />
+    <Compile Include="Assets/Scripts/UI/ChildUI/Shop/RewardItem.cs" />
     <Compile Include="Assets/Scripts/Definition/Constamt/Constant.UIGroup.cs" />
     <Compile Include="Assets/Scripts/Manager/SpriteAtlasManager.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureSplash.cs" />
@@ -115,15 +117,18 @@
     <Compile Include="Assets/Scripts/Utils/Time/Timer.cs" />
     <Compile Include="Assets/Scripts/Manager/UIManager.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureInitResources.cs" />
+    <Compile Include="Assets/Scripts/UI/ChildUI/Shop/ShopItem.cs" />
     <Compile Include="Assets/Scripts/UI/UIBase/IUGUIChild.cs" />
     <Compile Include="Assets/Scripts/Manager/ProxyManager/Model/UserModel.cs" />
     <Compile Include="Assets/Scripts/Definition/Constamt/Constant.Custom.cs" />
     <Compile Include="Assets/Scripts/Manager/GameManager.cs" />
     <Compile Include="Assets/Scripts/Utils/SafeAreaAdjuster.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/GameMain.SurvivalStage.cs" />
     <Compile Include="Assets/Scripts/Utils/Extension/ResourceComponentExtension.cs" />
     <Compile Include="Assets/Scripts/Utils/Iap/StoreUtils.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/CUtility.cs" />
     <Compile Include="Assets/GameFramework/Libraries/LitJson/IJsonWrapper.cs" />
+    <Compile Include="Assets/Scripts/Utils/Utility/LocalizationLanguageHelper.cs" />
     <Compile Include="Assets/Scripts/Utils/ScrollView/BetterScrollList.cs" />
     <Compile Include="Assets/Scripts/Utils/Singleton/MonoSingleton.cs" />
     <Compile Include="Assets/Scripts/Common/GLog.cs" />
@@ -131,8 +136,10 @@
     <Compile Include="Assets/Scripts/Manager/ShaderManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PlayerPrefsTool.cs" />
     <Compile Include="Assets/Scripts/DataTables/Extension/DRExcelExtend.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/View/GoalItemFx.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/ScorePopupManager.cs" />
     <Compile Include="Assets/Scripts/Manager/Effect/FlyElementTarget.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushGoalItem.cs" />
     <Compile Include="Assets/Scripts/Manager/Effect/AutoDestroy.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/EasyInput.cs" />
     <Compile Include="Assets/Scripts/Manager/EventManager.cs" />
@@ -145,6 +152,7 @@
     <Compile Include="Assets/Scripts/Utils/Utility/TweenRotation.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/UIUniversalAnimation.cs" />
     <Compile Include="Assets/Scripts/Utils/Singleton/Singleton.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/ShopDialog.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/UITopCoverForm.cs" />
     <Compile Include="Assets/Scripts/Manager/AdManager/AdManager.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/GameMain.cs" />
@@ -176,6 +184,7 @@
     <Compile Include="Assets/Scripts/GamEntry/GameEntry.Builtin.cs" />
     <Compile Include="Assets/Scripts/GamEntry/GameEntry.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/TransformUtility.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/UI/GoalItemUIBind.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/SettingDialog.cs" />
     <Compile Include="Assets/Scripts/UI/ChildUI/Currency/CasualCurrencyGroup.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/LocalizationUtils.cs" />
@@ -183,6 +192,7 @@
     <Compile Include="Assets/Scripts/Definition/ItemType.cs" />
     <Compile Include="Assets/Scripts/DataTables/Extension/DataTableExtension.cs" />
     <Compile Include="Assets/Scripts/Procedure/ProcedureColdBoot.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushStage.cs" />
     <Compile Include="Assets/Scripts/Tools/CompilationListener.cs" />
     <Compile Include="Assets/Scripts/Manager/PoolManager/KBPoolObjectBase.cs" />
     <Compile Include="Assets/Scripts/Utils/Utility/ObjectPool.cs" />
@@ -217,10 +227,7 @@
     <Compile Include="Assets/Scripts/Manager/ProxyManager/ProxyManager.cs" />
     <Compile Include="Assets/Scripts/Manager/VibrateManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PictureNameTool.cs" />
-    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushStageDatabase.cs" />
-    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushStage.cs" />
-    <Compile Include="Assets/Scripts/Utils/Utility/LocalizationLanguageHelper.cs" />
-    <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/GameMain.SurvivalStage.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Debug/EditorAutoPlaceBlockGroup.cs" />
     <None Include="Assets/Resources/Shader/Effect_Distort Add_1.shader" />
     <None Include="Assets/RawAsset/Fonts/TextMeshPro/LineBreaking Following Characters.txt" />
     <None Include="Assets/link.xml" />

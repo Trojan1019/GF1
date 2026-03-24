@@ -18,6 +18,7 @@
         BlockItem31001 = 31001,
         BlockUnit31002 = 31002,
         ScoreUpText31003 = 31003,
+        GoalItem31004 = 31004,
         ItemEff31005 = 31005,
         ClickEff31013 = 31013,
         bgm60000 = 60000,

@@ -458,6 +458,7 @@ GameObject:
   - component: {fileID: 1460185495}
   - component: {fileID: 1460185494}
   - component: {fileID: 1460185496}
+  - component: {fileID: 1460185497}
   m_Layer: 3
   m_Name: GameMain
   m_TagString: Untagged
@@ -494,12 +495,21 @@ MonoBehaviour:
   spawnOrigin: {fileID: 374942140}
   cellSize: 1.56
   spawnSpacing: 10
-  spawnSize: 0.7
+  spawnSize: 0.5
   spawnAreaWidth: 13
   hintDelay: 8
   hintDuration: 2
   hintAlpha: 0.5
   hintSoundId: 10001
+  isGameOverFillAnimating: 0
+  goalItemFxAssetId: 31004
+  goalItemSprites:
+  - itemType: 2
+    sprite: {fileID: 21300000, guid: a868fb5876d044f2195701c8bad7e4a8, type: 3}
+  - itemType: 1
+    sprite: {fileID: 21300000, guid: 6fa477e83449248549bcfa37bebae2be, type: 3}
+  - itemType: 3
+    sprite: {fileID: 21300000, guid: b67014371b5bb4b10b6d74f27899d93b, type: 3}
   popupParent: {fileID: 1479466895}
   mode: 0
   stageStartIndex: 1
@@ -533,6 +543,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521c6254e80b4da48d895f42acbb0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1460185497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460185493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d487d7228b554ca5922ef4b8ea23272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enable: 1
 --- !u!1 &1479466891
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +635,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 200
   m_TargetDisplay: 0
 --- !u!224 &1479466895
 RectTransform:

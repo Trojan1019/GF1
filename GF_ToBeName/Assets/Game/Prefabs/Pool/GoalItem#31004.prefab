@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 995975395307927925}
-  - component: {fileID: -8058389931163298137}
   - component: {fileID: -7624094410824413462}
+  - component: {fileID: 1773069374836296429}
   m_Layer: 0
-  m_Name: BlockUnit#31002
+  m_Name: GoalItem#31004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,27 +28,11 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8058389931163298137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5868103941643973303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb581c439434936b4499caf1b5f36b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AssetId: 0
-  PoolCount: 40
-  Resident: 0
-  spriteRenderer: {fileID: -7624094410824413462}
 --- !u!212 &-7624094410824413462
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,15 +73,31 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 103
-  m_Sprite: {fileID: 21300000, guid: 8f6c3536ae85a403282cf77fde62d78b, type: 3}
+  m_SortingOrder: 105
+  m_Sprite: {fileID: 21300000, guid: a868fb5876d044f2195701c8bad7e4a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
+  m_DrawMode: 0
   m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1773069374836296429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868103941643973303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61533e4389074090b9ef7fcb77f4c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AssetId: 0
+  PoolCount: 20
+  Resident: 0
+  spriteRenderer: {fileID: -7624094410824413462}
