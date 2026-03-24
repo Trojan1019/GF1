@@ -27,7 +27,7 @@ namespace NewSideGame
         public List<CubeCrushPrefilledCell> prefilledCells = new List<CubeCrushPrefilledCell>();
 
         // 底部方块固定序列：按顺序取，序列连续往后走（由 BlockSpawner 的 spawnCursor 决定）
-        public List<CubeCrush.Data.BlockShape> spawnSequence = new List<CubeCrush.Data.BlockShape>();
+        public List<NewSideGame.BlockShape> spawnSequence = new List<NewSideGame.BlockShape>();
         public List<CubeCrushGoalRequirement> goalRequirements = new List<CubeCrushGoalRequirement>();
     }
 }

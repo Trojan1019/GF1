@@ -2,7 +2,7 @@
 // using UnityEngine;
 // using UnityEngine.UI;
 // using System.Collections.Generic;
-// using CubeCrush.Data;
+// using NewSideGame;
 // using CubeCrush.Manager;
 //
 // namespace NewSideGame

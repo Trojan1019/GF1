@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using CubeCrush.Manager;
-using NewSideGame;
 using DG.Tweening;
 using System.Collections.Generic;
 
@@ -14,6 +12,8 @@ namespace NewSideGame
         public TextMeshProUGUI bestScoreText;
         public Button restartButton;
         public Button settingButton;
+        public Button skinButton;
+        public Button dailySignButton;
 
         [Header("Goal UI")] [SerializeField] private RectTransform goalPanel;
         [SerializeField] private List<GoalItemUIBind> goalItemBinds = new List<GoalItemUIBind>();
@@ -67,6 +67,28 @@ namespace NewSideGame
                 });
             }
 
+            if (skinButton != null)
+            {
+                skinButton.onClick.RemoveAllListeners();
+                skinButton.onClick.AddListener(() =>
+                {
+                    if (GameMain.Instance.isGameOverFillAnimating) return;
+                    skinButton.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+                    GameEntry.UI.OpenUIForm(UIFormType.SkinDialog);
+                });
+            }
+
+            if (dailySignButton != null)
+            {
+                dailySignButton.onClick.RemoveAllListeners();
+                dailySignButton.onClick.AddListener(() =>
+                {
+                    if (GameMain.Instance.isGameOverFillAnimating) return;
+                    dailySignButton.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+                    GameEntry.UI.OpenUIForm(UIFormType.DailyRewardDialog);
+                });
+            }
+
             displayScore = GameLoopManager.Instance.score;
             if (scoreText != null)
             {
@@ -113,10 +135,7 @@ namespace NewSideGame
 
         private void OnGameOver(params object[] args)
         {
-            // 在 GameMain 中等待填满动画后，会再次触发 GameOver（或者通过直接打开）
-            // 注意：GameLoopManager 中触发了 GameOverFillAnimation，然后 GameMain 处理完会再次触发 GameOver 事件
-            // 为了防止重复打开，需要做个状态判断或者只在真正结束时打开
-            GameEntry.UI.OpenUIForm(UIFormType.UISuccessForm);
+            GameEntry.UI.OpenUIForm(UIFormType.GameFailRetryDialog);
         }
 
         private void OnRefreshScore(params object[] args)

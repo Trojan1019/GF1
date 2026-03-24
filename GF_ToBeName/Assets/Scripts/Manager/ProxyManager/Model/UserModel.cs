@@ -23,5 +23,12 @@ namespace NewSideGame
         public Dictionary<int, int> shopFreeMap = new Dictionary<int, int>();
 
         public bool isAdRemove;
+
+        // Daily sign-in
+        public string dailySignLastDate;
+        public int dailySignStreakDays;
+        public int dailySignTotalDays;
+        public bool dailySkinRewardGranted;
+        public List<string> dailySignHistory = new List<string>();
     }
 }

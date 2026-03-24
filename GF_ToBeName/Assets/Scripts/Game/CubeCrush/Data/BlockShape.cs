@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace CubeCrush.Data
+namespace NewSideGame
 {
     [CreateAssetMenu(fileName = "NewBlockShape", menuName = "CubeCrush/BlockShape")]
     public class BlockShape : ScriptableObject

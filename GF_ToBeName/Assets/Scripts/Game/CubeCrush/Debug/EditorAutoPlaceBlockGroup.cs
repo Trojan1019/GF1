@@ -1,6 +1,4 @@
 using UnityEngine;
-using CubeCrush.Manager;
-using CubeCrush.Data;
 
 namespace NewSideGame
 {

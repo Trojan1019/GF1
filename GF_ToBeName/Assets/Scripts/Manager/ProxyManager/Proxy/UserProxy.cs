@@ -158,9 +158,7 @@ namespace NewSideGame
         }
 
         #endregion
-
-
-
+        
         #region 内购
 
         public void AddPayment(float prize, float prizeUsd, string currency)
@@ -198,8 +196,6 @@ namespace NewSideGame
         }
 
         #endregion
-
-
 
     }
 }

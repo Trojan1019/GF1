@@ -11,8 +11,6 @@ namespace NewSideGame
 {
     public class UIHomeForm : UGuiForm
     {
-        private const string ModeStageSurvivalKey = "CubeCrush.Mode.StageSurvival";
-
         [SerializeField] private Button newGameBtn; // 新游戏按钮
         [SerializeField] private Button stageSurvivalBtn; // 关卡生存（Stage Survival）按钮
         [SerializeField] private Button continueBtn; // 继续游戏按钮
@@ -48,10 +46,8 @@ namespace NewSideGame
 
             // 设置一个标志位告诉 GamePlay 场景去读取存档
             GameEntry.Setting.SetBool("LoadSavedGame", true);
-            bool stageMode = ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel != null
-                ? ProxyManager.GameProxy.GameModel.stageModeEnabled
-                : false;
-            GameEntry.Setting.SetBool(ModeStageSurvivalKey, stageMode);
+            bool stageMode = ProxyManager.GameProxy.GameModel.stageModeEnabled;
+            GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, stageMode);
             SceneHelper.LoadGameScene(() => { });
         }
 
@@ -69,7 +65,7 @@ namespace NewSideGame
                     {
                         ProxyManager.GameProxy.ClearSavedGame();
                         GameEntry.Setting.SetBool("LoadSavedGame", false);
-                        GameEntry.Setting.SetBool(ModeStageSurvivalKey, false);
+                        GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, false);
                         SceneHelper.LoadGameScene(() => { });
                     });
                 GameEntry.UI.OpenUIForm(UIFormType.AskDialog, uguiParams);
@@ -77,7 +73,7 @@ namespace NewSideGame
             else
             {
                 GameEntry.Setting.SetBool("LoadSavedGame", false);
-                GameEntry.Setting.SetBool(ModeStageSurvivalKey, false);
+                GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, false);
                 SceneHelper.LoadGameScene(() => { });
             }
         }
@@ -98,7 +94,7 @@ namespace NewSideGame
                     {
                         ProxyManager.GameProxy.ClearSavedGame();
                         GameEntry.Setting.SetBool("LoadSavedGame", false);
-                        GameEntry.Setting.SetBool(ModeStageSurvivalKey, true);
+                        GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, true);
                         SceneHelper.LoadGameScene(() => { });
                     });
                 GameEntry.UI.OpenUIForm(UIFormType.AskDialog, uguiParams);
@@ -106,7 +102,7 @@ namespace NewSideGame
             else
             {
                 GameEntry.Setting.SetBool("LoadSavedGame", false);
-                GameEntry.Setting.SetBool(ModeStageSurvivalKey, true);
+                GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, true);
                 SceneHelper.LoadGameScene(() => { });
             }
         }
@@ -115,7 +111,6 @@ namespace NewSideGame
         {
             settingBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
             GameEntry.Sound.PlaySound(Constant.SoundId.Click);
-
             GameEntry.UI.OpenUIForm(UIFormType.SettingDialog);
         }
 

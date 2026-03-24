@@ -13,6 +13,8 @@ namespace NewSideGame
             public const string MusicMuted = "Setting.MusicMuted";
             public const string SoundMuted = "Setting.SoundMuted";
             public const string VibrationMuted = "Setting.VibrationMuted";
+            public const string SkinCurrentId = "Setting.Skin.CurrentId";
+            public const string ModeStageSurvivalKey = "CubeCrush.Mode.StageSurvival";
 
             #endregion
 
@@ -52,17 +54,22 @@ namespace NewSideGame
             public const int GameOverFillAnimation = 105;
             public const int CubeCrushGoalProgressChanged = 106;
             public const int CubeCrushGoalItemCollectedFly = 107;
+            public const int SkinSelectedEvent = 108;
+            public const int SkinUnlockedEvent = 109;
+            public const int SkinAppliedEvent = 110;
 
             public const int LoadDictionarySuccess = 201;
             public const int LoadDictionaryFailure = 201;
-            
+
             #region 广告事件
+
             public const int AdLoaded = 2001;
             public const int AdFailedToLoad = 2002;
             public const int AdOpened = 2003;
             public const int AdClosed = 2004;
             public const int AdRewarded = 2005;
             public const int AdImpressionRecorded = 2006;
+
             #endregion
         }
 

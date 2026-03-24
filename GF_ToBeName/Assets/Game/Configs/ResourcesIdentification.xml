@@ -6,8 +6,11 @@
   <Resource AssetID="10004" AssetName="DebugDialog" AssetPath="Assets/Game/Prefabs/UI/DebugDialog#10004.prefab" />
   <Resource AssetID="10009" AssetName="GlobalToast" AssetPath="Assets/Game/Prefabs/UI/GlobalToast#10009.prefab" />
   <Resource AssetID="10010" AssetName="UISuccessDialog" AssetPath="Assets/Game/Prefabs/UI/UISuccessDialog#10010.prefab" />
+  <Resource AssetID="10020" AssetName="DailyRewardDialog" AssetPath="Assets/Game/Prefabs/UI/DailyRewardDialog#10020.prefab" />
   <Resource AssetID="10021" AssetName="SettingDialog" AssetPath="Assets/Game/Prefabs/UI/SettingDialog#10021.prefab" />
   <Resource AssetID="10024" AssetName="AskDialog" AssetPath="Assets/Game/Prefabs/UI/AskDialog#10024.prefab" />
+  <Resource AssetID="10025" AssetName="SkinDialog" AssetPath="Assets/Game/Prefabs/UI/SkinDialog#10025.prefab" />
+  <Resource AssetID="10026" AssetName="GameFailRetryDialog" AssetPath="Assets/Game/Prefabs/UI/GameFailRetryDialog#10026.prefab" />
   <Resource AssetID="10098" AssetName="TransitionForm" AssetPath="Assets/Game/Prefabs/UI/TransitionForm#10098.prefab" />
   <Resource AssetID="10099" AssetName="LoadingDialog" AssetPath="Assets/Game/Prefabs/UI/LoadingDialog#10099.prefab" />
   <Resource AssetID="12005" AssetName="CasualCurrency" AssetPath="Assets/Game/Prefabs/Pool/CasualCurrency#12005.prefab" />

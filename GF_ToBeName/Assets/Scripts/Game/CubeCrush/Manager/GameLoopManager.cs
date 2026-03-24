@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using CubeCrush.Data;
-using NewSideGame;
 
-namespace CubeCrush.Manager
+namespace NewSideGame
 {
     public class GameLoopManager : MonoSingleton<GameLoopManager>
     {
@@ -17,6 +15,7 @@ namespace CubeCrush.Manager
         private readonly List<CubeCrushGoalProgress> stageGoals = new List<CubeCrushGoalProgress>();
 
         private bool isStageClearPending = false; // 通关 UI 暂停状态：禁止交互
+        private bool hasUsedReviveAd = false;
 
         public int StageIndex => stageIndex;
         public int StageStartScore => stageStartTotalScore; // 兼容旧 UI 字段名
@@ -40,6 +39,7 @@ namespace CubeCrush.Manager
             score = 0;
             isGameOver = false;
             isStageClearPending = false;
+            hasUsedReviveAd = false;
 
             if (GameMain.Instance != null && GameMain.Instance.IsStageSurvival)
             {
@@ -441,7 +441,34 @@ namespace CubeCrush.Manager
             // Restart 视为“重新开始挑战”，不从存档恢复
             isStageClearPending = false;
             isGameOver = false;
+            hasUsedReviveAd = false;
             StartGame(false);
+        }
+
+        public bool ReviveByAdClearBoard()
+        {
+            if (!isGameOver) return false;
+            if (hasUsedReviveAd) return false;
+
+            hasUsedReviveAd = true;
+            isGameOver = false;
+
+            GridManager.Instance.ClearAllBlocks(out List<ClearedCellInfo> clearedCells, out List<int> clearedRows, out List<int> clearedCols);
+            if (clearedCells.Count > 0)
+            {
+                EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushLinesCleared, clearedCells, clearedRows, clearedCols);
+                GameEntry.Sound.PlaySound(Constant.SoundId.Remove);
+            }
+
+            if (BlockSpawner.Instance.AreAllBlocksUsed())
+            {
+                BlockSpawner.Instance.SpawnBlocks();
+            }
+
+            EventManager.Instance.NotifyEvent(Constant.Event.RefreshScore);
+            EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGridUpdated);
+
+            return true;
         }
 
         private void InitStageGoalsFromConfig(CubeCrushStage cfg)

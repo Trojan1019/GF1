@@ -8,8 +8,6 @@ using System.Reflection;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-using CubeCrush.Manager;
-
 namespace NewSideGame
 {
     public class ProcedureGamePlay : ProcedureColdBoot<UIGamePlayForm>

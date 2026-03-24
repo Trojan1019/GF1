@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using CubeCrush.Data;
+using NewSideGame;
 
 namespace NewSideGame
 {
@@ -232,6 +232,48 @@ namespace NewSideGame
         private void NotifyGridUpdate()
         {
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGridUpdated);
+        }
+
+        public void ClearAllBlocks(out List<ClearedCellInfo> clearedCells, out List<int> clearedRows, out List<int> clearedCols)
+        {
+            clearedCells = new List<ClearedCellInfo>();
+            clearedRows = new List<int>();
+            clearedCols = new List<int>();
+
+            bool[] rowFlags = new bool[rows];
+            bool[] colFlags = new bool[cols];
+
+            for (int x = 0; x < cols; x++)
+            {
+                for (int y = 0; y < rows; y++)
+                {
+                    if (grid[x, y] == 0) continue;
+                    clearedCells.Add(new ClearedCellInfo
+                    {
+                        pos = new Vector2Int(x, y),
+                        color = gridColors[x, y],
+                        itemType = (CubeCrushGoalItemType)gridGoalItems[x, y]
+                    });
+                    rowFlags[y] = true;
+                    colFlags[x] = true;
+
+                    grid[x, y] = 0;
+                    gridColors[x, y] = Color.clear;
+                    gridGoalItems[x, y] = (int)CubeCrushGoalItemType.None;
+                }
+            }
+
+            for (int y = 0; y < rows; y++)
+            {
+                if (rowFlags[y]) clearedRows.Add(y);
+            }
+
+            for (int x = 0; x < cols; x++)
+            {
+                if (colFlags[x]) clearedCols.Add(x);
+            }
+
+            NotifyGridUpdate();
         }
     }
 }

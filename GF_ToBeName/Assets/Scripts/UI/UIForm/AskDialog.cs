@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using CubeCrush.Manager;
-using NewSideGame;
 using DG.Tweening;
 
 namespace NewSideGame

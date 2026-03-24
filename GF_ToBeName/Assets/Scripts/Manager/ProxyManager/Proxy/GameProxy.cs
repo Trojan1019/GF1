@@ -22,7 +22,7 @@ namespace NewSideGame
         {
         }
 
-        public void SaveGameState(int score, int cols, int rows, int[,] grid, Color[,] colors, List<CubeCrush.Data.BlockShape> shapes)
+        public void SaveGameState(int score, int cols, int rows, int[,] grid, Color[,] colors, List<NewSideGame.BlockShape> shapes)
         {
             GameModel.hasSavedGame = true;
             GameModel.score = score;
@@ -61,7 +61,7 @@ namespace NewSideGame
             int rows,
             int[,] grid,
             Color[,] colors,
-            List<CubeCrush.Data.BlockShape> currentVisibleSpawnShapes,
+            List<NewSideGame.BlockShape> currentVisibleSpawnShapes,
             bool stageModeEnabled,
             int currentStageIndex,
             int highestStageCleared,

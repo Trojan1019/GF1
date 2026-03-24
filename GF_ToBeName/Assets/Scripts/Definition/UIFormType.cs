@@ -1,4 +1,4 @@
-﻿namespace NewSideGame
+namespace NewSideGame
 {
     /// <summary>
     /// 界面编号。
@@ -29,6 +29,8 @@
         ScoreGuideDialog = 10022,
         TreasureDialog = 10023,
         AskDialog = 10024,
+        SkinDialog = 10025,
+        GameFailRetryDialog = 10026,
 
 
 

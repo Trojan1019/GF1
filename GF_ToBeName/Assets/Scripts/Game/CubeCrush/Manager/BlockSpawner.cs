@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using CubeCrush.Data;
+using NewSideGame;
 
 namespace NewSideGame
 {

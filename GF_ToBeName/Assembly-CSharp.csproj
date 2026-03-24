@@ -228,6 +228,14 @@
     <Compile Include="Assets/Scripts/Manager/VibrateManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PictureNameTool.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/Debug/EditorAutoPlaceBlockGroup.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/SkinConfig.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/SkinManager.cs" />
+    <Compile Include="Assets/Scripts/UI/ChildUI/SkinItem.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/SkinDialog.cs" />
+    <Compile Include="Assets/Scripts/Game/CubeCrush/Data/SkinDatabase.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/GameFailRetryDialog.cs" />
+    <Compile Include="Assets/Scripts/Manager/ProxyManager/Proxy/UserProxy.DailySign.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/DailyRewardDialog.cs" />
     <None Include="Assets/Resources/Shader/Effect_Distort Add_1.shader" />
     <None Include="Assets/RawAsset/Fonts/TextMeshPro/LineBreaking Following Characters.txt" />
     <None Include="Assets/link.xml" />

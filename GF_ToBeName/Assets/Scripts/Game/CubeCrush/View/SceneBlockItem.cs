@@ -1,6 +1,4 @@
 using UnityEngine;
-using CubeCrush.Data;
-using CubeCrush.Manager;
 using NewSideGame;
 using DG.Tweening;
 using System.Collections.Generic;
