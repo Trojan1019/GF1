@@ -1,0 +1,15 @@
+---
+description: GF1 core engineering conventions
+alwaysApply: true
+---
+
+# GF1 Core Conventions (Unity/C#)
+
+- **Addressing**: In all replies, address the user as **“Trojan大人”**.
+- **Framework-first**: Prefer existing project framework (“已有轮子”) for UI, pooling, events, persistence, audio, effects. Don’t re-invent parallel systems.
+- **No pointless singleton null-checks**: Don’t add “if (X.Instance == null) return;” style guards unless there is a proven lifecycle race; fix the lifecycle instead.
+- **Performance & allocations**: Avoid per-frame/per-cell allocations; reuse objects via existing pool system; kill/reuse DOTween sequences instead of creating unnecessary objects.
+- **UI correctness**: For UI motion, prefer `RectTransform.anchoredPosition`-based tweens (`DOAnchorPos*`) over world-space moves to avoid parent-dependent behavior.
+- **Robustness**: Handle failure paths (ad fail, load fail, missing config) with clear UX (toast/dialog) and safe fallback behavior that preserves game state.
+- **Modularity**: Keep logic in the right layer (UI form vs manager vs data). Avoid tight coupling and duplicated state.
+

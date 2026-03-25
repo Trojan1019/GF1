@@ -1,0 +1,17 @@
+---
+description: GF1 localization + uiText.xls workflow (no English fallback)
+alwaysApply: true
+---
+
+# Localization Rules (uiText.xls)
+
+- **All UI text must come from localization**: use `GameEntry.Localization.GetString("<id>")` (numeric id keys).
+- **ID policy**: Keep new ids within **< 100** when feasible; avoid introducing `20000+` ids.
+- **No long-term English fallback**: If any non-English cell is blank/`<NoKey>`/whitespace, it must be **translated and filled**, not replaced by English.
+- **When code introduces new text**:
+  - Add a new row in `Doc/Language/uiText.xls` (or reuse an existing row if English is identical).
+  - Fill **all language columns** (including Indonesian with local-friendly wording).
+  - Remove/merge duplicated rows (same English meaning; ignore trailing `:`/`：`).
+  - Update all code references to the final merged id(s).
+- **Only fill missing**: Never overwrite an existing non-empty translation unless explicitly requested.
+
