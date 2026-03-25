@@ -452,12 +452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4f92364dae243748077d636c5b314f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameBtn: {fileID: 3846901318471461731}
+  classicBtn: {fileID: 3846901318471461731}
   stageSurvivalBtn: {fileID: 4875921029216442797}
   continueBtn: {fileID: 1681716088659339137}
   shopBtn: {fileID: 6424989761131283035}
   settingBtn: {fileID: 3002535602851484193}
-  skinBtn: {fileID: 6424989761131283035}
   score: {fileID: 3021011658813977383}
   stageProgressText: {fileID: 7928051299930565309}
 --- !u!1 &1208851054223471567
@@ -1252,7 +1251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3cdb67667fd274fc8a1b58d51b8ec9e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd44e29094d2845238f140f8b55d026d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

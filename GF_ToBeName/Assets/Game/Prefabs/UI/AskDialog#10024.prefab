@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6218606920217567253}
   - component: {fileID: 1898398445487160161}
-  - component: {fileID: 1284793863486717996}
+  - component: {fileID: 8697609431879806626}
   m_Layer: 5
   m_Name: AskDialog#10024
   m_TagString: Untagged
@@ -196,7 +196,7 @@ MonoBehaviour:
     obj: {fileID: 3311013669818812963}
   bgSEId: 0
   isSetMaskCollider: 0
---- !u!114 &1284793863486717996
+--- !u!114 &8697609431879806626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b45fc2ec57b4b4c9cdab7bafdad67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maskBg: {fileID: 0}
+  maskBg: {fileID: 580952835651436683}
   scrollRects: []
   MessageText: {fileID: 7382904659706150558}
   TitleText: {fileID: 6987125419083786885}

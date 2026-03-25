@@ -61,7 +61,7 @@ namespace NewSideGame
             var result = ProxyManager.UserProxy.SignToday();
             if (result.alreadySignedToday)
             {
-                string msg = GameEntry.Localization.GetString("20033");
+                string msg = GameEntry.Localization.GetString("84");
                 if (string.IsNullOrEmpty(msg) || msg.Contains("<NoKey>")) msg = "Already signed today.";
                 UIManager.Toast(msg);
                 return;
@@ -72,7 +72,7 @@ namespace NewSideGame
 
             if (result.unlockedSkinReward)
             {
-                string msg = GameEntry.Localization.GetString("20034");
+                string msg = GameEntry.Localization.GetString("85");
                 if (string.IsNullOrEmpty(msg) || msg.Contains("<NoKey>")) msg = "Skin unlocked by 3-day streak!";
                 UIManager.Toast(msg);
             }
@@ -94,13 +94,13 @@ namespace NewSideGame
         {
             var user = ProxyManager.UserProxy.userModel;
 
-            string title = GameEntry.Localization.GetString("20030");
+            string title = GameEntry.Localization.GetString("81");
             if (string.IsNullOrEmpty(title) || title.Contains("<NoKey>")) title = "Daily Sign-In";
             if (titleText != null) titleText.text = title;
 
             if (streakText != null)
             {
-                string fmt = GameEntry.Localization.GetString("20031");
+                string fmt = GameEntry.Localization.GetString("82");
                 if (string.IsNullOrEmpty(fmt) || fmt.Contains("<NoKey>")) fmt = "Current streak: {0} days";
                 streakText.text = string.Format(fmt, user.dailySignStreakDays);
             }
@@ -115,7 +115,7 @@ namespace NewSideGame
 
             if (rewardListText != null)
             {
-                string txt = GameEntry.Localization.GetString("20032");
+                string txt = GameEntry.Localization.GetString("83");
                 if (string.IsNullOrEmpty(txt) || txt.Contains("<NoKey>")) txt = "Reward: unlock first skin after 3-day streak";
                 rewardListText.text = txt;
             }

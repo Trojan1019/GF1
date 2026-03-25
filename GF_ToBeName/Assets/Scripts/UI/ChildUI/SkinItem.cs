@@ -10,6 +10,7 @@ namespace NewSideGame
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI unlockHintText;
         [SerializeField] private Image checkIcon;
+        [SerializeField] private Image maskImage;
         [SerializeField] private Image lockIcon;
         [SerializeField] private Button clickButton;
 
@@ -25,36 +26,47 @@ namespace NewSideGame
             }
         }
 
-        public void Setup(SkinConfig config, string displayName, SkinState state, int remainAdCount, System.Action<int> onClick)
+        public void Setup(SkinConfig config, string displayName, SkinState state, int remainAdCount,
+            System.Action<int> onClick)
         {
             if (config == null) return;
             _skinId = config.skinId;
             _onClick = onClick;
 
-            if (previewImage != null) previewImage.sprite = config.previewSprite;
-            if (nameText != null) nameText.text = displayName;
+            previewImage.sprite = config.previewSprite;
+            nameText.text = displayName;
 
             bool isUsing = state == SkinState.Using;
             bool isLocked = state == SkinState.Locked;
-            if (checkIcon != null) checkIcon.gameObject.SetActive(isUsing);
-            if (lockIcon != null) lockIcon.gameObject.SetActive(isLocked);
 
-            if (unlockHintText != null)
+            checkIcon.gameObject.SetActive(isUsing);
+            lockIcon.gameObject.SetActive(isLocked);
+            maskImage.gameObject.SetActive(isLocked);
+
+            if (isLocked)
             {
-                if (isLocked)
+                if (unlockHintText == null) return;
+
+                // 这里必须使用“只需要 {0} 一个参数”的广告解锁文案 key。
+                // 否则 string.Format 会因占位符数量不匹配而抛异常。
+                string fmt = GameEntry.Localization.GetString("74");
+                if (string.IsNullOrEmpty(fmt) || fmt.Contains("<NoKey>") || !fmt.Contains("{0}"))
                 {
-                    string fmt = GameEntry.Localization.GetString("20003");
-                    if (string.IsNullOrEmpty(fmt) || fmt.Contains("<NoKey>"))
-                    {
-                        fmt = "Watch {0} ads to unlock";
-                    }
-                    unlockHintText.text = string.Format(fmt, Mathf.Max(0, remainAdCount));
-                    unlockHintText.gameObject.SetActive(true);
+                    fmt = "Watch {0} ads to unlock";
                 }
-                else
+
+                if (remainAdCount <= 0)
                 {
                     unlockHintText.gameObject.SetActive(false);
+                    return;
                 }
+
+                unlockHintText.text = SafeFormat(fmt, Mathf.Max(0, remainAdCount));
+                unlockHintText.gameObject.SetActive(true);
+            }
+            else
+            {
+                unlockHintText.gameObject.SetActive(false);
             }
         }
 
@@ -62,6 +74,38 @@ namespace NewSideGame
         {
             _onClick?.Invoke(_skinId);
         }
+
+        private static string SafeFormat(string fmt, int value0)
+        {
+            // 安全适配：如果 fmt 里有 {1} {2} 之类的占位符但只传了一个值，就用 0 补齐。
+            // 避免因本地化配置差异导致 FormatException。
+            try
+            {
+                var matches = System.Text.RegularExpressions.Regex.Matches(fmt, @"\{(\d+)\}");
+                int max = -1;
+                foreach (System.Text.RegularExpressions.Match m in matches)
+                {
+                    if (m.Success)
+                    {
+                        if (int.TryParse(m.Groups[1].Value, out int idx))
+                            max = Mathf.Max(max, idx);
+                    }
+                }
+
+                if (max <= 0)
+                {
+                    return string.Format(fmt, value0);
+                }
+
+                object[] args = new object[max + 1];
+                args[0] = value0;
+                for (int i = 1; i < args.Length; i++) args[i] = 0;
+                return string.Format(fmt, args);
+            }
+            catch
+            {
+                return $"Watch {value0} ads to unlock";
+            }
+        }
     }
 }
-

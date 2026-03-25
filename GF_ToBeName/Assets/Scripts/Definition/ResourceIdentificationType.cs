@@ -14,6 +14,8 @@
         AskDialog10024 = 10024,
         SkinDialog10025 = 10025,
         GameFailRetryDialog10026 = 10026,
+        LevelTargetDialog10027 = 10027,
+        StageClearNextLevelDialog10028 = 10028,
         TransitionForm10098 = 10098,
         LoadingDialog10099 = 10099,
         CasualCurrency12005 = 12005,

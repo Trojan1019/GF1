@@ -28,6 +28,7 @@ namespace NewSideGame
         private const string KeyCurrentSkinId = "Skin.CurrentSkinId";
         private const string KeyUnlockPrefix = "Skin.Unlock.";
         private const string KeyAdProgressPrefix = "Skin.AdProgress.";
+        private const string KeyInitialized = "Skin.Initialized";
 
         private void Awake()
         {
@@ -46,6 +47,19 @@ namespace NewSideGame
                 return;
             }
 
+            // 首次登陆：默认拥有并选中第一个皮肤，然后直接应用
+            var defaultSkin = skinDatabase.skins[0];
+            int defaultSkinId = defaultSkin != null ? defaultSkin.skinId : 0;
+            bool isFirst = PlayerPrefs.GetInt(KeyInitialized, 0) == 0;
+            if (isFirst)
+            {
+                PlayerPrefs.SetInt(KeyUnlockPrefix + defaultSkinId, 1);
+                PlayerPrefs.SetInt(KeyCurrentSkinId, defaultSkinId);
+                PlayerPrefs.SetInt(KeyAdProgressPrefix + defaultSkinId, 0);
+                PlayerPrefs.SetInt(KeyInitialized, 1);
+                PlayerPrefs.Save();
+            }
+
             for (int i = 0; i < skinDatabase.skins.Count; i++)
             {
                 var cfg = skinDatabase.skins[i];
@@ -61,14 +75,9 @@ namespace NewSideGame
 
             int fallbackSkinId = skinDatabase.skins[0] != null ? skinDatabase.skins[0].skinId : 0;
             _currentSkinId = PlayerPrefs.GetInt(KeyCurrentSkinId, fallbackSkinId);
-            if (!_unlocked.ContainsKey(_currentSkinId))
+            if (!_unlocked.ContainsKey(_currentSkinId) || !_unlocked[_currentSkinId])
             {
                 _currentSkinId = fallbackSkinId;
-            }
-            if (!_unlocked[_currentSkinId])
-            {
-                _unlocked[_currentSkinId] = true;
-                SaveUnlock(_currentSkinId, true);
             }
 
             ApplySkin(_currentSkinId, true);

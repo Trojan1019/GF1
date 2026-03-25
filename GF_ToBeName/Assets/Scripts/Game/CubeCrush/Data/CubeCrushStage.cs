@@ -9,7 +9,17 @@ namespace NewSideGame
     {
         public int x;
         public int y;
+        public int prefilledBlockId;
         public Color color = Color.white;
+    }
+
+    [Serializable]
+    public class CubeCrushInitialItemCell
+    {
+        public int x;
+        public int y;
+        public CubeCrushGoalItemType itemType = CubeCrushGoalItemType.None;
+        public int prefilledBlockId;
     }
 
     /// <summary>
@@ -25,6 +35,7 @@ namespace NewSideGame
         [Range(0f, 1f)] public float itemAttachProbability = 0.2f;
 
         public List<CubeCrushPrefilledCell> prefilledCells = new List<CubeCrushPrefilledCell>();
+        public List<CubeCrushInitialItemCell> initialItems = new List<CubeCrushInitialItemCell>();
 
         // 底部方块固定序列：按顺序取，序列连续往后走（由 BlockSpawner 的 spawnCursor 决定）
         public List<NewSideGame.BlockShape> spawnSequence = new List<NewSideGame.BlockShape>();

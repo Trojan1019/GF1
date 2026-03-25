@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d195a28d7f212406ba6dd6b6421f717b, type: 3}
+  m_Name: SkinConfig1
+  m_EditorClassIdentifier: 
+  skinId: 1
+  skinName: Normal
+  skinNameKey: 34
+  previewSprite: {fileID: 21300000, guid: 5bd0d25386d794231bdb84cfae04f18a, type: 3}
+  adWatchRequiredCount: 0
+  unlocked: 1
+  bgSprite: {fileID: 21300000, guid: ae840af228ea74efca97bd60eb02783a, type: 3}
+  boardSprite: {fileID: 21300000, guid: b0294240d84284345a4d2743601dd5bc, type: 3}
+  relatedPrefabResourcePaths: []

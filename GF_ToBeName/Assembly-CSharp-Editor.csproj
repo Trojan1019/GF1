@@ -41,6 +41,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/Editor/CubeCrush/SkinConfigBatchTool.cs" />
     <Compile Include="Assets/Scripts/Editor/BuildTool/ProjectBuildTool.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.QuaternionProcessor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.GenericDataProcessor.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="Assets/Scripts/Editor/Utility/ProcessCommandUtility.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.Int32Processor.cs" />
     <Compile Include="Assets/Scripts/Editor/DataTableGenerator/DataTableProcessor.ColorProcessor.cs" />
-    <Compile Include="Assets/Scripts/Editor/CubeCrush/SkinConfigBatchTool.cs" />
     <None Include="Assets/Editor/Font/zh.txt" />
     <None Include="Assets/Editor/DataTable/DataTableCodeTemplate.txt" />
     <Reference Include="UnityEngine">

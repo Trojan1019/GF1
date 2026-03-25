@@ -30,21 +30,21 @@ namespace NewSideGame
         {
             if (titleText != null)
             {
-                string txt = GameEntry.Localization.GetString("20021");
+                string txt = GameEntry.Localization.GetString("76");
                 if (string.IsNullOrEmpty(txt) || txt.Contains("<NoKey>")) txt = "Failed";
                 titleText.text = txt;
             }
 
             if (descText != null)
             {
-                string txt = GameEntry.Localization.GetString("20022");
+                string txt = GameEntry.Localization.GetString("77");
                 if (string.IsNullOrEmpty(txt) || txt.Contains("<NoKey>")) txt = "Try again or watch an ad to revive.";
                 descText.text = txt;
             }
 
             if (adBtnText != null)
             {
-                string txt = GameEntry.Localization.GetString("20023");
+                string txt = GameEntry.Localization.GetString("78");
                 if (string.IsNullOrEmpty(txt) || txt.Contains("<NoKey>")) txt = "Watch Ad Revive";
                 adBtnText.text = txt;
             }
@@ -103,7 +103,7 @@ namespace NewSideGame
                 {
                     _isWatchingAd = false;
                     SetLoading(false);
-                    string msg = GameEntry.Localization.GetString("20024");
+                    string msg = GameEntry.Localization.GetString("79");
                     if (string.IsNullOrEmpty(msg) || msg.Contains("<NoKey>")) msg = "Ad unavailable. Restarting...";
                     UIManager.Toast(msg);
                     GameLoopManager.Instance.Restart();
@@ -114,7 +114,7 @@ namespace NewSideGame
             {
                 _isWatchingAd = false;
                 SetLoading(false);
-                string msg = GameEntry.Localization.GetString("20024");
+                string msg = GameEntry.Localization.GetString("79");
                 if (string.IsNullOrEmpty(msg) || msg.Contains("<NoKey>")) msg = "Ad unavailable. Restarting...";
                 UIManager.Toast(msg);
                 GameLoopManager.Instance.Restart();
@@ -131,7 +131,7 @@ namespace NewSideGame
                 bool ok = GameLoopManager.Instance.ReviveByAdClearBoard();
                 if (!ok)
                 {
-                    string msg = GameEntry.Localization.GetString("20026");
+                    string msg = GameEntry.Localization.GetString("80");
                     if (string.IsNullOrEmpty(msg) || msg.Contains("<NoKey>")) msg = "Revive failed.";
                     UIManager.Toast(msg);
                 }

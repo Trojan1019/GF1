@@ -7,6 +7,12 @@ namespace NewSideGame
 {
     public class CubeCrushStageEditorWindow : EditorWindow
     {
+        private enum EditMode
+        {
+            Prefilled = 0,
+            InitialItems = 1
+        }
+
         private const string StageFolderRootPath = "Assets/Game/CubeCrush/Stages";
         private const string StageDatabaseAssetPath = StageFolderRootPath + "/StageDatabase.asset";
 
@@ -24,6 +30,13 @@ namespace NewSideGame
 
         private bool _placeClear;
         private Color _selectedColor = new Color(1f, 0.2f, 0.2f, 1f);
+        private EditMode _editMode;
+        private CubeCrushGoalItemType _selectedItemType = CubeCrushGoalItemType.Glove;
+        private bool _placeClearItem = false;
+        private Vector2Int _lastInvalidCell = new Vector2Int(-1, -1);
+        private double _invalidFlashUntil;
+        private Vector2Int _dragLastCell = new Vector2Int(-999, -999);
+        private bool _isDraggingPainting;
 
         private CubeCrushStageDatabase _database;
         private CubeCrushStage _stage;
@@ -162,6 +175,7 @@ namespace NewSideGame
 
             DrawStageSelector();
             DrawTargetScore();
+            DrawEditMode();
             DrawPalette();
             DrawGrid();
             DrawSpawnSequence();
@@ -202,30 +216,57 @@ namespace NewSideGame
         private void DrawPalette()
         {
             EditorGUILayout.Space(10);
-            EditorGUILayout.LabelField("预填格颜色（点击网格放置）", EditorStyles.boldLabel);
+            if (_editMode == EditMode.Prefilled)
+            {
+                EditorGUILayout.LabelField("预填格颜色（点击网格放置）", EditorStyles.boldLabel);
+            }
+            else
+            {
+                EditorGUILayout.LabelField("初始道具布局（仅可放在预填方块上）", EditorStyles.boldLabel);
+            }
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                // Clear 按钮
-                var clearStyle = new GUIStyle(GUI.skin.button);
-                clearStyle.normal.textColor = Color.white;
-                if (GUILayout.Button("Clear", GUILayout.Width(70), GUILayout.Height(26)))
+                if (_editMode == EditMode.Prefilled)
                 {
-                    _placeClear = true;
-                    _selectedColor = Color.white;
-                }
-
-                foreach (var c in _paletteColors)
-                {
-                    var prev = GUI.color;
-                    GUI.color = c;
-                    if (GUILayout.Button("", GUILayout.Width(26), GUILayout.Height(26)))
+                    // Clear 按钮
+                    if (GUILayout.Button("Clear", GUILayout.Width(70), GUILayout.Height(26)))
                     {
-                        _placeClear = false;
-                        _selectedColor = c;
+                        _placeClear = true;
+                        _selectedColor = Color.white;
                     }
 
-                    GUI.color = prev;
+                    foreach (var c in _paletteColors)
+                    {
+                        var prev = GUI.color;
+                        GUI.color = c;
+                        if (GUILayout.Button("", GUILayout.Width(26), GUILayout.Height(26)))
+                        {
+                            _placeClear = false;
+                            _selectedColor = c;
+                        }
+
+                        GUI.color = prev;
+                    }
+                }
+                else
+                {
+                    if (GUILayout.Button("ClearItem", GUILayout.Width(90), GUILayout.Height(26)))
+                    {
+                        _placeClearItem = true;
+                    }
+
+                    var types = System.Enum.GetValues(typeof(CubeCrushGoalItemType));
+                    foreach (CubeCrushGoalItemType t in types)
+                    {
+                        if (t == CubeCrushGoalItemType.None) continue;
+                        if (GUILayout.Toggle(_selectedItemType == t && !_placeClearItem, t.ToString(), "Button",
+                                GUILayout.Height(26)))
+                        {
+                            _placeClearItem = false;
+                            _selectedItemType = t;
+                        }
+                    }
                 }
             }
         }
@@ -257,19 +298,84 @@ namespace NewSideGame
                     for (int x = 0; x < GridSize; x++)
                     {
                         dict.TryGetValue(new Vector2Int(x, y), out var cell);
-                        Color color = cell != null ? cell.color : new Color(0.1f, 0.1f, 0.1f, 0.15f);
+                        bool hasPrefilled = cell != null;
+                        Color color;
+                        if (_editMode == EditMode.Prefilled)
+                        {
+                            color = hasPrefilled ? cell.color : new Color(0.1f, 0.1f, 0.1f, 0.15f);
+                        }
+                        else
+                        {
+                            color = hasPrefilled ? new Color(0.2f, 0.8f, 0.2f, 0.45f) : new Color(0.9f, 0.2f, 0.2f, 0.35f);
+                        }
 
                         var prev = GUI.color;
                         GUI.color = color;
                         Rect rect = GUILayoutUtility.GetRect(cellSize, cellSize, GUILayout.Width(cellSize), GUILayout.Height(cellSize));
-                        if (GUI.Button(rect, GUIContent.none))
+                        EditorGUI.DrawRect(rect, color);
+                        if (_editMode == EditMode.InitialItems && _lastInvalidCell.x == x && _lastInvalidCell.y == y &&
+                            EditorApplication.timeSinceStartup < _invalidFlashUntil)
                         {
-                            PlaceOrClearCell(x, y);
+                            EditorGUI.DrawRect(rect, new Color(1f, 0f, 0f, 0.55f));
+                        }
+
+                        HandlePaintEvent(rect, x, y);
+
+                        if (_editMode == EditMode.InitialItems)
+                        {
+                            var item = FindInitialItemAt(x, y);
+                            if (item != null)
+                            {
+                                GUIStyle style = new GUIStyle(EditorStyles.boldLabel);
+                                style.normal.textColor = Color.white;
+                                GUI.Label(new Rect(rect.x + 2f, rect.y + 2f, rect.width - 4f, 14f),
+                                    item.itemType.ToString().Substring(0, 1), style);
+                            }
                         }
 
                         GUI.color = prev;
                     }
                 }
+            }
+        }
+
+        private void HandlePaintEvent(Rect rect, int x, int y)
+        {
+            Event e = Event.current;
+            if (e == null) return;
+
+            // 仅处理左键拖拽绘制
+            if (e.button != 0 && e.button != -1) return;
+
+            bool contains = rect.Contains(e.mousePosition);
+
+            if (e.type == EventType.MouseDown && contains)
+            {
+                _isDraggingPainting = true;
+                _dragLastCell = new Vector2Int(x, y);
+
+                if (_editMode == EditMode.Prefilled) PlaceOrClearCell(x, y);
+                else PlaceOrClearInitialItem(x, y);
+
+                e.Use();
+                Repaint();
+            }
+            else if (e.type == EventType.MouseDrag && _isDraggingPainting)
+            {
+                if (!contains) return;
+                if (_dragLastCell.x == x && _dragLastCell.y == y) return;
+
+                _dragLastCell = new Vector2Int(x, y);
+                if (_editMode == EditMode.Prefilled) PlaceOrClearCell(x, y);
+                else PlaceOrClearInitialItem(x, y);
+
+                e.Use();
+                Repaint();
+            }
+            else if (e.type == EventType.MouseUp)
+            {
+                _isDraggingPainting = false;
+                _dragLastCell = new Vector2Int(-999, -999);
             }
         }
 
@@ -294,19 +400,125 @@ namespace NewSideGame
             {
                 if (existing != null)
                 {
+                    int removedPrefilledId = existing.prefilledBlockId;
                     _stage.prefilledCells.Remove(existing);
+                    if (_stage.initialItems != null)
+                    {
+                        for (int i = _stage.initialItems.Count - 1; i >= 0; i--)
+                        {
+                            var item = _stage.initialItems[i];
+                            if (item == null)
+                            {
+                                _stage.initialItems.RemoveAt(i);
+                                continue;
+                            }
+                            if (item.x == x && item.y == y) _stage.initialItems.RemoveAt(i);
+                            else if (removedPrefilledId > 0 && item.prefilledBlockId == removedPrefilledId) _stage.initialItems.RemoveAt(i);
+                        }
+                    }
                 }
             }
             else
             {
                 if (existing == null)
                 {
-                    existing = new CubeCrushPrefilledCell { x = x, y = y, color = _selectedColor };
+                    existing = new CubeCrushPrefilledCell
+                    {
+                        x = x,
+                        y = y,
+                        color = _selectedColor,
+                        prefilledBlockId = GetNextUnusedPrefilledBlockId()
+                    };
                     _stage.prefilledCells.Add(existing);
                 }
                 else
                 {
                     existing.color = _selectedColor;
+                }
+            }
+
+            EditorUtility.SetDirty(_stage);
+        }
+
+        private int GetNextUnusedPrefilledBlockId()
+        {
+            if (_stage == null) return 1;
+            HashSet<int> used = new HashSet<int>();
+            if (_stage.prefilledCells != null)
+            {
+                for (int i = 0; i < _stage.prefilledCells.Count; i++)
+                {
+                    var c = _stage.prefilledCells[i];
+                    if (c == null) continue;
+                    if (c.prefilledBlockId > 0) used.Add(c.prefilledBlockId);
+                }
+            }
+
+            int next = 1;
+            while (used.Contains(next)) next++;
+            return next;
+        }
+
+        private CubeCrushInitialItemCell FindInitialItemAt(int x, int y)
+        {
+            if (_stage.initialItems == null) return null;
+            for (int i = 0; i < _stage.initialItems.Count; i++)
+            {
+                var item = _stage.initialItems[i];
+                if (item == null) continue;
+                if (item.x == x && item.y == y) return item;
+            }
+            return null;
+        }
+
+        private CubeCrushPrefilledCell FindPrefilledAt(int x, int y)
+        {
+            if (_stage.prefilledCells == null) return null;
+            for (int i = 0; i < _stage.prefilledCells.Count; i++)
+            {
+                var c = _stage.prefilledCells[i];
+                if (c == null) continue;
+                if (c.x == x && c.y == y) return c;
+            }
+            return null;
+        }
+
+        private void PlaceOrClearInitialItem(int x, int y)
+        {
+            if (_stage.initialItems == null) _stage.initialItems = new List<CubeCrushInitialItemCell>();
+            var existing = FindInitialItemAt(x, y);
+            var prefilled = FindPrefilledAt(x, y);
+            if (prefilled == null)
+            {
+                _lastInvalidCell = new Vector2Int(x, y);
+                _invalidFlashUntil = EditorApplication.timeSinceStartup + 0.5f;
+                EditorApplication.Beep();
+                Repaint();
+                return;
+            }
+
+            if (_placeClearItem)
+            {
+                if (existing != null)
+                    _stage.initialItems.Remove(existing);
+            }
+            else
+            {
+                if (existing == null)
+                {
+                    existing = new CubeCrushInitialItemCell
+                    {
+                        x = x,
+                        y = y,
+                        itemType = _selectedItemType,
+                        prefilledBlockId = prefilled.prefilledBlockId
+                    };
+                    _stage.initialItems.Add(existing);
+                }
+                else
+                {
+                    existing.itemType = _selectedItemType;
+                    existing.prefilledBlockId = prefilled.prefilledBlockId;
                 }
             }
 
@@ -333,10 +545,80 @@ namespace NewSideGame
             {
                 if (GUILayout.Button("Save Stage Data", GUILayout.Height(34)))
                 {
+                    EnsurePrefilledBlockIds();
+                    ValidateInitialItemsAgainstPrefilled();
                     EditorUtility.SetDirty(_stage);
                     EditorUtility.SetDirty(_database);
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();
+                }
+            }
+        }
+
+        private void DrawEditMode()
+        {
+            EditorGUILayout.Space(8);
+            _editMode = (EditMode)GUILayout.Toolbar((int)_editMode, new[] { "预填方块", "初始道具" });
+        }
+
+        private void EnsurePrefilledBlockIds()
+        {
+            if (_stage == null || _stage.prefilledCells == null) return;
+            int nextId = 1;
+            HashSet<int> used = new HashSet<int>();
+            for (int i = 0; i < _stage.prefilledCells.Count; i++)
+            {
+                var c = _stage.prefilledCells[i];
+                if (c == null) continue;
+                if (c.prefilledBlockId > 0) used.Add(c.prefilledBlockId);
+            }
+
+            while (used.Contains(nextId)) nextId++;
+            for (int i = 0; i < _stage.prefilledCells.Count; i++)
+            {
+                var c = _stage.prefilledCells[i];
+                if (c == null) continue;
+                if (c.prefilledBlockId <= 0)
+                {
+                    c.prefilledBlockId = nextId;
+                    used.Add(nextId);
+                    while (used.Contains(nextId)) nextId++;
+                }
+            }
+        }
+
+        private void ValidateInitialItemsAgainstPrefilled()
+        {
+            if (_stage == null) return;
+            EnsurePrefilledBlockIds();
+            if (_stage.initialItems == null) return;
+            Dictionary<Vector2Int, CubeCrushPrefilledCell> prefilledMap = new Dictionary<Vector2Int, CubeCrushPrefilledCell>();
+            for (int i = 0; i < _stage.prefilledCells.Count; i++)
+            {
+                var c = _stage.prefilledCells[i];
+                if (c == null) continue;
+                prefilledMap[new Vector2Int(c.x, c.y)] = c;
+            }
+
+            for (int i = _stage.initialItems.Count - 1; i >= 0; i--)
+            {
+                var item = _stage.initialItems[i];
+                if (item == null)
+                {
+                    _stage.initialItems.RemoveAt(i);
+                    continue;
+                }
+
+                if (!prefilledMap.TryGetValue(new Vector2Int(item.x, item.y), out var prefilled))
+                {
+                    _stage.initialItems.RemoveAt(i);
+                    continue;
+                }
+
+                item.prefilledBlockId = prefilled.prefilledBlockId;
+                if (item.itemType == CubeCrushGoalItemType.None)
+                {
+                    _stage.initialItems.RemoveAt(i);
                 }
             }
         }

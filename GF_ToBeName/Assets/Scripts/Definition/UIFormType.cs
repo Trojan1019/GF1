@@ -31,6 +31,8 @@ namespace NewSideGame
         AskDialog = 10024,
         SkinDialog = 10025,
         GameFailRetryDialog = 10026,
+        LevelTargetDialog = 10027,
+        StageClearNextLevelDialog = 10028,
 
 
 

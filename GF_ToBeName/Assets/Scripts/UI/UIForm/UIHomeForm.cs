@@ -11,7 +11,7 @@ namespace NewSideGame
 {
     public class UIHomeForm : UGuiForm
     {
-        [SerializeField] private Button newGameBtn; // 新游戏按钮
+        [SerializeField] private Button classicBtn; // 无尽游戏按钮
         [SerializeField] private Button stageSurvivalBtn; // 关卡生存（Stage Survival）按钮
         [SerializeField] private Button continueBtn; // 继续游戏按钮
         [SerializeField] private Button shopBtn;
@@ -22,7 +22,7 @@ namespace NewSideGame
         private void OnEnable()
         {
             if (continueBtn != null) continueBtn.onClick.AddListener(OnClick_ContinueBtn);
-            if (newGameBtn != null) newGameBtn.onClick.AddListener(OnClick_NewGameBtn);
+            if (classicBtn != null) classicBtn.onClick.AddListener(OnClick_ClassicBtn);
             if (stageSurvivalBtn != null) stageSurvivalBtn.onClick.AddListener(OnClick_StageSurvivalBtn);
             if (settingBtn != null) settingBtn.onClick.AddListener(OnClick_SettingBtn);
 
@@ -32,7 +32,7 @@ namespace NewSideGame
         private void OnDisable()
         {
             if (continueBtn != null) continueBtn.onClick.RemoveAllListeners();
-            if (newGameBtn != null) newGameBtn.onClick.RemoveAllListeners();
+            if (classicBtn != null) classicBtn.onClick.RemoveAllListeners();
             if (stageSurvivalBtn != null) stageSurvivalBtn.onClick.RemoveAllListeners();
             if (settingBtn != null) settingBtn.onClick.RemoveAllListeners();
 
@@ -51,9 +51,9 @@ namespace NewSideGame
             SceneHelper.LoadGameScene(() => { });
         }
 
-        private void OnClick_NewGameBtn()
+        private void OnClick_ClassicBtn()
         {
-            newGameBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
+            classicBtn.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f, 10, 1).SetUpdate(true);
             GameEntry.Sound.PlaySound(Constant.SoundId.Click);
 
             if (ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame)
@@ -67,7 +67,8 @@ namespace NewSideGame
                         GameEntry.Setting.SetBool("LoadSavedGame", false);
                         GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, false);
                         SceneHelper.LoadGameScene(() => { });
-                    });
+                    }).AddDelegage("onClickDeny", (s) => { Close(); });
+                ;
                 GameEntry.UI.OpenUIForm(UIFormType.AskDialog, uguiParams);
             }
             else
@@ -89,14 +90,15 @@ namespace NewSideGame
             if (ProxyManager.GameProxy != null && ProxyManager.GameProxy.GameModel.hasSavedGame)
             {
                 UGUIParams uguiParams = UGUIParams.Create().AddValue("Title", "10")
-                    .AddValue("Message", "14")
+                    .AddValue("Message", "53")
                     .AddDelegage("OnClickConfirm", (s) =>
                     {
                         ProxyManager.GameProxy.ClearSavedGame();
                         GameEntry.Setting.SetBool("LoadSavedGame", false);
                         GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, true);
                         SceneHelper.LoadGameScene(() => { });
-                    });
+                    })
+                    .AddDelegage("onClickDeny", (s) => { Close(); });
                 GameEntry.UI.OpenUIForm(UIFormType.AskDialog, uguiParams);
             }
             else

@@ -45,7 +45,7 @@ namespace NewSideGame
         private void RefreshTitle()
         {
             if (titleText == null) return;
-            string localized = GameEntry.Localization.GetString("20001");
+            string localized = GameEntry.Localization.GetString("64");
             if (string.IsNullOrEmpty(localized) || localized.Contains("<NoKey>"))
                 localized = "Skins";
             titleText.text = localized;
@@ -69,17 +69,17 @@ namespace NewSideGame
 
             for (int i = 0; i < configs.Count; i++)
             {
-                var cfg = configs[i];
-                if (cfg == null) continue;
+                var skinConfig = configs[i];
+                if (skinConfig == null) continue;
                 var item = Instantiate(itemTemplate, contentRoot);
                 item.gameObject.SetActive(true);
                 _runtimeItems.Add(item);
 
-                int remain = SkinManager.Instance.GetRemainingAdCount(cfg.skinId);
+                int remain = SkinManager.Instance.GetRemainingAdCount(skinConfig.skinId);
                 item.Setup(
-                    cfg,
-                    SkinManager.Instance.GetDisplayName(cfg),
-                    SkinManager.Instance.GetState(cfg.skinId),
+                    skinConfig,
+                    SkinManager.Instance.GetDisplayName(skinConfig),
+                    SkinManager.Instance.GetState(skinConfig.skinId),
                     remain,
                     OnClickSkinItem);
             }
@@ -100,8 +100,8 @@ namespace NewSideGame
             }
 
             int remain = SkinManager.Instance.GetRemainingAdCount(skinId);
-            string title = "20004";
-            string messageFmt = GameEntry.Localization.GetString("20005");
+            string title = " ";
+            string messageFmt = GameEntry.Localization.GetString("74");
             if (string.IsNullOrEmpty(messageFmt) || messageFmt.Contains("<NoKey>"))
                 messageFmt = "Watch {0} ads to unlock this skin?";
             string message = string.Format(messageFmt, remain);
@@ -120,7 +120,7 @@ namespace NewSideGame
                             return;
                         }
 
-                        string toast = GameEntry.Localization.GetString("20006");
+                        string toast = GameEntry.Localization.GetString("75");
                         if (string.IsNullOrEmpty(toast) || toast.Contains("<NoKey>"))
                             toast = "Ad failed or interrupted.";
                         UIManager.Toast(toast);

@@ -1,0 +1,95 @@
+{
+  "keys": [
+    {
+      "id": 20006,
+      "english": "Ad failed or interrupted.",
+      "indonesian": "Gagal memutar iklan atau dibatalkan."
+    },
+    {
+      "id": 20021,
+      "english": "Failed",
+      "indonesian": "Gagal"
+    },
+    {
+      "id": 20022,
+      "english": "Try again or watch an ad to revive.",
+      "indonesian": "Coba lagi atau tonton iklan untuk menyelamatkan."
+    },
+    {
+      "id": 20023,
+      "english": "Watch Ad Revive",
+      "indonesian": "Tonton Iklan untuk Bangkit"
+    },
+    {
+      "id": 20024,
+      "english": "Ad unavailable. Restarting...",
+      "indonesian": "Iklan tidak tersedia. Memulai ulang..."
+    },
+    {
+      "id": 20026,
+      "english": "Revive failed.",
+      "indonesian": "Gagal bangkit."
+    },
+    {
+      "id": 20030,
+      "english": "Daily Sign-In",
+      "indonesian": "Tanda Harian"
+    },
+    {
+      "id": 20031,
+      "english": "Current streak: {0} days",
+      "indonesian": "Rangkaian saat ini: {0} hari"
+    },
+    {
+      "id": 20032,
+      "english": "Reward: unlock first skin after 3-day streak",
+      "indonesian": "Hadiah: buka skin pertama setelah rangkaian 3 hari"
+    },
+    {
+      "id": 20033,
+      "english": "Already signed today.",
+      "indonesian": "Sudah tanda hari ini."
+    },
+    {
+      "id": 20034,
+      "english": "3-day streak reward unlocked! Skin has been unlocked!",
+      "indonesian": "Hadiah 3 hari beruntun diterima! Skin sudah dibuka!"
+    },
+    {
+      "id": 20040,
+      "english": "Level Target",
+      "indonesian": "Target Level"
+    },
+    {
+      "id": 20041,
+      "english": "Score >= {0}",
+      "indonesian": "Skor minimal {0}"
+    },
+    {
+      "id": 20042,
+      "english": "{0} x {1}",
+      "indonesian": "{0} x {1}"
+    },
+    {
+      "id": 20043,
+      "english": "Collect items:",
+      "indonesian": "Kumpulkan item:"
+    },
+    {
+      "id": 20060,
+      "english": "Glove",
+      "indonesian": "Sarung Tangan"
+    },
+    {
+      "id": 20061,
+      "english": "Star",
+      "indonesian": "Bintang"
+    },
+    {
+      "id": 20062,
+      "english": "Gem",
+      "indonesian": "Permata"
+    }
+  ]
+}
+

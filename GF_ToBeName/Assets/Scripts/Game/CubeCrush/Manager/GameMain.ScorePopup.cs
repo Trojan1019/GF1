@@ -7,6 +7,8 @@ namespace NewSideGame
     public partial class GameMain
     {
         [Header("ScorePopUp配置")] public Transform popupParent;
+        [Tooltip("用于生成连击提示的父节点：与分数文本分离。为空时回退到 popupParent。")]
+        public Transform comboPopupParent;
         public const int perLineScore = 50;
         
         private List<ScorePopup> _activePopups = new List<ScorePopup>();
@@ -19,6 +21,15 @@ namespace NewSideGame
         {
             int totalScore = placementScore + linesCleared * perLineScore;
             ShowScorePopup(totalScore, worldPosition);
+        }
+
+        public void ShowComboPopup(int comboCount, Vector3 worldPosition)
+        {
+            ScorePopup popup = GameEntry.PoolManager.SpawnSync<ScorePopup>(31003);
+            Transform parent = comboPopupParent != null ? comboPopupParent : popupParent;
+            popup.transform.SetParent(parent, false);
+            popup.InitCustom(GameEntry.Localization.GetString("21", comboCount), Vector3.zero, 1.0f);
+            _activePopups.Add(popup);
         }
 
         private void ShowScorePopup(int score, Vector3 worldPosition)

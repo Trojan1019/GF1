@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43203a1b99d944fc1adeed1d525db5db, type: 3}
   m_Name: SkinDatabase
   m_EditorClassIdentifier: 
-  skins: []
+  skins:
+  - {fileID: 11400000, guid: f1da97826f9204796a6bb42e6b1b6121, type: 2}
+  - {fileID: 11400000, guid: a4bdd1d150a984af7b6e1dbdb3169c03, type: 2}
+  - {fileID: 11400000, guid: 92e60e0c084e5461694441b575faf161, type: 2}
+  - {fileID: 11400000, guid: 9d59eaa88dbcf461da89e42ee436c508, type: 2}

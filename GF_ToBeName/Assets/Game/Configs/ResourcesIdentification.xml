@@ -11,6 +11,8 @@
   <Resource AssetID="10024" AssetName="AskDialog" AssetPath="Assets/Game/Prefabs/UI/AskDialog#10024.prefab" />
   <Resource AssetID="10025" AssetName="SkinDialog" AssetPath="Assets/Game/Prefabs/UI/SkinDialog#10025.prefab" />
   <Resource AssetID="10026" AssetName="GameFailRetryDialog" AssetPath="Assets/Game/Prefabs/UI/GameFailRetryDialog#10026.prefab" />
+  <Resource AssetID="10027" AssetName="LevelTargetDialog" AssetPath="Assets/Game/Prefabs/UI/LevelTargetDialog#10027.prefab" />
+  <Resource AssetID="10028" AssetName="StageClearNextLevelDialog" AssetPath="Assets/Game/Prefabs/UI/StageClearNextLevelDialog#10028.prefab" />
   <Resource AssetID="10098" AssetName="TransitionForm" AssetPath="Assets/Game/Prefabs/UI/TransitionForm#10098.prefab" />
   <Resource AssetID="10099" AssetName="LoadingDialog" AssetPath="Assets/Game/Prefabs/UI/LoadingDialog#10099.prefab" />
   <Resource AssetID="12005" AssetName="CasualCurrency" AssetPath="Assets/Game/Prefabs/Pool/CasualCurrency#12005.prefab" />

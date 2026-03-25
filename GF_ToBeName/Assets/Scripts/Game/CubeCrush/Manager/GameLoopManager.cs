@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace NewSideGame
@@ -16,6 +17,12 @@ namespace NewSideGame
 
         private bool isStageClearPending = false; // 通关 UI 暂停状态：禁止交互
         private bool hasUsedReviveAd = false;
+        private int comboCount;
+        private int comboBreakStepsLeft;
+        private float comboPitchCurrent = 1f;
+        private Coroutine comboShowCoroutine;
+        private const int ComboBreakStepWindow = 2;
+        private const float ComboDisplayDelaySeconds = 0.2f;
 
         public int StageIndex => stageIndex;
         public int StageStartScore => stageStartTotalScore; // 兼容旧 UI 字段名
@@ -40,6 +47,14 @@ namespace NewSideGame
             isGameOver = false;
             isStageClearPending = false;
             hasUsedReviveAd = false;
+            comboCount = 0;
+            comboBreakStepsLeft = 0;
+            comboPitchCurrent = 1f;
+            if (comboShowCoroutine != null)
+            {
+                StopCoroutine(comboShowCoroutine);
+                comboShowCoroutine = null;
+            }
 
             if (GameMain.Instance != null && GameMain.Instance.IsStageSurvival)
             {
@@ -97,7 +112,11 @@ namespace NewSideGame
 
                 if (isStageClearPending)
                 {
-                    GameEntry.UI.OpenUIForm(UIFormType.UISuccessForm);
+                    GameEntry.UI.OpenUIForm(UIFormType.StageClearNextLevelDialog);
+                }
+                else
+                {
+                    OpenLevelTargetDialog(stageIndex);
                 }
 
                 return;
@@ -115,21 +134,31 @@ namespace NewSideGame
 
             GridManager.Instance.InitializeGrid();
 
-            var cfg = GameMain.Instance.GetStageConfig(stageIndex);
+            var stageCfg = GameMain.Instance.GetStageConfig(stageIndex);
+            ValidateStageInitialItems(stageCfg);
             BlockSpawner.Instance.ConfigureStageSpawn(
-                cfg != null ? cfg.spawnSequence : null,
+                stageCfg != null ? stageCfg.spawnSequence : null,
                 0,
-                cfg != null ? cfg.goalRequirements : null,
-                cfg != null ? cfg.itemAttachProbability : 0f);
+                stageCfg != null ? stageCfg.goalRequirements : null,
+                stageCfg != null ? stageCfg.itemAttachProbability : 0f);
             BlockSpawner.Instance.SpawnBlocks();
 
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGameStart);
-            ApplyStagePrefill(cfg);
+            ApplyStagePrefill(stageCfg);
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGridUpdated);
             EventManager.Instance.NotifyEvent(Constant.Event.RefreshScore);
 
+            OpenLevelTargetDialog(stageIndex);
+
             // 新开也先落一次存档，便于中途返回“继续”
             SaveStageState(isStageClearPending: false);
+        }
+
+        private void OpenLevelTargetDialog(int stageIdx)
+        {
+            if (isStageClearPending) return;
+            GameEntry.UI.OpenUIForm(UIFormType.LevelTargetDialog,
+                UGUIParams.Create().AddValue("StageIndex", stageIdx));
         }
 
         private void RestoreStageGridAndSpawns(GameModel model)
@@ -163,9 +192,28 @@ namespace NewSideGame
                 }
             }
 
+            // 兼容旧存档：如果没有保存 gridGoalItems，则尝试从 cfg.initialItems 重建。
+            if (model.gridGoalItems == null)
+            {
+                var legacyStageCfg = GameMain.Instance.GetStageConfig(stageIndex);
+                if (legacyStageCfg != null && legacyStageCfg.initialItems != null)
+                {
+                    for (int i = 0; i < legacyStageCfg.initialItems.Count; i++)
+                    {
+                        var item = legacyStageCfg.initialItems[i];
+                        if (item == null) continue;
+                        if (item.itemType == CubeCrushGoalItemType.None) continue;
+                        if (item.x < 0 || item.x >= GridManager.Instance.cols) continue;
+                        if (item.y < 0 || item.y >= GridManager.Instance.rows) continue;
+                        if (GridManager.Instance.grid[item.x, item.y] != 1) continue;
+                        GridManager.Instance.gridGoalItems[item.x, item.y] = (int)item.itemType;
+                    }
+                }
+            }
+
             // Spawn restore
-            var cfg = GameMain.Instance.GetStageConfig(stageIndex);
-            List<BlockShape> spawnSequence = cfg != null ? cfg.spawnSequence : null;
+            var spawnStageCfg = GameMain.Instance.GetStageConfig(stageIndex);
+            List<BlockShape> spawnSequence = spawnStageCfg != null ? spawnStageCfg.spawnSequence : null;
 
             var nameToShape = new Dictionary<string, BlockShape>();
             foreach (var s in GameMain.Instance.availableShapes)
@@ -226,6 +274,23 @@ namespace NewSideGame
                 GridManager.Instance.gridColors[cell.x, cell.y] = cell.color;
                 GridManager.Instance.gridGoalItems[cell.x, cell.y] = (int)CubeCrushGoalItemType.None;
             }
+
+            // 初始道具：仅允许放在预填方块格子上（编辑器已做校验，这里再防御一次）
+            if (cfg.initialItems != null)
+            {
+                for (int i = 0; i < cfg.initialItems.Count; i++)
+                {
+                    var item = cfg.initialItems[i];
+                    if (item == null) continue;
+                    if (item.itemType == CubeCrushGoalItemType.None) continue;
+                    if (item.x < 0 || item.x >= GridManager.Instance.cols) continue;
+                    if (item.y < 0 || item.y >= GridManager.Instance.rows) continue;
+
+                    // 必须是已预填的格子，否则忽略
+                    if (GridManager.Instance.grid[item.x, item.y] != 1) continue;
+                    GridManager.Instance.gridGoalItems[item.x, item.y] = (int)item.itemType;
+                }
+            }
         }
 
         public void OnBlockPlaced(int spawnIndex, BlockShape shape, Vector2Int pos)
@@ -284,6 +349,31 @@ namespace NewSideGame
                             CollectGoalItem(info.itemType);
                         }
                     }
+
+                    comboCount = Mathf.Max(1, comboCount + 1);
+                    comboBreakStepsLeft = ComboBreakStepWindow;
+                    if (comboCount >= 2)
+                    {
+                        if (comboShowCoroutine != null)
+                        {
+                            StopCoroutine(comboShowCoroutine);
+                        }
+                        comboShowCoroutine = StartCoroutine(ShowComboAfterDelay(placementWorldPos, comboCount));
+                    }
+                }
+                else if (comboCount > 0)
+                {
+                    comboBreakStepsLeft -= 1;
+                    if (comboBreakStepsLeft <= 0)
+                    {
+                        comboCount = 0;
+                        comboPitchCurrent = 1f;
+                        if (comboShowCoroutine != null)
+                        {
+                            StopCoroutine(comboShowCoroutine);
+                            comboShowCoroutine = null;
+                        }
+                    }
                 }
 
                 // Stage clear check（通关 UI 手动推进下一关）
@@ -330,7 +420,7 @@ namespace NewSideGame
             }
 
             // 暂停后不再显示新提示（需要在 GameMain.Update 里配合判断）
-            GameEntry.UI.OpenUIForm(UIFormType.UISuccessForm);
+            GameEntry.UI.OpenUIForm(UIFormType.StageClearNextLevelDialog);
         }
 
         private void TryAutoSave()
@@ -384,22 +474,25 @@ namespace NewSideGame
             stageTargetLocalScore = GameMain.Instance.GetStageTargetLocalScore(stageIndex);
             InitStageGoalsFromConfig(GameMain.Instance.GetStageConfig(stageIndex));
 
-            var cfg = GameMain.Instance.GetStageConfig(stageIndex);
+            var nextStageCfg = GameMain.Instance.GetStageConfig(stageIndex);
+            ValidateStageInitialItems(nextStageCfg);
 
             // 重新初始化场面（清空网格 + 应用下一关预置 + 重置底部序列）
             GridManager.Instance.InitializeGrid();
 
             BlockSpawner.Instance.ConfigureStageSpawn(
-                cfg != null ? cfg.spawnSequence : null,
+                nextStageCfg != null ? nextStageCfg.spawnSequence : null,
                 0,
-                cfg != null ? cfg.goalRequirements : null,
-                cfg != null ? cfg.itemAttachProbability : 0f);
+                nextStageCfg != null ? nextStageCfg.goalRequirements : null,
+                nextStageCfg != null ? nextStageCfg.itemAttachProbability : 0f);
             BlockSpawner.Instance.SpawnBlocks();
 
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGameStart);
-            ApplyStagePrefill(cfg);
+            ApplyStagePrefill(nextStageCfg);
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGridUpdated);
             EventManager.Instance.NotifyEvent(Constant.Event.RefreshScore);
+
+            OpenLevelTargetDialog(stageIndex);
 
             SaveStageState(isStageClearPending: false);
         }
@@ -442,6 +535,9 @@ namespace NewSideGame
             isStageClearPending = false;
             isGameOver = false;
             hasUsedReviveAd = false;
+            comboCount = 0;
+            comboBreakStepsLeft = 0;
+            comboPitchCurrent = 1f;
             StartGame(false);
         }
 
@@ -469,6 +565,31 @@ namespace NewSideGame
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGridUpdated);
 
             return true;
+        }
+
+        private IEnumerator ShowComboAfterDelay(Vector3 worldPos, int comboAtSchedule)
+        {
+            yield return new WaitForSeconds(ComboDisplayDelaySeconds);
+            if (comboCount != comboAtSchedule) yield break;
+
+            float targetPitch = GetComboPitch(comboAtSchedule);
+            comboPitchCurrent = Mathf.Lerp(comboPitchCurrent, targetPitch, 0.65f);
+            GameEntry.Sound.PlaySoundByAssetID((int)ResourceIdentificationType.Bubble60007, pitch: comboPitchCurrent, volume: 1f);
+            GameMain.Instance.ShowComboPopup(comboAtSchedule, worldPos);
+            comboShowCoroutine = null;
+        }
+
+        private float GetComboPitch(int combo)
+        {
+            int c = Mathf.Clamp(combo, 1, 5);
+            switch (c)
+            {
+                case 1: return 1.0f;
+                case 2: return 1.2f;
+                case 3: return 1.4f;
+                case 4: return 1.6f;
+                default: return 2.0f;
+            }
         }
 
         private void InitStageGoalsFromConfig(CubeCrushStage cfg)
@@ -529,6 +650,30 @@ namespace NewSideGame
                 if (stageGoals[i].remainingCount > 0) return false;
             }
             return true;
+        }
+
+        private void ValidateStageInitialItems(CubeCrushStage cfg)
+        {
+            if (cfg == null || cfg.initialItems == null || cfg.prefilledCells == null) return;
+            HashSet<Vector2Int> prefilled = new HashSet<Vector2Int>();
+            for (int i = 0; i < cfg.prefilledCells.Count; i++)
+            {
+                var c = cfg.prefilledCells[i];
+                if (c == null) continue;
+                prefilled.Add(new Vector2Int(c.x, c.y));
+            }
+
+            for (int i = 0; i < cfg.initialItems.Count; i++)
+            {
+                var item = cfg.initialItems[i];
+                if (item == null) continue;
+                bool validPos = prefilled.Contains(new Vector2Int(item.x, item.y));
+                if (!validPos)
+                {
+                    Debug.LogWarning(
+                        $"[StageValidation] Stage {cfg.stageIndex} initial item at ({item.x},{item.y}) has no prefilled block.");
+                }
+            }
         }
     }
 }

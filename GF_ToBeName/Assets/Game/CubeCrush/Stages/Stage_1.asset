@@ -13,81 +13,198 @@ MonoBehaviour:
   m_Name: Stage_1
   m_EditorClassIdentifier: 
   stageIndex: 1
-  targetScoreLocal: 1000
+  targetScoreLocal: 500
   itemAttachProbability: 0.6
   prefilledCells:
   - x: 0
     y: 4
+    prefilledBlockId: 1
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 1
     y: 4
+    prefilledBlockId: 2
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 0
     y: 3
+    prefilledBlockId: 3
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 1
     y: 3
+    prefilledBlockId: 4
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 2
     y: 4
+    prefilledBlockId: 5
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 2
     y: 3
+    prefilledBlockId: 6
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 3
     y: 5
+    prefilledBlockId: 7
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 3
     y: 7
+    prefilledBlockId: 8
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 3
     y: 6
+    prefilledBlockId: 9
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 3
     y: 2
+    prefilledBlockId: 10
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 3
     y: 1
+    prefilledBlockId: 11
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 3
     y: 0
+    prefilledBlockId: 12
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 4
     y: 0
+    prefilledBlockId: 13
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 4
     y: 1
+    prefilledBlockId: 14
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 4
     y: 2
+    prefilledBlockId: 15
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 5
     y: 3
+    prefilledBlockId: 16
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 5
     y: 4
-    color: {r: 1, g: 0.2, b: 0.2, a: 1}
-  - x: 6
-    y: 4
+    prefilledBlockId: 17
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 6
     y: 3
+    prefilledBlockId: 19
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 7
     y: 4
+    prefilledBlockId: 20
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 7
     y: 3
+    prefilledBlockId: 21
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 4
     y: 5
+    prefilledBlockId: 22
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 4
     y: 6
+    prefilledBlockId: 23
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
   - x: 4
     y: 7
+    prefilledBlockId: 24
     color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 6
+    y: 4
+    prefilledBlockId: 18
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  initialItems:
+  - x: 3
+    y: 5
+    itemType: 2
+    prefilledBlockId: 7
+  - x: 4
+    y: 5
+    itemType: 2
+    prefilledBlockId: 22
+  - x: 3
+    y: 6
+    itemType: 2
+    prefilledBlockId: 9
+  - x: 3
+    y: 7
+    itemType: 2
+    prefilledBlockId: 8
+  - x: 4
+    y: 7
+    itemType: 2
+    prefilledBlockId: 24
+  - x: 4
+    y: 6
+    itemType: 2
+    prefilledBlockId: 23
+  - x: 2
+    y: 4
+    itemType: 2
+    prefilledBlockId: 5
+  - x: 2
+    y: 3
+    itemType: 2
+    prefilledBlockId: 6
+  - x: 1
+    y: 3
+    itemType: 2
+    prefilledBlockId: 4
+  - x: 1
+    y: 4
+    itemType: 2
+    prefilledBlockId: 2
+  - x: 0
+    y: 4
+    itemType: 2
+    prefilledBlockId: 1
+  - x: 0
+    y: 3
+    itemType: 2
+    prefilledBlockId: 3
+  - x: 3
+    y: 2
+    itemType: 2
+    prefilledBlockId: 10
+  - x: 4
+    y: 2
+    itemType: 2
+    prefilledBlockId: 15
+  - x: 3
+    y: 1
+    itemType: 2
+    prefilledBlockId: 11
+  - x: 4
+    y: 1
+    itemType: 2
+    prefilledBlockId: 14
+  - x: 3
+    y: 0
+    itemType: 2
+    prefilledBlockId: 12
+  - x: 4
+    y: 0
+    itemType: 2
+    prefilledBlockId: 13
+  - x: 5
+    y: 4
+    itemType: 2
+    prefilledBlockId: 17
+  - x: 5
+    y: 3
+    itemType: 2
+    prefilledBlockId: 16
+  - x: 6
+    y: 3
+    itemType: 2
+    prefilledBlockId: 19
+  - x: 7
+    y: 4
+    itemType: 2
+    prefilledBlockId: 20
+  - x: 7
+    y: 3
+    itemType: 2
+    prefilledBlockId: 21
   spawnSequence:
   - {fileID: 11400000, guid: 29bfd197cc24949a0ab4f0bb39e363b4, type: 2}
   goalRequirements:

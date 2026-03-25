@@ -106,7 +106,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e6451f0631ff1411cad609dd8477d673, type: 3}
   - {fileID: 21300000, guid: fd3a06264a42542219cdf5794ed5cb8a, type: 3}
   - {fileID: 21300000, guid: 9059c936ecc054ff0a985285f7f4e26f, type: 3}
-  - {fileID: 21300000, guid: 3cdb67667fd274fc8a1b58d51b8ec9e4, type: 3}
   - {fileID: 21300000, guid: fad1147646f844ce39f7ecccb261db39, type: 3}
   - {fileID: 21300000, guid: e3af7676d9d30431ca03bffd7ac90a6b, type: 3}
   - {fileID: 21300000, guid: 360ae296d20e24f3ca758577cf549f5d, type: 3}
@@ -203,7 +202,6 @@ SpriteAtlas:
   - imageBallonPack
   - Image_Line7days
   - img_CoinPackLast
-  - Icon_Restore
   - Title_Album
   - Image_SpecialLvTitle
   - Image_VipLvTitle
