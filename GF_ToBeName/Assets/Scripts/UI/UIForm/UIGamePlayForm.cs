@@ -305,19 +305,14 @@ namespace NewSideGame
             if (GameMain.Instance.IsStageSurvival)
             {
                 int stageIndex = GameLoopManager.Instance.StageIndex;
-                int stageStartScore = GameLoopManager.Instance.StageStartScore;
                 int stageTargetDelta = GameLoopManager.Instance.StageTargetDelta;
-                int scoreDelta = currentScore - stageStartScore;
 
-                string scoreLabel = GameEntry.Localization.GetString("5"); // 分数
                 string stageLabel = string.Format(GameEntry.Localization.GetString("32"), stageIndex); // 第 {0} 关
                 string targetLabel = GameEntry.Localization.GetString("23"); // 目标分数
-                scoreText.text = string.Format("{0}:{1:N0}\n{2}\n{3}:{4:N0}/{5:N0}",
-                    scoreLabel,
-                    currentScore,
+                scoreText.text = string.Format("{0}\n{1}:{2}/{3}",
                     stageLabel,
                     targetLabel,
-                    scoreDelta,
+                    currentScore,
                     stageTargetDelta);
             }
             else

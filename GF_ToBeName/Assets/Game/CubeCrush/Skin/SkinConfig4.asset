@@ -16,7 +16,7 @@ MonoBehaviour:
   skinName: Default
   skinNameKey: 73
   previewSprite: {fileID: 21300000, guid: 37cc1400ceb714187b6cbb5e1e47a621, type: 3}
-  adWatchRequiredCount: 0
+  adWatchRequiredCount: 10
   unlocked: 0
   bgSprite: {fileID: 21300000, guid: 33346cfc9580c4ab1a7a1770126a25a3, type: 3}
   boardSprite: {fileID: 21300000, guid: 9143ed6975536433699e84db47ae1257, type: 3}

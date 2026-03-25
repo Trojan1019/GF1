@@ -41,17 +41,22 @@ namespace NewSideGame
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
+            if (m_Params != null)
+            {
+                if (m_Params.HasKey("OnClickConfirm"))
+                    OnClickConfirm = m_Params.GetDelegage("OnClickConfirm");
+                if (m_Params.HasKey("OnClickDeny"))
+                    OnClickDeny = m_Params.GetDelegage("OnClickDeny");
+                if (m_Params.HasKey("Title"))
+                    _titleKey = m_Params.GetStringParams("Title");
+                if (m_Params.HasKey("Message"))
+                    _messageKey = m_Params.GetStringParams("Message");
+            }
 
-            OnClickConfirm = m_Params.GetDelegage("OnClickConfirm");
-            OnClickDeny = m_Params.GetDelegage("OnClickDeny");
-
-            // 现在 Title/Message 传进来的都是 localizationKey，这样语言切换时可以自动刷新
-            _titleKey = m_Params.GetStringParams("Title");
-            _messageKey = m_Params.GetStringParams("Message");
 
             EventManager.Instance.AddEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
             RefreshLocalizedText();
-            
+
             if (ConfirmButton != null)
             {
                 ConfirmButton.onClick.RemoveAllListeners();
@@ -82,6 +87,7 @@ namespace NewSideGame
             {
                 EventManager.Instance.RemoveEventListener(Constant.Event.LanguageChangeSuccess, OnLanguageChanged);
             }
+
             base.OnClose(isShutdown, userData);
         }
 

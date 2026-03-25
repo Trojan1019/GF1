@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5beffbd4ef67546b89d9709cc9b43ab2, type: 3}
-  m_Name: Group_Game_Stage
+  m_Name: Group_Game_Data
   m_EditorClassIdentifier: 
   entries:
-  - {fileID: 102900000, guid: 4a1eefc7287a54ed6a0bf9cc52986dc4, type: 3}
+  - {fileID: 102900000, guid: 7a00495b14f9f42909043cdf59d1bc38, type: 3}
   filter: 
   filterFolder: []
   bundleMode: 2
