@@ -25,6 +25,14 @@ namespace NewSideGame
         public void SaveGameState(int score, int cols, int rows, int[,] grid, Color[,] colors, List<NewSideGame.BlockShape> shapes)
         {
             GameModel.hasSavedGame = true;
+            GameModel.stageModeEnabled = false;
+            GameModel.currentStageIndex = 0;
+            GameModel.stageStartTotalScore = 0;
+            GameModel.spawnCursor = 0;
+            GameModel.isStageClearPending = false;
+            GameModel.goalItemTypes = null;
+            GameModel.goalRequiredCounts = null;
+            GameModel.goalRemainingCounts = null;
             GameModel.score = score;
             GameModel.cols = cols;
             GameModel.rows = rows;

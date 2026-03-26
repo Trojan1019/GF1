@@ -486,14 +486,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b866c777fee374274ba1d6218c8da4fc, type: 2}
   - {fileID: 11400000, guid: 29bfd197cc24949a0ab4f0bb39e363b4, type: 2}
   - {fileID: 11400000, guid: 01e7128031e99446fb4d159f2c5e23ea, type: 2}
-  - {fileID: 11400000, guid: 5a198e6a4b4f3438990aa10b756569cf, type: 2}
   - {fileID: 11400000, guid: 0e2646330faae48d6a3c565ee79f58d2, type: 2}
   - {fileID: 11400000, guid: f70e4cbb718ac4228bf1923f58ec4510, type: 2}
+  - {fileID: 11400000, guid: f58ca61cad70a4fb19c5893bff27515a, type: 2}
   - {fileID: 11400000, guid: ca2914812d0ab409ca9c82cf6802b9c5, type: 2}
   - {fileID: 11400000, guid: 5cdb2c5616b814ce08167e5dd153cd77, type: 2}
   - {fileID: 11400000, guid: b9d1d7b0f887a4f38b9d6e15f976347f, type: 2}
   - {fileID: 11400000, guid: 0c1a5f44695c04ac2a00131993d8c365, type: 2}
   - {fileID: 11400000, guid: ffec956e4cfd74582be66e46558eadcb, type: 2}
+  - {fileID: 11400000, guid: ce679626b6d684e74886d4962d00a807, type: 2}
+  - {fileID: 11400000, guid: c3a4eeb2c1f9d4f678ec06b0ed4bf50a, type: 2}
+  - {fileID: 11400000, guid: 14c3353de134c4e778cf25e2ddaf00ba, type: 2}
+  - {fileID: 11400000, guid: 3541c80a4b00e464e8a4626a27bec57b, type: 2}
+  - {fileID: 11400000, guid: 14fd4c076ce6f4c798bf9d973468fce9, type: 2}
+  - {fileID: 11400000, guid: 5a198e6a4b4f3438990aa10b756569cf, type: 2}
+  - {fileID: 11400000, guid: bb718a9e485ec464fb3fbd67a13e654a, type: 2}
   gridOrigin: {fileID: 269306729}
   spawnOrigin: {fileID: 374942140}
   cellSize: 1.56
@@ -505,6 +512,10 @@ MonoBehaviour:
   hintAlpha: 0.5
   hintSoundId: 10001
   isGameOverFillAnimating: 0
+  clearPunchTarget: {fileID: 0}
+  multiLinePunchDuration: 0.18
+  multiLinePunchStrength: 0.1
+  multiLinePunchVibrato: 10
   goalItemFxAssetId: 31004
   goalItemSprites:
   - itemType: 2
@@ -512,7 +523,7 @@ MonoBehaviour:
   - itemType: 1
     sprite: {fileID: 21300000, guid: 6fa477e83449248549bcfa37bebae2be, type: 3}
   - itemType: 3
-    sprite: {fileID: 21300000, guid: b67014371b5bb4b10b6d74f27899d93b, type: 3}
+    sprite: {fileID: 21300000, guid: 68e9f2a57954c43dab18c17671175486, type: 3}
   popupParent: {fileID: 1479466895}
   comboPopupParent: {fileID: 1805680064}
   mode: 0
@@ -803,6 +814,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -192.3, y: -499.76}
+  m_AnchoredPosition: {x: -332, y: -499.76}
   m_SizeDelta: {x: 300.12, y: 138.49}
   m_Pivot: {x: 0.5, y: 0.5}

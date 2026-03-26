@@ -10,7 +10,7 @@ namespace NewSideGame.Editor
         private const string ConfigFolder = RootFolder + "/Configs";
         private const string DatabasePath = RootFolder + "/SkinDatabase.asset";
 
-        [MenuItem("CubeCrush/Skin/Create Test Skin Configs")]
+        [MenuItem("Tools/CubeCrush/Skin/Create Test Skin Configs")]
         public static void CreateTestConfigs()
         {
             EnsureFolder("Assets/Game");

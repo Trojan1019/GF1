@@ -114,6 +114,7 @@
     <Compile Include="Assets/Scripts/Utils/Utility/ListPool.cs" />
     <Compile Include="Assets/Scripts/Common/YieldHepler.cs" />
     <Compile Include="Assets/Scripts/Manager/PoolManager/PrefabObjectPool.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/StageClearNextLevelDialog.cs" />
     <Compile Include="Assets/Scripts/Tools/AssemblyTool.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/View/SceneGridCell.cs" />
     <Compile Include="Assets/Scripts/UI/ChildUI/SkinItem.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Assets/Scripts/DataTables/Extension/DRExcelExtend.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/View/GoalItemFx.cs" />
     <Compile Include="Assets/Scripts/UI/UIForm/SkinDialog.cs" />
+    <Compile Include="Assets/Scripts/UI/UIForm/LevelTargetDialog.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/Manager/ScorePopupManager.cs" />
     <Compile Include="Assets/Scripts/Manager/Effect/FlyElementTarget.cs" />
     <Compile Include="Assets/Scripts/Game/CubeCrush/Data/CubeCrushGoalItem.cs" />
@@ -236,8 +238,6 @@
     <Compile Include="Assets/Scripts/Manager/ProxyManager/ProxyManager.cs" />
     <Compile Include="Assets/Scripts/Manager/VibrateManager.cs" />
     <Compile Include="Assets/Scripts/Tools/PictureNameTool.cs" />
-    <Compile Include="Assets/Scripts/UI/UIForm/StageClearNextLevelDialog.cs" />
-    <Compile Include="Assets/Scripts/UI/UIForm/LevelTargetDialog.cs" />
     <None Include="Assets/Resources/Shader/Effect_Distort Add_1.shader" />
     <None Include="Assets/RawAsset/Fonts/TextMeshPro/LineBreaking Following Characters.txt" />
     <None Include="Assets/link.xml" />

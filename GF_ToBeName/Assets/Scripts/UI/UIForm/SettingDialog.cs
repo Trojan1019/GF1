@@ -79,7 +79,7 @@ namespace NewSideGame
 
             bool set = !GameEntry.Setting.GetBool(Constant.Setting.MusicMuted);
             GameEntry.Setting.SetBool(Constant.Setting.MusicMuted, set);
-            GameEntry.Sound.Mute("Music", GameEntry.Setting.GetBool(Constant.Setting.MusicMuted));
+            GameEntry.Sound.Mute("Music", set);
             m_MusicImage.sprite = set ? musicSprites[0] : musicSprites[1];
         }
 
@@ -89,8 +89,7 @@ namespace NewSideGame
 
             bool set = !GameEntry.Setting.GetBool(Constant.Setting.VibrationMuted);
             GameEntry.Setting.SetBool(Constant.Setting.VibrationMuted, set);
-
-            m_VibrateImage.sprite = set ? vibrateSprites[0] : vibrateSprites[1];
+            m_VibrateImage.sprite = set ? vibrateSprites[1] : vibrateSprites[0];
         }
 
         private void OnClick_PrivacyPolicyBtn()
@@ -188,7 +187,7 @@ namespace NewSideGame
                 {
                     Debug.LogWarning($"[SettingDialog] Failed to get VibrationMuted setting, using default (false). Error: {e.Message}");
                 }
-                m_VibrateImage.sprite = isVibrateMuted ? vibrateSprites[0] : vibrateSprites[1];
+                m_VibrateImage.sprite = isVibrateMuted ? vibrateSprites[1] : vibrateSprites[0];
                 m_VibrateImage.DOFade(1f, 0.3f).From(0f).SetUpdate(true);
             }
         }
@@ -264,12 +263,10 @@ namespace NewSideGame
 
             int oldIndex = _lastLanguageIndex;
             m_LanguageDropdown.SetValueWithoutNotify(index); // 保持用户选择态；如果拒绝会在 OnClickDeny 回滚
-
-            string restartMessage = "Language change will take effect after restarting the game. Restart now?";
-
+            
             UGUIParams uguiParams = UGUIParams.Create()
                 .AddValue("Title", "10") // 通用“Confirm/确认”文本
-                .AddValue("Message", restartMessage) // 这里允许纯文本（AskDialog 已支持兜底）
+                .AddValue("Message", "88") 
                 .AddDelegage("OnClickConfirm", (s) =>
                 {
                     GameEntry.Setting.SetString(Constant.Setting.Language, selected.ToString());

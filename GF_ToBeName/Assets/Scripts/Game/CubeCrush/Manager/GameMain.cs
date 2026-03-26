@@ -44,6 +44,13 @@ namespace NewSideGame
         private Vector3 gridStartOffset;
         private bool isClearingAnimationPlaying;
         public bool isGameOverFillAnimating;
+        [Header("Clear Punch Feedback")]
+        [Tooltip("多行消除时的节点震动目标。为空则使用 GameMain 自身。")]
+        [SerializeField] private Transform clearPunchTarget;
+        [SerializeField] private float multiLinePunchDuration = 0.18f;
+        [SerializeField] private float multiLinePunchStrength = 0.1f;
+        [SerializeField] private int multiLinePunchVibrato = 10;
+        private Tween _clearPunchTween;
         public bool IsClearingAnimationPlaying => isClearingAnimationPlaying;
         public bool IsGameOverFillAnimating => isGameOverFillAnimating;
 
@@ -78,6 +85,36 @@ namespace NewSideGame
             EventManager.Instance.RemoveEventListener(Constant.Event.CubeCrushLinesCleared, OnLinesCleared);
             EventManager.Instance.RemoveEventListener(Constant.Event.GameOverFillAnimation,
                 OnGameOverFillAnimation);
+            if (_clearPunchTween != null)
+            {
+                _clearPunchTween.Kill();
+                _clearPunchTween = null;
+            }
+        }
+
+        public void PlayMultiLineClearPunch(int clearedLines)
+        {
+            if (clearedLines < 2) return;
+
+            Transform target = clearPunchTarget != null ? clearPunchTarget : transform;
+            if (_clearPunchTween != null)
+            {
+                _clearPunchTween.Kill();
+                _clearPunchTween = null;
+            }
+
+            target.localScale = Vector3.one;
+            _clearPunchTween = target.DOPunchScale(
+                    new Vector3(multiLinePunchStrength, multiLinePunchStrength, 0f),
+                    multiLinePunchDuration,
+                    multiLinePunchVibrato,
+                    0.9f)
+                .SetUpdate(true)
+                .OnComplete(() =>
+                {
+                    target.localScale = Vector3.one;
+                    _clearPunchTween = null;
+                });
         }
 
         private void Update()

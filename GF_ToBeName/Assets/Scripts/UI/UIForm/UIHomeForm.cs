@@ -67,7 +67,7 @@ namespace NewSideGame
                         GameEntry.Setting.SetBool("LoadSavedGame", false);
                         GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, false);
                         SceneHelper.LoadGameScene(() => { });
-                    }).AddDelegage("OnClickDeny", (s) => { Close(); });
+                    }).AddDelegage("OnClickDeny", (s) => { });
                 ;
                 GameEntry.UI.OpenUIForm(UIFormType.AskDialog, uguiParams);
             }
@@ -98,7 +98,7 @@ namespace NewSideGame
                         GameEntry.Setting.SetBool(Constant.Setting.ModeStageSurvivalKey, true);
                         SceneHelper.LoadGameScene(() => { });
                     })
-                    .AddDelegage("OnClickDeny", (s) => { Close(); });
+                    .AddDelegage("OnClickDeny", (s) => { });
                 GameEntry.UI.OpenUIForm(UIFormType.AskDialog, uguiParams);
             }
             else

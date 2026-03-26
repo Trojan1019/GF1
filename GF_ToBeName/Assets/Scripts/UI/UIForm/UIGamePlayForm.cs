@@ -140,7 +140,17 @@ namespace NewSideGame
 
         private void OnRefreshScore(params object[] args)
         {
-            UpdateScore(GameLoopManager.Instance.score);
+            if (GameLoopManager.Instance == null) return;
+
+            // 关卡生存模式：左边“当前分数”应展示“本关累计分”，而不是总累计分。
+            // 否则会出现：左边看似超过目标分，但实际上本关未达标导致不触发通关。
+            int displayScore = GameLoopManager.Instance.score;
+            if (GameMain.Instance != null && GameMain.Instance.IsStageSurvival)
+            {
+                displayScore = GameLoopManager.Instance.score - GameLoopManager.Instance.StageStartScore;
+            }
+
+            UpdateScore(displayScore);
         }
 
         private void OnLanguageChanged(object[] args)

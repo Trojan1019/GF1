@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: No
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ffb0454bd85c40fb9d4621c4e852cdc, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 18d8eef4302cf4c988c4315ffdb5dca7, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 3168df3c5de7a4b5e9d187c3d1814d42, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -449,10 +449,10 @@ RectTransform:
   m_Father: {fileID: 1014602366226199635}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 593.6663, y: 234.5611}
+  m_SizeDelta: {x: -40, y: 234.5611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1613839590354527403
 CanvasRenderer:
@@ -487,7 +487,7 @@ MonoBehaviour:
     Box.A long Meassage To Test  the Message Box.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ffb0454bd85c40fb9d4621c4e852cdc, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e475b32345c3c484d8b2e9eab8a3f988, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 3168df3c5de7a4b5e9d187c3d1814d42, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.2
+  m_fontSize: 29.45
   m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_text: Yes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ffb0454bd85c40fb9d4621c4e852cdc, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 18d8eef4302cf4c988c4315ffdb5dca7, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 3168df3c5de7a4b5e9d187c3d1814d42, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_text: Remove ads Pack
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ffb0454bd85c40fb9d4621c4e852cdc, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e475b32345c3c484d8b2e9eab8a3f988, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 3168df3c5de7a4b5e9d187c3d1814d42, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

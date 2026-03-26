@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40633d5b39d20410f823d70c564e401e, type: 3}
+  m_Name: "\u8D85\u77EDI\u578B\uFF082\u683C\uFF09"
+  m_EditorClassIdentifier: 
+  cells:
+  - {x: 0, y: 0}
+  - {x: 0, y: 1}
+  blockColor: {r: 1, g: 0, b: 0.45808077, a: 1}
+  blockSprite: {fileID: 21300000, guid: e8904c168f2967e41aadf98d0e67f0a5, type: 3}

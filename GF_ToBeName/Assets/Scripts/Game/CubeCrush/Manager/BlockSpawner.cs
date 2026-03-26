@@ -113,6 +113,34 @@ namespace NewSideGame
             if (notifyUI) NotifySpawnUpdate(playSpawnSound);
         }
 
+        // 用于 Classic/无尽模式从存档恢复：只恢复当前可见槽位，不使用关卡固定序列。
+        public void RestoreClassicSpawn(
+            List<BlockShape> restoredCurrentVisibleShapes,
+            List<CubeCrushGoalItemType> restoredCurrentVisibleItems,
+            bool notifyUI = true,
+            bool playSpawnSound = false)
+        {
+            ConfigureClassicSpawn();
+
+            currentShapes.Clear();
+            currentShapeItems.Clear();
+
+            if (restoredCurrentVisibleShapes != null)
+                currentShapes.AddRange(restoredCurrentVisibleShapes);
+            if (restoredCurrentVisibleItems != null)
+                currentShapeItems.AddRange(restoredCurrentVisibleItems);
+
+            while (currentShapes.Count < spawnSlots) currentShapes.Add(null);
+            if (currentShapes.Count > spawnSlots)
+                currentShapes.RemoveRange(spawnSlots, currentShapes.Count - spawnSlots);
+
+            while (currentShapeItems.Count < spawnSlots) currentShapeItems.Add(CubeCrushGoalItemType.None);
+            if (currentShapeItems.Count > spawnSlots)
+                currentShapeItems.RemoveRange(spawnSlots, currentShapeItems.Count - spawnSlots);
+
+            if (notifyUI) NotifySpawnUpdate(playSpawnSound);
+        }
+
         public void SpawnBlocks()
         {
             currentShapes.Clear();

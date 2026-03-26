@@ -177,4 +177,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c1a5f44695c04ac2a00131993d8c365, type: 2}
   - {fileID: 11400000, guid: 29bfd197cc24949a0ab4f0bb39e363b4, type: 2}
   - {fileID: 11400000, guid: b9d1d7b0f887a4f38b9d6e15f976347f, type: 2}
-  goalRequirements: []
+  goalRequirements:
+  - itemType: 2
+    requiredCount: 10
+  - itemType: 3
+    requiredCount: 10

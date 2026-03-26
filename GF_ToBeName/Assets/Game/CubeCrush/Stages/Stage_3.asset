@@ -1,0 +1,318 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8f015477acd4db8b5c1cc004374a44, type: 3}
+  m_Name: Stage_3
+  m_EditorClassIdentifier: 
+  stageIndex: 3
+  targetScoreLocal: 1000
+  itemAttachProbability: 0.2
+  prefilledCells:
+  - x: 2
+    y: 5
+    prefilledBlockId: 1
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 2
+    y: 4
+    prefilledBlockId: 2
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 5
+    prefilledBlockId: 3
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 5
+    y: 5
+    prefilledBlockId: 4
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 2
+    y: 3
+    prefilledBlockId: 5
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 2
+    y: 2
+    prefilledBlockId: 6
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 2
+    prefilledBlockId: 7
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 2
+    prefilledBlockId: 8
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 5
+    y: 4
+    prefilledBlockId: 9
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 5
+    y: 3
+    prefilledBlockId: 10
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 0
+    y: 6
+    prefilledBlockId: 11
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 0
+    y: 5
+    prefilledBlockId: 12
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 0
+    y: 4
+    prefilledBlockId: 13
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 0
+    y: 3
+    prefilledBlockId: 14
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 0
+    y: 2
+    prefilledBlockId: 15
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 0
+    y: 1
+    prefilledBlockId: 16
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 1
+    y: 0
+    prefilledBlockId: 17
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 2
+    y: 0
+    prefilledBlockId: 18
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 0
+    prefilledBlockId: 19
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 0
+    prefilledBlockId: 20
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 6
+    y: 1
+    prefilledBlockId: 21
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 5
+    y: 1
+    prefilledBlockId: 22
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 0
+    prefilledBlockId: 23
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 2
+    prefilledBlockId: 24
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 3
+    prefilledBlockId: 25
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 4
+    prefilledBlockId: 26
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 5
+    prefilledBlockId: 27
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 7
+    y: 6
+    prefilledBlockId: 28
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 1
+    y: 7
+    prefilledBlockId: 29
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 2
+    y: 7
+    prefilledBlockId: 30
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 3
+    y: 7
+    prefilledBlockId: 31
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 7
+    prefilledBlockId: 32
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 5
+    y: 7
+    prefilledBlockId: 33
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 6
+    y: 7
+    prefilledBlockId: 34
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  - x: 4
+    y: 4
+    prefilledBlockId: 35
+    color: {r: 1, g: 0.2, b: 0.2, a: 1}
+  initialItems:
+  - x: 3
+    y: 7
+    itemType: 2
+    prefilledBlockId: 31
+  - x: 4
+    y: 7
+    itemType: 2
+    prefilledBlockId: 32
+  - x: 5
+    y: 7
+    itemType: 2
+    prefilledBlockId: 33
+  - x: 6
+    y: 7
+    itemType: 2
+    prefilledBlockId: 34
+  - x: 2
+    y: 0
+    itemType: 2
+    prefilledBlockId: 18
+  - x: 3
+    y: 0
+    itemType: 2
+    prefilledBlockId: 20
+  - x: 4
+    y: 0
+    itemType: 2
+    prefilledBlockId: 19
+  - x: 2
+    y: 4
+    itemType: 1
+    prefilledBlockId: 2
+  - x: 2
+    y: 3
+    itemType: 1
+    prefilledBlockId: 5
+  - x: 4
+    y: 4
+    itemType: 1
+    prefilledBlockId: 35
+  - x: 5
+    y: 4
+    itemType: 1
+    prefilledBlockId: 9
+  - x: 5
+    y: 3
+    itemType: 1
+    prefilledBlockId: 10
+  - x: 1
+    y: 7
+    itemType: 2
+    prefilledBlockId: 29
+  - x: 2
+    y: 7
+    itemType: 2
+    prefilledBlockId: 30
+  - x: 1
+    y: 0
+    itemType: 2
+    prefilledBlockId: 17
+  - x: 5
+    y: 1
+    itemType: 2
+    prefilledBlockId: 22
+  - x: 6
+    y: 1
+    itemType: 2
+    prefilledBlockId: 21
+  - x: 0
+    y: 1
+    itemType: 2
+    prefilledBlockId: 16
+  - x: 0
+    y: 2
+    itemType: 2
+    prefilledBlockId: 15
+  - x: 0
+    y: 3
+    itemType: 2
+    prefilledBlockId: 14
+  - x: 0
+    y: 5
+    itemType: 2
+    prefilledBlockId: 12
+  - x: 0
+    y: 4
+    itemType: 2
+    prefilledBlockId: 13
+  - x: 0
+    y: 6
+    itemType: 2
+    prefilledBlockId: 11
+  - x: 7
+    y: 6
+    itemType: 2
+    prefilledBlockId: 28
+  - x: 7
+    y: 5
+    itemType: 2
+    prefilledBlockId: 27
+  - x: 7
+    y: 4
+    itemType: 2
+    prefilledBlockId: 26
+  - x: 7
+    y: 3
+    itemType: 2
+    prefilledBlockId: 25
+  - x: 7
+    y: 2
+    itemType: 2
+    prefilledBlockId: 24
+  - x: 2
+    y: 5
+    itemType: 3
+    prefilledBlockId: 1
+  - x: 3
+    y: 5
+    itemType: 3
+    prefilledBlockId: 3
+  - x: 2
+    y: 2
+    itemType: 3
+    prefilledBlockId: 6
+  - x: 3
+    y: 2
+    itemType: 3
+    prefilledBlockId: 7
+  - x: 4
+    y: 2
+    itemType: 3
+    prefilledBlockId: 8
+  - x: 5
+    y: 5
+    itemType: 3
+    prefilledBlockId: 4
+  - x: 7
+    y: 0
+    itemType: 2
+    prefilledBlockId: 23
+  spawnSequence:
+  - {fileID: 11400000, guid: b9d1d7b0f887a4f38b9d6e15f976347f, type: 2}
+  - {fileID: 11400000, guid: 14fd4c076ce6f4c798bf9d973468fce9, type: 2}
+  - {fileID: 11400000, guid: 16445af2b27f44871867c109f197bd7d, type: 2}
+  - {fileID: 11400000, guid: 5cdb2c5616b814ce08167e5dd153cd77, type: 2}
+  - {fileID: 11400000, guid: 5cdb2c5616b814ce08167e5dd153cd77, type: 2}
+  - {fileID: 11400000, guid: c3a4eeb2c1f9d4f678ec06b0ed4bf50a, type: 2}
+  - {fileID: 11400000, guid: f58ca61cad70a4fb19c5893bff27515a, type: 2}
+  - {fileID: 11400000, guid: f58ca61cad70a4fb19c5893bff27515a, type: 2}
+  - {fileID: 11400000, guid: f58ca61cad70a4fb19c5893bff27515a, type: 2}
+  - {fileID: 11400000, guid: f58ca61cad70a4fb19c5893bff27515a, type: 2}
+  - {fileID: 11400000, guid: ffec956e4cfd74582be66e46558eadcb, type: 2}
+  goalRequirements:
+  - itemType: 3
+    requiredCount: 10
+  - itemType: 1
+    requiredCount: 10
+  - itemType: 2
+    requiredCount: 10

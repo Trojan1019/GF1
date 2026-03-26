@@ -62,14 +62,31 @@ namespace NewSideGame
             }
             else
             {
-                StartClassicMode();
+                StartClassicMode(loadSavedGame);
             }
         }
 
-        private void StartClassicMode()
+        private void StartClassicMode(bool loadSavedGame)
         {
             var model = ProxyManager.GameProxy != null ? ProxyManager.GameProxy.GameModel : null;
             highestStageCleared = model != null ? Mathf.Max(0, model.highestStageCleared) : 0;
+
+            // Classic/无尽：支持从 continue 存档恢复
+            if (loadSavedGame && model != null && model.hasSavedGame && !model.stageModeEnabled)
+            {
+                score = model.score;
+                stageIndex = 1;
+                stageStartTotalScore = 0;
+                stageTargetLocalScore = 0;
+                stageGoals.Clear();
+                RestoreClassicGridAndSpawns(model);
+
+                EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGameStart);
+                EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGridUpdated);
+                EventManager.Instance.NotifyEvent(Constant.Event.RefreshScore);
+                return;
+            }
+
             stageIndex = 1;
             stageStartTotalScore = 0;
             stageTargetLocalScore = 0;
@@ -81,6 +98,74 @@ namespace NewSideGame
 
             EventManager.Instance.NotifyEvent(Constant.Event.RefreshScore);
             EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushGameStart);
+        }
+
+        private void RestoreClassicGridAndSpawns(GameModel model)
+        {
+            GridManager.Instance.cols = model.cols;
+            GridManager.Instance.rows = model.rows;
+            GridManager.Instance.InitializeGrid();
+
+            int cols = GridManager.Instance.cols;
+            int rows = GridManager.Instance.rows;
+            for (int x = 0; x < cols; x++)
+            {
+                for (int y = 0; y < rows; y++)
+                {
+                    int index = y * cols + x;
+                    GridManager.Instance.grid[x, y] =
+                        model.gridData != null && index < model.gridData.Length ? model.gridData[index] : 0;
+
+                    Color parsed = Color.clear;
+                    if (model.gridColors != null && index < model.gridColors.Length)
+                    {
+                        var str = model.gridColors[index];
+                        if (!string.IsNullOrEmpty(str))
+                        {
+                            ColorUtility.TryParseHtmlString("#" + str, out parsed);
+                        }
+                    }
+                    GridManager.Instance.gridColors[x, y] = parsed;
+                    GridManager.Instance.gridGoalItems[x, y] = 0;
+                }
+            }
+
+            var nameToShape = new Dictionary<string, BlockShape>();
+            foreach (var s in GameMain.Instance.availableShapes)
+            {
+                if (s == null) continue;
+                nameToShape[s.name] = s;
+            }
+
+            List<BlockShape> restoredCurrentShapes = new List<BlockShape>();
+            List<CubeCrushGoalItemType> restoredCurrentItems = new List<CubeCrushGoalItemType>();
+            if (model.spawnShapes != null)
+            {
+                for (int i = 0; i < model.spawnShapes.Length; i++)
+                {
+                    CubeCrushGoalItemType itemType = CubeCrushGoalItemType.None;
+                    if (model.spawnItemTypes != null && i < model.spawnItemTypes.Length)
+                        itemType = (CubeCrushGoalItemType)model.spawnItemTypes[i];
+                    restoredCurrentItems.Add(itemType);
+
+                    string shapeName = model.spawnShapes[i];
+                    if (string.IsNullOrEmpty(shapeName))
+                    {
+                        restoredCurrentShapes.Add(null);
+                        continue;
+                    }
+
+                    if (nameToShape.TryGetValue(shapeName, out var shape))
+                        restoredCurrentShapes.Add(shape);
+                    else
+                        restoredCurrentShapes.Add(null);
+                }
+            }
+
+            BlockSpawner.Instance.RestoreClassicSpawn(
+                restoredCurrentShapes,
+                restoredCurrentItems,
+                notifyUI: false);
         }
 
         private void StartStageMode(bool loadSavedGame)
@@ -330,6 +415,7 @@ namespace NewSideGame
                 if (clearedLines > 0)
                 {
                     GameEntry.Sound.PlaySound(Constant.SoundId.Remove);
+                    GameMain.Instance.PlayMultiLineClearPunch(clearedLines);
                     // 传入 rows/cols，便于按“从左到右/从上到下”逐格播放消除特效
                     EventManager.Instance.NotifyEvent(Constant.Event.CubeCrushLinesCleared, clearedCells, clearedRows, clearedCols);
 #if UNITY_ANDROID || UNITY_IOS
@@ -425,13 +511,35 @@ namespace NewSideGame
 
         private void TryAutoSave()
         {
-            if (GameMain.Instance == null || !GameMain.Instance.IsStageSurvival) return;
             if (ProxyManager.GameProxy == null || ProxyManager.GameProxy.GameModel == null) return;
 
             if (Time.time - _lastSaveTime < SaveIntervalSeconds) return;
             _lastSaveTime = Time.time;
 
-            SaveStageState(isStageClearPending: false);
+            if (GameMain.Instance != null && GameMain.Instance.IsStageSurvival)
+            {
+                SaveStageState(isStageClearPending: false);
+            }
+            else
+            {
+                SaveClassicState();
+            }
+        }
+
+        private void SaveClassicState()
+        {
+            if (ProxyManager.GameProxy == null) return;
+            var grid = GridManager.Instance.grid;
+            var colors = GridManager.Instance.gridColors;
+            var shapes = BlockSpawner.Instance.currentShapes;
+
+            ProxyManager.GameProxy.SaveGameState(
+                score,
+                GridManager.Instance.cols,
+                GridManager.Instance.rows,
+                grid,
+                colors,
+                shapes);
         }
 
         private void SaveStageState(bool isStageClearPending)
@@ -539,6 +647,34 @@ namespace NewSideGame
             comboBreakStepsLeft = 0;
             comboPitchCurrent = 1f;
             StartGame(false);
+        }
+
+        public void SaveProgressForExit()
+        {
+            if (isGameOver) return;
+            if (ProxyManager.GameProxy == null || ProxyManager.GameProxy.GameModel == null) return;
+
+            if (GameMain.Instance != null && GameMain.Instance.IsStageSurvival)
+            {
+                SaveStageState(isStageClearPending);
+            }
+            else
+            {
+                SaveClassicState();
+            }
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (pauseStatus)
+            {
+                SaveProgressForExit();
+            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveProgressForExit();
         }
 
         public bool ReviveByAdClearBoard()

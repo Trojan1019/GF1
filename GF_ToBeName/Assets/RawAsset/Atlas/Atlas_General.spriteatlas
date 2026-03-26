@@ -68,6 +68,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 99608750539de48d18e43980996f08dc, type: 3}
   - {fileID: 21300000, guid: fce33b80b30c746ffadeb5ab96e41d07, type: 3}
   - {fileID: 21300000, guid: ba5c1c80ca0e643649aee457a6fd7369, type: 3}
+  - {fileID: 21300000, guid: bd44e29094d2845238f140f8b55d026d, type: 3}
   - {fileID: 21300000, guid: 1e91c9b0095574ca99133ba926c8f312, type: 3}
   - {fileID: 21300000, guid: b476dd01c25bd4bf7a1e8bd355d305ba, type: 3}
   - {fileID: 21300000, guid: 9b07961159ba54e4f920a4775e38ac7a, type: 3}
@@ -130,6 +131,7 @@ SpriteAtlas:
   - Icon_Sad
   - greenline
   - UI_Bar_Fill_Green
+  - UI_Icon_Store
   - function_icon_music
   - UI_Panel_Paper_Inset
   - img_explain_arrow

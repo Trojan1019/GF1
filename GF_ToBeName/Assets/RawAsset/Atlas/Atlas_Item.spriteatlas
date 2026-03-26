@@ -64,21 +64,27 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: f9de3a51dd7304c12927bdd7a9c48b4f, type: 3}
   - {fileID: 21300000, guid: 21e37c61c6c6a4edb83aa22633fe5668, type: 3}
+  - {fileID: 21300000, guid: 68e9f2a57954c43dab18c17671175486, type: 3}
   - {fileID: 21300000, guid: 8f6c3536ae85a403282cf77fde62d78b, type: 3}
   - {fileID: 21300000, guid: e1a094d69012749b0ac6bac5f1a6213f, type: 3}
   - {fileID: 21300000, guid: b67014371b5bb4b10b6d74f27899d93b, type: 3}
   - {fileID: 21300000, guid: 273bd0977a6744763bfb590a882592c9, type: 3}
+  - {fileID: 21300000, guid: a868fb5876d044f2195701c8bad7e4a8, type: 3}
   - {fileID: 21300000, guid: c5f9b3d8a85f1411082bdeb86fbfd0c3, type: 3}
+  - {fileID: 21300000, guid: 6fa477e83449248549bcfa37bebae2be, type: 3}
   - {fileID: 21300000, guid: 3a7259293308448e7a8757c933469f1e, type: 3}
   - {fileID: 21300000, guid: ba404f5fd522044b0a473e39be4d1e5c, type: 3}
   m_PackedSpriteNamesToIndex:
   - Coin_3
   - Coin_2
+  - Gem
   - EmptyBlock
   - icon_add
   - Coin
   - Coin_6
+  - icon_star
   - Coin_5
+  - spin_btn1
   - DiamondBg
   - Coin_4
   m_RenderDataMap: {}

@@ -44,8 +44,8 @@ namespace NewSideGame
 
             if (adBtnText != null)
             {
-                string txt = GameEntry.Localization.GetString("78");
-                if (string.IsNullOrEmpty(txt) || txt.Contains("<NoKey>")) txt = "Watch Ad Revive";
+                string txt = GameEntry.Localization.GetString("26");
+                if (string.IsNullOrEmpty(txt) || txt.Contains("<NoKey>")) txt = "Resume";
                 adBtnText.text = txt;
             }
         }
